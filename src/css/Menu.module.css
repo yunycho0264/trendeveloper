@@ -1,0 +1,55 @@
+.Menu {
+  margin: 100px auto 0;
+  margin-left: 100px;
+  display: flex;
+  justify-content: left;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.tag {
+  margin: 0 60px;
+}
+
+.nav {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.group .nav:hover {
+  color: #fc5230;
+  text-decoration: underline;
+}
+
+header a {
+  padding-top: 50px;
+  font-style: normal;
+  font-weight: 1000;
+  font-size: 35px;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  right: 50px;
+  bottom: 10px;
+}
+
+header a span {
+  color: #fc5230;
+}
+
+.menu-line{
+  border-top: 2px solid #89969F;
+  margin: 50px auto 30px;
+  margin-left: -500px;
+  width: 1000px;
+  height: 0px;
+}
