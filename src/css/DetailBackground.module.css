@@ -1,0 +1,9 @@
+.detail-background {
+  border: 1px solid #89969F;
+  width: 800px;
+  height: 620px;
+  margin-left: 400px;
+  margin-top: 20px;
+  background: #fff;
+  overflow-y: scroll;
+}

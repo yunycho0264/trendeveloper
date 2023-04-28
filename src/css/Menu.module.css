@@ -31,7 +31,6 @@
 }
 
 header a {
-  padding-top: 50px;
   font-style: normal;
   font-weight: 1000;
   font-size: 35px;
@@ -50,6 +49,6 @@ header a span {
   border-top: 2px solid #89969F;
   margin: 50px auto 30px;
   margin-left: -500px;
-  width: 1000px;
+  width: 1100px;
   height: 0px;
 }
