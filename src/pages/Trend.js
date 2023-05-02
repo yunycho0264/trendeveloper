@@ -3,17 +3,14 @@ import styles from "../css/DetailPage.module.css";
 import Detailbox from "../components/Detailbox";
 import TrendBackground from "../components/TrendBackground";
 import CompanyInfo from "../components/CompanyInfo";
-import MyPageBackground from "../components/MyPageBackground";
 
-const MyPage = () => {
+const Trend = () => {
   return (
-    <div>
-      <div className={styles.require}>
-        {/* 배경 박스 */}
-        <MyPageBackground />
-      </div>
+    <div className={styles.require}>
+      {/* 배경 박스 */}
+      <TrendBackground />
     </div>
   );
 };
 
-export default MyPage;
+export default Trend;
