@@ -8,9 +8,6 @@ const Main = () => {
       <div>
         <h2>Main 페이지</h2>
       </div>
-      <div>
-        <button>Logout</button>
-      </div>
     </div>
   );
 };

@@ -1,0 +1,26 @@
+.box {
+  margin-top: 20px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  width: 400px;
+  height: 80px;
+
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.wrapper {
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.button.pressed {
+  transform: translateY(2px);
+}
