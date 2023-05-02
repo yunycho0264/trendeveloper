@@ -1,34 +1,45 @@
-ul {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-  color: #828282;
-  font-size: 20px;
-}
-button {
-  border: 0;
-  color: #828282;
-  font-size: 20px;
-}
-.navbar {
-  margin-top: 50px;
-  display: flex;
-}
-.navbar li {
-  text-align: center;
-  flex: 1;
-  padding: 10px;
-}
-
-.title {
+.title p {
   padding-top: 100px;
   font-style: normal;
   font-weight: 1000;
-  font-size: 35px;
+  font-size: 20px;
   color: black;
 }
 
 .title span {
   color: #fc5230;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #828282;
+  font-size: 20px;
+}
+.navbar button {
+  border: 0;
+  color: #828282;
+  font-size: 20px;
+}
+
+.navbar {
+  margin-top: 40px;
+  height: 40px;
+  position: sticky;
+  display: flex;
+  /* width: 100%; */
+}
+.navbar li {
+  float: left;
+  text-align: center;
+  flex: 1;
+  padding: 10px;
+}
+
+.top_bar {
+  display: flex;
+  background-color: #d9d9d9;
+  width: 50%;
+  justify-content: end;
+
+  float: left;
 }
