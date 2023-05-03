@@ -1,0 +1,51 @@
+.requirement {
+  position: absolute;
+  top: 202px;
+  left: 219px;
+  width:80px;
+  height: 50px;
+  border: 1px solid #89969F;
+  background: #fff;
+}
+
+.requirement a {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 1000;
+  text-decoration: none;
+  color: #55595B;
+  font-weight: bold;
+  position: absolute;
+  left: 12px;
+  top:15px;
+}
+
+.requirement a:hover {
+  color : #E27B7C;
+}
+
+.company-trend {
+  position: absolute;
+  top: 251px;
+  left: 219px;
+  width:80px;
+  height: 50px;
+  border: 1px solid #89969F;
+  background: #fff;
+}
+
+.company-trend a {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 1000;
+  text-decoration: none;
+  color: #55595B;
+  font-weight: bold;
+  position: absolute;
+  left: 8px;
+  top:16px;
+}
+
+.company-trend a:hover {
+  color: #E27B7C;
+}

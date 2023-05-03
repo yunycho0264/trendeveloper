@@ -2,8 +2,42 @@
   border: 1px solid #89969F;
   width: 800px;
   height: 620px;
-  margin-left: 400px;
+  margin-left: 300px;
   margin-top: 20px;
   background: #fff;
-  overflow-y: scroll;
+  overflow: auto;
+}
+
+.top-bar {
+  background-color: #E27B7C;
+  position: static;
+  margin-left: 50px;
+  margin-top: 100px;
+  width: 700px;
+  height: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.inner-box{
+  background-color:#fff;
+  margin-left: 50px;
+  margin-top: 100 px;
+  margin-bottom: 50px;
+  width: 700px;
+  height: 200px;
+  position: relative;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px #B4B7BA;
+}
+
+.box2 {
+  position: static;
+  margin-top: 50px;
+
+}
+
+.box3 {
+  position: static;
+  margin-top: 50px;
 }

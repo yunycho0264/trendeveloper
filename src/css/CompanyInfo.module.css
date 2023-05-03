@@ -1,5 +1,9 @@
-.bp {
-  width:500px;
-  height: 500px;
-  border: 1px solid #000;
+.info-box {
+  position: absolute;
+  top : 430px;
+  left: 1160px;
+  width:300px;
+  height: 400px;
+  border: 1px solid #89969F;
+  background: #fff;
 }
