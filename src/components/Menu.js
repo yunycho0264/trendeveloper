@@ -1,35 +1,37 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import styles from "../css/Menu.module.css";
+import { AuthContext } from "../context/Auth.context.js";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   return (
     <div className={styles.Menu}>
-       {/* 홈페이지 로고 */}
+      {/* 홈페이지 로고 */}
       <header>
-        <a href="https://google.com">
+        <Link to="/">
           TREN<span className={styles.highlight}>D</span>EVELOPER
-        </a>
+        </Link>
       </header>
-       {/* 메뉴 태그 */}
+      {/* 메뉴 태그 */}
       <ul className={styles.group}>
         <li className={styles.tag}>
-          <a href="https://www.naver.com/" className={styles.nav} id="nav1">
+          <Link to="/" className={styles.nav} id="nav1">
             채용 공고
-          </a>
+          </Link>
         </li>
         <li className={styles.tag}>
-          <a href="https://www.naver.com/" className={styles.nav} id="nav2">
+          <Link to="/trend" className={styles.nav} id="nav2">
             트렌드
-          </a>
+          </Link>
         </li>
         <li className={styles.tag}>
-          <a href="https://www.naver.com/" className={styles.nav} id="nav3">
+          <Link to="/roadmap" className={styles.nav} id="nav3">
             로드맵
-          </a>
+          </Link>
         </li>
       </ul>
       {/* 메뉴 밑 구분선 */}
-      <div className={styles['menu-line']}/>
+      <div className={styles["menu-line"]} />
     </div>
   );
 };
