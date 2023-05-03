@@ -1,0 +1,82 @@
+/* 
+.signin {
+  padding: 20px;
+  margin-bottom: 20px;
+} */
+
+.sign {
+  /* 전체화면 바꾸기 */
+  margin-top: 70px;
+  /*flex: 1; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  /* flex: 1; */
+  /* overflow-y: scroll; */
+
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background-color: #d9d9d9;
+}
+
+.sign ::after {
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: url("../../public/assets/세종대로고_nb.png");
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.01;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 800px 800px;
+  background-color: #d9d9d9;
+}
+
+.signin-sub {
+  /* margin-top: 30px; */
+  font-size: 10px;
+  color: grey;
+}
+
+.signin-sub .saveId {
+  margin-right: 120px;
+}
+
+.signin-sub a {
+  text-decoration-line: none;
+  text-decoration-color: grey;
+}
+
+.signin-sub a:link {
+  color: grey;
+}
+
+.Info {
+  margin-bottom: 50px;
+}
+
+.signF-bt {
+  background-color: #ba0c2f;
+  border: 2px solid #ba0c2f;
+
+  font-size: 30px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.signS-bt {
+  margin-top: 50px;
+  background-color: white;
+  border: 2px solid #ba0c2f;
+
+  font-size: 30px;
+  color: #ba0c2f;
+  margin-bottom: 20px;
+  padding: 20px;
+}
