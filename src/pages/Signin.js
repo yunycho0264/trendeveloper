@@ -1,19 +1,14 @@
-import React, { useState } from "react";
-import "../css/App.css";
-import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+import React, { useState, useContext } from "react";
 
-async function signinUser(credentials) {
-  return fetch("http://202.182.126.161:3000/api/v1/auth/signin", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
+import { AuthContext } from "../context/Auth.context.js";
+
+import { useNavigate } from "react-router-dom";
+import "../css/Common.css";
+import "../css/App.css";
 
 const Signin = () => {
+  const { setSignin } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const navigateToSignup = () => {
@@ -34,21 +29,11 @@ const Signin = () => {
   // signin 버튼 클릭 이벤트
   const onClickSignin = async (e) => {
     e.preventDefault();
-    const response = await signinUser({
-      email,
-      password,
-    });
-    if ("token" in response) {
-      localStorage.setItem("token", response["token"]);
-      localStorage.setItem("user", JSON.stringify(response["user"]));
-      navigate("/mypage");
-    } else {
-      console.log(response.message);
-    }
+    setSignin(email, password);
   };
 
   return (
-    <div className="signin">
+    <div className="sign">
       <div className="signin-form">
         <form onSubmit={onClickSignin}>
           <div>
@@ -72,7 +57,7 @@ const Signin = () => {
           <div>
             <button
               type="submit"
-              className="box signin-bt"
+              className="box signF-bt"
               onClick={onClickSignin}
             >
               로그인
@@ -88,7 +73,7 @@ const Signin = () => {
           </div>
           <div>
             <button
-              className="box signup-bt"
+              className="box signS-bt"
               type="button"
               onClick={navigateToSignup}
             >

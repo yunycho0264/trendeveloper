@@ -1,0 +1,59 @@
+.background {
+  width: 52vw;
+  height: 55vh;
+  margin-left: 18vw;
+  margin-bottom: 0vh;
+  overflow-y: scroll;
+}
+
+.text {
+  font-weight: bold;
+  font-size: large;
+  margin-top: 4vh;
+}
+
+.inner-text {
+  margin-top: 2vh;
+  margin-left: 0vw;
+}
+
+.inner-box {
+  margin-left: 0.6vw;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 20vh;
+}
+
+.box {
+  margin-top: 1vh;
+  border: 1px solid #89969f;
+  background: #fff;
+  width: 30vw;
+  height: 20vh;
+}
+
+.leftbox {
+  margin-left: 18vw;
+}
+.rightbox {
+  margin-left: 2vw;
+}
+
+.sub-text {
+  margin-left: 18vw;
+}
+
+.next {
+  margin-left: 2vw;
+}
+
+.contents {
+  display: block;
+  float: left;
+  margin-bottom: 1vh;
+}
+
+.clicked-job {
+  color: #b93234;
+}

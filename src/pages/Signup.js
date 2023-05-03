@@ -1,18 +1,11 @@
-import React, { useState } from "react";
-import "../css/App.css";
+import React, { useState, useContext } from "react";
+
+import { AuthContext } from "../context/Auth.context.js";
 import { useNavigate } from "react-router-dom";
 
-import swal from "sweetalert";
-
-async function loginUser(credentials) {
-  return fetch("http://202.182.126.161:3000/api/v1/auth/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
+import "../css/App.css";
+import "../css/Common.css";
+import "../css/Sign.css";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -20,7 +13,7 @@ const Signup = () => {
   const navigateToSignin = () => {
     navigate("/signin");
   };
-
+  const { setSignup } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,25 +30,14 @@ const Signup = () => {
     setPassword(e.target.value);
   };
 
-  // login 버튼 클릭 이벤트
+  // signup 버튼 클릭 이벤트
   const onClickSignup = async (e) => {
     e.preventDefault();
-    const response = await loginUser({
-      name,
-      email,
-      password,
-    });
-    if ("token" in response) {
-      localStorage.setItem("token", response["token"]);
-      localStorage.setItem("user", JSON.stringify(response["user"]));
-      navigate("/mypage");
-    } else {
-      console.log(response.message);
-    }
+    setSignup(name, email, password);
   };
 
   return (
-    <div className="signup">
+    <div className="sign">
       <div className="containar">
         <div className="big_title">이용약관 동의</div>
         <div className="small_title">
@@ -117,7 +99,7 @@ const Signup = () => {
           </div>
           <div>
             <button
-              className="box signin-bt"
+              className="box signF-bt"
               type="button"
               onClick={onClickSignup}
             >
@@ -127,7 +109,7 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="box signup-bt"
+              className="box signS-bt"
               onClick={navigateToSignin}
             >
               로그인
