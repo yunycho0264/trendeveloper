@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../css/DetailPage.module.css";
-import Detailbox from "../components/Detailbox";
+
 import TrendBackground from "../components/TrendBackground";
 import CompanyInfo from "../components/CompanyInfo";
 
