@@ -14,7 +14,7 @@ const Companylogo = () => {
 
     const fetchData = async () => {
       if(urlSearchParams.has("id")){
-        //console.log(urlSearchParams.get("id"));
+        console.log(urlSearchParams.get("id"));
         let recruitmentID = urlSearchParams.get("id");
         //const token = localStorage.getItem("token");
 
@@ -27,20 +27,13 @@ const Companylogo = () => {
           body: JSON.stringify(),
         });
         respJSON = await resp.json();
+        console.log(respJSON);
         setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
         //logoLink = respJSON["logoLink"];
       }
     }
 
-    fetchData();//.then(()=>{console.log(logoLink);});
-    
-  
-    // if(!respJSON["logoLink"]){
-    //   logoLink = "https://work.go.kr/framework" + respJSON["logoLink"]
-    // }
-    // else{
-    //   logoLink = "AA";
-    // }
+    fetchData();
   }, []);
 
   //const [detailData, setDetailData] = useState(null);
@@ -48,7 +41,7 @@ const Companylogo = () => {
   //const zionItsLogoLink = detailData?.find(company => company.name === '(주)자이온아이티에스')?.logoLink;
   //const logoLink = zionItsLogoLink ? `https://work.go.kr${zionItsLogoLink}` : null;
 
-  console.log(logoLink);
+  // console.log(logoLink);
 
   return (
     <div className={styles["company-logo"]}>

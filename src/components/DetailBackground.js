@@ -10,7 +10,7 @@ const DetailBackground=()=> {
         {/* 내부 박스*/}
         <div className={styles["inner-box"]} />
         {/*번호 매기기*/}
-        <div></div>
+        <div className={styles.circle1}>1</div>
       </div>
       <div className={styles.box2}>
         {/* 상단 핑크색 바*/}
@@ -18,7 +18,7 @@ const DetailBackground=()=> {
         {/* 내부 박스*/}
         <div className={styles["inner-box"]} />
         {/*번호 매기기*/}
-        <div></div>
+        <div className={styles.circle2}>2</div>
       </div>
       <div className={styles.box3}>
         {/* 상단 핑크색 바*/}
@@ -26,7 +26,7 @@ const DetailBackground=()=> {
         {/* 내부 박스*/}
         <div className={styles["inner-box"]} />
         {/*번호 매기기*/}
-        <div></div>
+        <div className={styles.circle3}>3</div>
       </div>
     </div>
   );
