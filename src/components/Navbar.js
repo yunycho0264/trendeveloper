@@ -24,7 +24,7 @@ const Navbar = () => {
         </li>
         <li className="menu">
           <li>
-            <Link to="/">채용공고</Link>
+            <Link to="/detail">채용공고</Link>
           </li>
           <li>
             <Link to="/trend">트랜드</Link>

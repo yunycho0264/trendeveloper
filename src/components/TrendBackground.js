@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/Box.module.css";
 import "../css/Navbar.css";
 
 import SimpleSlider from "./Slider";
 import ApexCharts from "./charts";
 
+import { AiFillQuestionCircle } from "react-icons/ai";
+
+import Modal from "react-modal";
+
 const TrendBackground = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
       <div className={styles.contents}>
@@ -14,6 +19,10 @@ const TrendBackground = () => {
             TREN<span>D</span>EVELOPER
           </span>
           에 선정한 요즘 뜨는 TOP 5 직군이에요!
+          <span>
+            <AiFillQuestionCircle />
+            <Modal isOpen={false}> </Modal>
+          </span>
         </div>
         <div className={`${styles.box} ${styles.rank} ${styles.text}`}>
           <ol className="list">

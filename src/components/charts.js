@@ -30,7 +30,7 @@ export default class Chart extends Component {
           curve: "straight",
         },
         title: {
-          text: "Product Trends by Month",
+          text: "Position Trends by Month",
           align: "left",
         },
         grid: {
@@ -61,8 +61,8 @@ export default class Chart extends Component {
         options={this.state.options}
         series={this.state.series}
         typs="line"
-        width={1200}
-        height={300}
+        width={1000}
+        height={250}
       />
     );
   }

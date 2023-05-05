@@ -1,11 +1,32 @@
-.top-bar {
-  color: #E27B7C;
-  width: 500px;
+/* .top-bar {
+  background-color: #E27B7C;
+  position: absolute;
+  top : 300px;
+  left: 350px;
+  width: 700px;
   height: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: 1;
 }
 
 .inner-box{
-  color:#fff;
-  width:1000px;
-  height:1000px;
+  background-color:#fff;
+  width: 700px;
+  height: 200px;
+  position: absolute;
+  top: 300px;
+  left: 350px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px #B4B7BA;
 }
+
+.box2 {
+  position: absolute;
+  top :220px;
+}
+
+.box3 {
+  position: absolute;
+  top: 400px;
+} */

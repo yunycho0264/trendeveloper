@@ -1,5 +1,15 @@
 import "./css/App.css";
 
+// import logo from "./logo.svg";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styles from "../src/css/App.module.css";
+import "./css/index.css";
+import Background from "../src/components/Background";
+import Menu from "../src/components/Menu";
+import DetailPage from "../src/pages/DetailPage";
+// import Signin from "./pages/Signin";
+// import Signup from "./pages/Signup";
+
 import React, { useContext } from "react";
 import { AuthContext, ContextProvider } from "./context/Auth.context";
 
@@ -20,9 +30,11 @@ function App() {
       <ContextProvider>
         <div className="App">
           <MyHeader />
+          {/* <Background /> */}
           <div className="wrapper">
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/detail" element={<DetailPage />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/mypage" element={<MyPage />} />
