@@ -7,36 +7,54 @@ const CompanySlide = (props) => {
   let [logoLink, setlogoLink] = useState(null);
   let respJSON = useState({});
   //let logoLink = useState("");
+  //
+  const data = props.data;
+
   useEffect(() => {
+    // console.log(data);
     const fetchData = async () => {
-      let recruitmentID = props.element.id;
-      //const token = localStorage.getItem("token");
+      if ("id" in data) {
+        // console.log(props.id);
+        let recruitmentID = data.id;
+        //const token = localStorage.getItem("token");
 
-      let resp = await fetch(
-        API_URI + "/api/v1/recruitment/DetailPage?id=" + recruitmentID,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            //"Authorization": "Bearer " + token
-          },
-          body: JSON.stringify(),
-        }
-      );
-      respJSON = await resp.json();
-      setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
+        let resp = await fetch(
+          API_URI + "/api/v1/recruitment/detail?id=" + recruitmentID,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              //"Authorization": "Bearer " + token
+            },
+            body: JSON.stringify(),
+          }
+        );
+        respJSON = await resp.json();
+        console.log(respJSON);
+        setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
+        //logoLink = respJSON["logoLink"];
+      }
     };
-
     fetchData();
-  }, []);
+  }, [data]);
+
+  console.log(logoLink);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    window.location.href = `/recruitement/DetailPage?id=${data.id}`;
+  };
 
   return (
-    <div className={styles["company-logo"]}>
-      <div className={styles["test-image"]}>
-        {logoLink ? (
-          <img className={styles.bp} alt="bp-logo" src={logoLink} />
-        ) : null}
-      </div>
+    <div className="companyLogo">
+      {logoLink ? (
+        <img
+          className={styles.bp}
+          alt="bp-logo"
+          src={logoLink}
+          onClick={handleClick}
+        />
+      ) : null}
     </div>
   );
 };

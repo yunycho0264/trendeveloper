@@ -15,7 +15,11 @@ const Menu = () => {
       {/* 메뉴 태그 */}
       <ul className={styles.group}>
         <li className={styles.tag}>
-          <Link to="/detail" className={styles.nav} id="nav1">
+          <Link
+            to="/recruitement/DetailPage/:id?"
+            className={styles.nav}
+            id="nav1"
+          >
             채용 공고
           </Link>
         </li>

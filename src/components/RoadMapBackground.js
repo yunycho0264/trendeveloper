@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../css/TrendBackground.module.css";
+import styles from "../css/RoadMap.module.css";
 import "../css/Navbar.css";
 
 import SimpleSlider from "./Slider";
@@ -9,33 +9,23 @@ import { AiFillQuestionCircle } from "react-icons/ai";
 
 import Modal from "react-modal";
 
-const TrendBackground = () => {
+const RoadMapBackground = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
       <div className={styles.contents}>
         <div className={`${styles["sub-text"]} ${styles.text}`}>
-          <span className="title s-title ">
-            TREN<span>D</span>EVELOPER
-          </span>
-          에 선정한 요즘 뜨는 TOP 5 직군이에요!
+          <span className={`${styles["clicked-job"]} ${styles.text}`}>
+            파워레인저
+          </span>{" "}
+          님의 로드맵
           <span>
             <AiFillQuestionCircle />
             <Modal isOpen={false}> </Modal>
           </span>
         </div>
-        <div className={`${styles.box} ${styles.rank} ${styles.text}`}>
-          <ol className="list">
-            <li>풀스택</li>
-          </ol>
-        </div>
       </div>
-      <div className={styles.contents}>
-        <div className={`${styles.next} ${styles.text}`}>
-          직군 트렌드 순위는 어떻게 산정할까요?
-        </div>
-        <div className={`${styles.box} ${styles.how}`}></div>
-      </div>
+
       {/* 클릭한 직업 */}
       <div className={`${styles.background} ${styles.box}`}>
         <div className={styles.contents}>
@@ -76,4 +66,4 @@ const TrendBackground = () => {
   );
 };
 
-export default TrendBackground;
+export default RoadMapBackground;

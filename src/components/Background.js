@@ -1,8 +1,13 @@
 import React from "react";
-import styles from "../css/DetailBackground.module.css";
+import styles from "../css/Background.module.css";
 
-const DetailBackground = () => {
-  return <div className={styles["detail-background"]} />;
+const Background = () => {
+  return (
+    <div className={styles.Background}>
+      <div className={styles["above-rectangle"]} />
+      <div className={styles["below-rectangle"]} />
+    </div>
+  );
 };
 
-export default DetailBackground;
+export default Background;

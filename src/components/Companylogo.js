@@ -3,6 +3,8 @@ import styles from "../css/Companylogo.module.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
+//console.log(API_URI);
+
 const Companylogo = () => {
   let [logoLink, setlogoLink] = useState(null);
   let respJSON = useState({});
@@ -17,7 +19,7 @@ const Companylogo = () => {
         //const token = localStorage.getItem("token");
 
         let resp = await fetch(
-          API_URI + "/api/v1/recruitment/DetailPage?id=" + recruitmentID,
+          API_URI + "/api/v1/recruitment/detail?id=" + recruitmentID,
           {
             method: "GET",
             headers: {
@@ -37,6 +39,13 @@ const Companylogo = () => {
     fetchData();
   }, []);
 
+  //const [detailData, setDetailData] = useState(null);
+
+  //const zionItsLogoLink = detailData?.find(company => company.name === '(주)자이온아이티에스')?.logoLink;
+  //const logoLink = zionItsLogoLink ? `https://work.go.kr${zionItsLogoLink}` : null;
+
+  // console.log(logoLink);
+
   return (
     <div className={styles["company-logo"]}>
       <div className={styles["test-image"]}>
@@ -47,5 +56,15 @@ const Companylogo = () => {
     </div>
   );
 };
+
+// const Companylogo = () => {
+//   return (
+//     <div className={styles["company-logo"]}>
+//       <div className={styles["test-image"]}>
+//         {/* <img className={styles.bp} alt="bp-logo" src="img/bp.PNG"/> */}
+//       </div>
+//     </div>
+//   );
+// };
 
 export default Companylogo;

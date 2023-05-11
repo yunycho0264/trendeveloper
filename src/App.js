@@ -29,12 +29,15 @@ function App() {
     <BrowserRouter>
       <ContextProvider>
         <div className="App">
+          <Background />
           <MyHeader />
-          {/* <Background /> */}
           <div className="wrapper">
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="/detail" element={<DetailPage />} />
+              <Route
+                path="/recruitement/DetailPage/:id?"
+                element={<DetailPage />}
+              />
               <Route path="/signup" element={<Signup />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/mypage" element={<MyPage />} />
@@ -42,7 +45,7 @@ function App() {
               <Route path="/trend" element={<Trend />} />
             </Routes>
           </div>
-          <MyFooter />
+          {/* <MyFooter /> */}
         </div>
       </ContextProvider>
     </BrowserRouter>
