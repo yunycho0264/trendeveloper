@@ -21,7 +21,7 @@ const TrendBackground = () => {
   const [jobName, setJopName] = useState("");
 
   const fetchData = async () => {
-    console.log(urlSearchParams.get("id"));
+    // console.log(urlSearchParams.get("id"));
     setJopName(urlSearchParams.get("id"));
     // console.log(jobName);
     //const token = localStorage.getItem("token");
@@ -36,29 +36,27 @@ const TrendBackground = () => {
     });
 
     let respJSON = await resp.json();
-    // console.log(respJSON);
+    console.log(respJSON);
+    console.log(cntJopPost);
     setCntJopPost(respJSON);
-    // console.log(cntJopPost);
+    console.log(cntJopPost);
+    // setStateLink("/trend/"+respJSON['name']);
+    //logoLink = respJSON["logoLink"];
 
     const data = JSON.parse(respJSON.stat);
-    // console.log(data);
+    console.log(data);
     const key = Object.getOwnPropertyNames(data);
     const value = Object.values(data);
 
-    // console.log(key);
-    // console.log(value);
-
     setEachCnt(value);
     setEachMonth(key);
-  };
 
+    console.log(eachCnt);
+    console.log(eachMonth);
+  };
   useEffect(() => {
     fetchData();
-  }, []);
-
-  console.log(cntJopPost);
-  console.log(eachCnt);
-  console.log(eachMonth);
+  }, [jobName]);
 
   // console.log(eachCnt);
   // console.log(eachMonth);
@@ -121,6 +119,7 @@ const TrendBackground = () => {
               의 과거 6개월 간 채용 동향이에요!
             </div>
             <div className={`${styles.box} ${styles["inner-box"]}`}>
+              {/* month={eachMonth} cnt={eachCnt} */}
               <ApexCharts
                 name={cntJopPost.name}
                 month={eachMonth}
