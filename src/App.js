@@ -14,8 +14,8 @@ function App() {
     <div className={styles.App}>
       <Menu />
       <Background />
-      <DetailPage />
-      {/* <DetailTrend /> */}
+      {/* <DetailPage /> */}
+      <DetailTrend />
       {/* <Routes> */}
         {/* <Route path="/" element={<Main />} /> */}
         {/* <Route path="/signup" element={<Signup />} />

@@ -40,13 +40,10 @@ const CompanyInfo = () => {
       );
 
       const respJSON2 = await response2.json();
-      console.log(respJSON2);
       setCompanyInfo(respJSON2);
     };
 
-    
     fetchCompanyInfo();
-    
   }, []);
 
   return (
@@ -59,14 +56,53 @@ const CompanyInfo = () => {
           <ul className={styles["info-list"]}>
             {CompanyInfo && (
               <>
-                <li>기업형태 <span>{companyInfo ? companyInfo.busiSize : 'Loading...'}</span></li>
-                <li>사원수 <span>{companyInfo ? companyInfo.totPsncnt : 'Loading...'}</span></li>
-                <li>자본규모 <span>{companyInfo ? companyInfo.capitalAmt : 'Loading...'}</span></li>
-                <li>설립일 <span>{companyInfo ? companyInfo.companyName : 'Loading...'}</span></li>
-                <li>연매출액 <span>{companyInfo ? companyInfo.yrSalesAmt : 'Loading...'}</span></li>
-                <li>대표자명 <span>{companyInfo ? companyInfo.reperNm : 'Loading...'}</span></li>
-                <li>기업주소 <span>{companyInfo ? companyInfo.corpAddr : 'Loading...'}</span></li>
-                <li>홈페이지 <span>{companyInfo ? companyInfo.homePg : 'Loading...'}</span></li>
+                <li>
+                  기업명{" "}
+                  <span>
+                    {companyInfo ? companyInfo.companyName : "Loading..."}
+                  </span>
+                </li>
+                <li>
+                  기업형태{" "}
+                  <span>
+                    {companyInfo ? companyInfo.busiSize : "Loading..."}
+                  </span>
+                </li>
+                <li>
+                  사원수{" "}
+                  <span>
+                    {companyInfo ? companyInfo.totPsncnt : "Loading..."}
+                  </span>
+                </li>
+                <li>
+                  자본규모{" "}
+                  <span>
+                    {companyInfo ? companyInfo.capitalAmt : "Loading..."}
+                  </span>
+                </li>
+
+                <li>
+                  연매출액{" "}
+                  <span>
+                    {companyInfo ? companyInfo.yrSalesAmt : "Loading..."}
+                  </span>
+                </li>
+                <li>
+                  대표자명{" "}
+                  <span>
+                    {companyInfo ? companyInfo.reperNm : "Loading..."}
+                  </span>
+                </li>
+                <li>
+                  기업주소{" "}
+                  <span>
+                    {companyInfo ? companyInfo.corpAddr : "Loading..."}
+                  </span>
+                </li>
+                <li>
+                  홈페이지{" "}
+                  <span>{companyInfo ? companyInfo.homePg : "Loading..."}</span>
+                </li>
               </>
             )}
           </ul>
