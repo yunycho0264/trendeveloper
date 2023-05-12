@@ -35,7 +35,7 @@ const DetailBackground = () => {
     };
 
     fetchData();
-  }, []);
+  }, [detailData]);
 
   return (
     <div className={styles["detail-background"]}>

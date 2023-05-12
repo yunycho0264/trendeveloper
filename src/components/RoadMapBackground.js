@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/RoadMap.module.css";
 import "../css/Navbar.css";
 
@@ -11,6 +11,7 @@ import Modal from "react-modal";
 
 const RoadMapBackground = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <div>
       <div className={styles.contents}>

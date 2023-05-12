@@ -1,69 +1,62 @@
 import { Component } from "react";
 import ApexCharts from "react-apexcharts";
 
-export default class Chart extends Component {
+export default class ApexChart extends Component {
   constructor(props) {
     super(props);
 
+    console.log(props.cnt);
     this.state = {
       series: [
         {
-          name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-        },
-        {
-          name: "Data2",
-          data: [1, 4, 15, 41, 69, 32, 39, 31, 48],
+          name: "front",
+          data: props.cnt,
         },
       ],
-
       options: {
         chart: {
+          height: 350,
+          type: "line",
           zoom: {
             enabled: false,
           },
         },
         dataLabels: {
-          enabled: false,
+          enabled: true,
         },
         stroke: {
           curve: "straight",
         },
         title: {
-          text: "Position Trends by Month",
+          text: props.name,
           align: "left",
         },
         grid: {
           row: {
-            colors: ["#f3f3f3f3", "transparent"], // takes an array which will be repeated on columns
+            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
             opacity: 0.5,
           },
         },
         xaxis: {
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-          ],
+          categories: props.month,
         },
       },
     };
   }
+
   render() {
     return (
-      <ApexCharts
-        options={this.state.options}
-        series={this.state.series}
-        typs="line"
-        width={1000}
-        height={250}
-      />
+      <div id="chart">
+        <ApexCharts
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
+          height={150}
+        />
+      </div>
     );
   }
 }
+
+// const domContainer = document.querySelector("#app");
+// ReactDOM.render(React.createElement(ApexChart), domContainer);

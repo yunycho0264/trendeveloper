@@ -14,7 +14,7 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "inline-block", background: "red" }}
+      style={{ ...style, display: "block", background: "black" }}
       onClick={onClick}
     />
   );
@@ -25,7 +25,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "green" }}
+      style={{ ...style, display: "block", background: "black" }}
       onClick={onClick}
     />
   );
@@ -61,7 +61,7 @@ const SimpleSlider = () => {
       });
 
       const respJSON = await response.json();
-      console.log(respJSON);
+      // console.log(respJSON);
       setJobPostings(respJSON);
     };
     fetchJobPostings();

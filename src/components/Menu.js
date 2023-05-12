@@ -24,7 +24,7 @@ const Menu = () => {
           </Link>
         </li>
         <li className={styles.tag}>
-          <Link to="/trend" className={styles.nav} id="nav2">
+          <Link to="trend/stat/:id?" className={styles.nav} id="nav2">
             트렌드
           </Link>
         </li>

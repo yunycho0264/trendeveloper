@@ -42,7 +42,7 @@ function App() {
               <Route path="/signin" element={<Signin />} />
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/roadmap" element={<RoadMap />} />
-              <Route path="/trend" element={<Trend />} />
+              <Route path="/trend/stat/:id?" element={<Trend />} />
             </Routes>
           </div>
           {/* <MyFooter /> */}

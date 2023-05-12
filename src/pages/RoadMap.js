@@ -7,9 +7,10 @@ import { useEffect } from "react";
 
 import styles from "../css/DetailPage.module.css";
 import RoadMapBackground from "../components/RoadMapBackground.js";
+import UploadFile from "../components/UploadFile.js";
 
 const RoadMap = () => {
-  const { isSignedIn } = useContext(AuthContext);
+  const { isSignedIn, isSubmitted } = useContext(AuthContext);
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -24,7 +25,7 @@ const RoadMap = () => {
       <div>
         <div className={styles.require}>
           {/* 배경 박스 */}
-          <RoadMapBackground />
+          {isSubmitted === false ? <UploadFile /> : <RoadMapBackground />}
         </div>
       </div>
     </div>

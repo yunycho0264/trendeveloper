@@ -30,7 +30,7 @@ const CompanySlide = (props) => {
           }
         );
         respJSON = await resp.json();
-        console.log(respJSON);
+        // console.log(respJSON);
         setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
         //logoLink = respJSON["logoLink"];
       }
@@ -38,7 +38,7 @@ const CompanySlide = (props) => {
     fetchData();
   }, [data]);
 
-  console.log(logoLink);
+  // console.log(logoLink);
 
   const handleClick = (event) => {
     event.preventDefault();

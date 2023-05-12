@@ -34,7 +34,7 @@ const DetailPage = () => {
       <Companylogo />
       {/* 왼쪽 상세 채용 공고 메뉴 */}
       <DetailMenu />
-      <RecruitmentList />
+      {/* <RecruitmentList /> */}
     </div>
   );
 };
