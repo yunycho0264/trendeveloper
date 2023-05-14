@@ -15,12 +15,16 @@ const Menu = () => {
       {/* 메뉴 태그 */}
       <ul className={styles.group}>
         <li className={styles.tag}>
-          <Link to="/" className={styles.nav} id="nav1">
+          <Link
+            to="/recruitement/DetailPage/:id?"
+            className={styles.nav}
+            id="nav1"
+          >
             채용 공고
           </Link>
         </li>
         <li className={styles.tag}>
-          <Link to="/trend" className={styles.nav} id="nav2">
+          <Link to="trend/stat/:id?" className={styles.nav} id="nav2">
             트렌드
           </Link>
         </li>

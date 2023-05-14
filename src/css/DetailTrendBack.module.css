@@ -1,0 +1,28 @@
+.background {
+  border: 1px solid #89969f;
+  width: 800px;
+  height: 620px;
+  margin-left: 300px;
+  margin-top: 20px;
+  background: #fff;
+  overflow: auto;
+}
+
+.chart {
+  width : auto;
+  height: 400px;
+  position: relative;
+  top: -570px;
+  left: -130px;
+}
+
+.companyLabel{
+  font-weight: bold;
+  position: absolute;
+  left: 570px;
+  top: 230px;
+}
+
+.companyName {
+  color: #B93234;
+}

@@ -9,15 +9,13 @@ import "../css/App.css";
 const Signin = () => {
   const { setSignin } = useContext(AuthContext);
 
-  const navigate = useNavigate();
-
-  const navigateToSignup = () => {
-    navigate("/signup");
-  };
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const navigateToSignup = () => {
+    navigate("/signup");
+  };
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -31,7 +29,6 @@ const Signin = () => {
     e.preventDefault();
     setSignin(email, password);
   };
-
   return (
     <div className="sign">
       <div className="signin-form">

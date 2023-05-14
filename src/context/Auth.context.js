@@ -53,10 +53,12 @@ async function signoutUser() {
 
 export const ContextProvider = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const navigate = useNavigate();
 
   const changeSignedIn = () => setIsSignedIn(!isSignedIn);
+  const changeSubmitted = () => setIsSubmitted(!isSubmitted);
 
   const setSignup = async (name, email, password) => {
     const response = await signupUser({
@@ -119,6 +121,8 @@ export const ContextProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         isSignedIn,
+        isSubmitted,
+        changeSubmitted,
         setSignin,
         setSignout,
         setSignup,

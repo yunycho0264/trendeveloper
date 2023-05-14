@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styles from "../css/DetailBackground.module.css";
+import styles from "../css/Companylogo.module.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
-const DetailBackground = () => {
-  let [detailData, setdetailData] = useState(null);
+//console.log(API_URI);
+
+const Companylogo = () => {
+  let [logoLink, setlogoLink] = useState(null);
   let respJSON = useState({});
   //let logoLink = useState("");
   useEffect(() => {
@@ -29,28 +31,40 @@ const DetailBackground = () => {
         );
         respJSON = await resp.json();
         console.log(respJSON);
-        setdetailData(respJSON);
+        setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
         //logoLink = respJSON["logoLink"];
       }
     };
 
     fetchData();
-  }, [detailData]);
+  }, []);
+
+  //const [detailData, setDetailData] = useState(null);
+
+  //const zionItsLogoLink = detailData?.find(company => company.name === '(주)자이온아이티에스')?.logoLink;
+  //const logoLink = zionItsLogoLink ? `https://work.go.kr${zionItsLogoLink}` : null;
+
+  // console.log(logoLink);
 
   return (
-    <div className={styles["detail-background"]}>
-      <div className={styles.box1}>
-        <head>
-          <title className={styles.title}>
-            {detailData ? detailData.wantedTitle : "Loading..."}
-          </title>
-        </head>
-        <p className={styles.p1}>
-          {detailData ? detailData.jobCont : "Loading..."}
-        </p>
+    <div className={styles["company-logo"]}>
+      <div className={styles["test-image"]}>
+        {logoLink ? (
+          <img className={styles.bp} alt="bp-logo" src={logoLink} />
+        ) : null}
       </div>
     </div>
   );
 };
 
-export default DetailBackground;
+// const Companylogo = () => {
+//   return (
+//     <div className={styles["company-logo"]}>
+//       <div className={styles["test-image"]}>
+//         {/* <img className={styles.bp} alt="bp-logo" src="img/bp.PNG"/> */}
+//       </div>
+//     </div>
+//   );
+// };
+
+export default Companylogo;
