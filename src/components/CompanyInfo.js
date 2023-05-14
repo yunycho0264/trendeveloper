@@ -40,7 +40,6 @@ const CompanyInfo = () => {
       );
 
       const respJSON2 = await response2.json();
-      console.log(respJSON2);
       setCompanyInfo(respJSON2);
     };
 
@@ -58,6 +57,12 @@ const CompanyInfo = () => {
             {CompanyInfo && (
               <>
                 <li>
+                  기업명{" "}
+                  <span>
+                    {companyInfo ? companyInfo.companyName : "Loading..."}
+                  </span>
+                </li>
+                <li>
                   기업형태{" "}
                   <span>
                     {companyInfo ? companyInfo.busiSize : "Loading..."}
@@ -73,12 +78,6 @@ const CompanyInfo = () => {
                   자본규모{" "}
                   <span>
                     {companyInfo ? companyInfo.capitalAmt : "Loading..."}
-                  </span>
-                </li>
-                <li>
-                  설립일{" "}
-                  <span>
-                    {companyInfo ? companyInfo.companyName : "Loading..."}
                   </span>
                 </li>
                 <li>

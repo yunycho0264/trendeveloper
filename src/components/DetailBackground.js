@@ -40,40 +40,14 @@ const DetailBackground = () => {
   return (
     <div className={styles["detail-background"]}>
       <div className={styles.box1}>
-        {/* 상단 핑크색 바*/}
-        <div className={styles["top-bar"]} />
-        {/* 내부 박스*/}
-        <div className={styles["inner-box"]} />
-        {/*번호 매기기*/}
-        <div className={styles.circle1}>
-          <span>1</span>
-        </div>
-        <div className={styles.text1}>담당 업무</div>
+        <head>
+          <title className={styles.title}>
+            {detailData ? detailData.wantedTitle : "Loading..."}
+          </title>
+        </head>
         <p className={styles.p1}>
           {detailData ? detailData.jobCont : "Loading..."}
         </p>
-      </div>
-      <div className={styles.box2}>
-        {/* 상단 핑크색 바*/}
-        <div className={styles["top-bar"]} />
-        {/* 내부 박스*/}
-        <div className={styles["inner-box"]} />
-        {/*번호 매기기*/}
-        <div className={styles.circle2}>
-          <span>2</span>
-        </div>
-        <div className={styles.text2}>자격 요건</div>
-      </div>
-      <div className={styles.box3}>
-        {/* 상단 핑크색 바*/}
-        <div className={styles["top-bar"]} />
-        {/* 내부 박스*/}
-        <div className={styles["inner-box"]} />
-        {/*번호 매기기*/}
-        <div className={styles.circle3}>
-          <span>3</span>
-        </div>
-        <div className={styles.text3}>우대 사항</div>
       </div>
     </div>
   );

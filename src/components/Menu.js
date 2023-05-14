@@ -16,7 +16,7 @@ const Menu = () => {
       <ul className={styles.group}>
         <li className={styles.tag}>
           <Link
-            to="/recruitement/DetailPage?id="
+            to="/recruitement/DetailPage/:id?"
             className={styles.nav}
             id="nav1"
           >
