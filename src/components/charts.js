@@ -1,16 +1,16 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import ApexCharts from "react-apexcharts";
 
-export default class ApexChart extends Component {
+class ApexChart extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props.cnt);
+    console.log(props);
     this.state = {
       series: [
         {
           name: "front",
-          data: props.cnt,
+          data: props[1],
         },
       ],
       options: {
@@ -38,7 +38,7 @@ export default class ApexChart extends Component {
           },
         },
         xaxis: {
-          categories: props.month,
+          categories: props[0],
         },
       },
     };
@@ -57,6 +57,8 @@ export default class ApexChart extends Component {
     );
   }
 }
+
+export default ApexChart;
 
 // const domContainer = document.querySelector("#app");
 // ReactDOM.render(React.createElement(ApexChart), domContainer);
