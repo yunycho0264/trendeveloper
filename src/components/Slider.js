@@ -65,7 +65,7 @@ const SimpleSlider = () => {
       setJobPostings(respJSON);
     };
     fetchJobPostings();
-  }, [jobPostings]);
+  }, []);
   // console.log(firstSixPostings[1]);
 
   const firstSixPostings = jobPostings.slice(0, 6); // Get the first six job posting
