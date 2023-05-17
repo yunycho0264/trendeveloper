@@ -8,7 +8,7 @@ const DetailMenu = () => {
       {/*상세 요건*/}
       <div className={styles.requirement}>
         <Link
-          to="/recruitement/DetailPage?id="
+          to="/recruitement/DetailPage/:id?"
           className={styles.nav}
           id="nav1"
         >
@@ -17,7 +17,7 @@ const DetailMenu = () => {
       </div>
       {/*기업 트렌드*/}
       <div className={styles["company-trend"]}>
-        <Link to="/company/detail?id=" className={styles.nav} id="nav1">
+        <Link to="/company/detail/:id?" className={styles.nav} id="nav1">
           기업 트렌드
         </Link>
       </div>

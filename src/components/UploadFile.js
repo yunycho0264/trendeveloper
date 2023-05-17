@@ -2,6 +2,8 @@ import * as XLSX from "xlsx/xlsx.mjs";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/Auth.context.js";
 
+const API_URI = process.env.REACT_APP_API_URI;
+
 const UploadFile = () => {
   const { changeSubmitted } = useContext(AuthContext);
   const handleFileUpload = (event) => {
@@ -14,14 +16,27 @@ const UploadFile = () => {
       const workbook = XLSX.read(data, { type: "array" });
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
-      const jsonData = XLSX.utils.sheet_to_json(sheet);
-      console.log(jsonData);
+      const lecJSON = XLSX.utils.sheet_to_json(sheet);
+      var lectures = {};
 
-      // 파일 업로드 요청 보내기
-      fetch("/api/upload", {
+      lecJSON.forEach((elem) => {
+        if (elem.hasOwnProperty("__EMPTY_2")) {
+          var code = elem["__EMPTY_2"];
+          if (!isNaN(parseFloat(code)) && isFinite(code)) {
+            // console.log(elem["__EMPTY_2"] + " : " + elem["__EMPTY_10"]);
+            lectures[code] = elem["__EMPTY_10"];
+          }
+        }
+      });
+
+      const token = localStorage.getItem("token");
+      console.log(token);
+
+      fetch(API_URI + "/api/v1/lecture", {
         method: "POST",
-        body: JSON.stringify(jsonData),
+        body: JSON.stringify(lectures),
         headers: {
+          Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
       })
