@@ -135,13 +135,17 @@ const TrendBackground = () => {
     const tmpList = ranks.map((key) => {
       console.log(key);
       const tmp = transName(key, jobKor);
-      const handleParameterChange = () => {
-        console.log(`Navigating to /trend/stat?id=${key}`);
-        navigate(`/trend/stat?id=${key}`);
-      };
+      // const handleParameterChange = () => {
+      //   console.log(`Navigating to /trend/stat?id=${key}`);
+      //   // navigate(`/trend/stat?id=${key}`);
+      // };
       return (
         <div key={key}>
-          <li onClick={handleParameterChange}>{tmp}</li>
+          {/* <li onClick={handleParameterChange}>{tmp}</li> */}
+          <li>
+            {" "}
+            <Link to={`?id=${key}`}>{tmp}</Link>
+          </li>
         </div>
       );
     });
