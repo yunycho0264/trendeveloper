@@ -9,7 +9,6 @@ class ApexChart extends Component {
     this.state = {
       series: [
         {
-          name: "front",
           data: props[1],
         },
       ],
@@ -27,10 +26,6 @@ class ApexChart extends Component {
         stroke: {
           curve: "straight",
         },
-        title: {
-          text: props.name,
-          align: "left",
-        },
         grid: {
           row: {
             colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
@@ -39,6 +34,9 @@ class ApexChart extends Component {
         },
         xaxis: {
           categories: props[0],
+        },
+        yaxis: {
+          title: { text: "공고수", rotate: 0, offsetX: 10, offsetY: -55 },
         },
       },
     };
