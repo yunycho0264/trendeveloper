@@ -31,9 +31,12 @@
 }
 
 .rank {
-  width: 20vw;
+  width: 52vw;
   height: 20vh;
   margin-left: 18vw;
+  display: flex;
+  justify-content: center; /* Horizontal center alignment */
+  align-items: center; /* Vertical center alignment */
 }
 
 .how {
@@ -44,7 +47,7 @@
 
 .next {
   margin-top: 4vh;
-  margin-left: 2vw;
+  margin-left: 1vw;
 }
 
 .sub-text {
@@ -54,7 +57,7 @@
 
 .contents {
   display: block;
-  float: left;
+  /* float: left; */
   margin-bottom: 2vh;
 }
 

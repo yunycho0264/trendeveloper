@@ -5,11 +5,9 @@ import "../css/Navbar.css";
 import SimpleSlider from "./Slider";
 import ApexChart from "./charts";
 
-import { AiFillQuestionCircle } from "react-icons/ai";
-
-import Modal from "react-modal";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import TrendReport from "./TrendReport";
+import HowRank from "./Modal";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -114,15 +112,7 @@ const TrendBackground = () => {
     return name;
   };
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const [topList, setTopList] = useState([]);
-
-  const [monthKeys, setMonthKeys] = useState([]);
-  const [monthValues, setMonthValues] = useState([]);
-  let [statJSON, setStatJSON] = useState({});
-
-  let [apexChart, setApexChart] = useState(null);
 
   const navigate = useNavigate();
 
@@ -143,7 +133,6 @@ const TrendBackground = () => {
         <div key={key}>
           {/* <li onClick={handleParameterChange}>{tmp}</li> */}
           <li>
-            {" "}
             <Link to={`?id=${key}`}>{tmp}</Link>
           </li>
         </div>
@@ -153,8 +142,8 @@ const TrendBackground = () => {
 
     if (urlSearchParams.has("id")) {
       console.log(id);
-      console.log(window.location.href);
-    } else window.location.href = `?id=${ranks[0]}`;
+      // console.log(window.location.href);
+    } else navigate(`/trend/stat?id=${ranks[0]}`);
   }, [jobKor, navigate]);
 
   return (
@@ -165,21 +154,15 @@ const TrendBackground = () => {
             TREN<span>D</span>EVELOPER
           </span>
           에 선정한 요즘 뜨는 TOP 5 직군이에요!
-          <span>
-            <AiFillQuestionCircle />
-            <Modal isOpen={false}> </Modal>
+          <span className={`${styles.next} `}>
+            <HowRank />
           </span>
         </div>
         <div className={`${styles.box} ${styles.rank} ${styles.text}`}>
           <ol className="list">{topList}</ol>
         </div>
       </div>
-      <div className={styles.contents}>
-        <div className={`${styles.next} ${styles.text}`}>
-          직군 트렌드 순위는 어떻게 산정할까요?
-        </div>
-        <div className={`${styles.box} ${styles.how}`}></div>
-      </div>
+
       <TrendReport jobKor={jobKor} transName={transName} />
     </div>
   );
