@@ -6,16 +6,15 @@ import DetailTrendBack from "../components/DetailTrendBack";
 import RecruitmentList from "../components/RecruitmentList";
 import NewsList from "../components/NewsList";
 
-const DetailTrend = ()=> {
+const DetailTrend = () => {
   return (
-<div>
-<NewsList/>
-  <CompanyInfo/>
-  <Companylogo/>
-  <DetailMenu/>
-  <DetailTrendBack />
-  <RecruitmentList />
-</div>
+    <div>
+      <NewsList />
+      <CompanyInfo />
+      <Companylogo />
+      <DetailMenu />
+      <DetailTrendBack />
+    </div>
   );
 };
 

@@ -24,6 +24,7 @@ import MyPage from "./pages/MyPage";
 import Signup from "./pages/Signup";
 import Trend from "./pages/Trend";
 import RoadMap from "./pages/RoadMap";
+import Recruitment from "./pages/RecruitmentPage";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <div className="wrapper">
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/recruitement" element={<Recruitment />} />
               <Route
                 path="/recruitement/DetailPage/:id?"
                 element={<DetailPage />}

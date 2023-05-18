@@ -15,6 +15,8 @@ const TrendReport = (props) => {
 
   let [apexChart, setApexChart] = useState(null);
 
+  const month = 6;
+
   useEffect(() => {
     console.log(window.location.href);
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -31,17 +33,26 @@ const TrendReport = (props) => {
 
         let respJSON = await resp.json();
         const data = JSON.parse(respJSON.stat);
+
         setStatJSON(data);
+
         const tmpKeys = Object.keys(data).sort();
-        setMonthKeys(tmpKeys);
+
+        const tmpK = tmpKeys.slice(tmpKeys.length - month, tmpKeys.length);
 
         const tmpValues = await Promise.all(
           tmpKeys.map(async (key) => {
             return data[key];
           })
         );
+
+        const tmpV = tmpValues.slice(
+          tmpValues.length - month,
+          tmpValues.length
+        );
+
         setMonthValues(tmpValues);
-        let ac = new ApexChart([tmpKeys, tmpValues]);
+        let ac = new ApexChart([tmpK, tmpV]);
         setApexChart(ac.render());
       }
     };

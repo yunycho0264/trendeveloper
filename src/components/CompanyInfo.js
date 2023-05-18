@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/CompanyInfo.module.css";
+import { useNavigate } from "react-router-dom";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
 const CompanyInfo = () => {
   let [companyInfo, setCompanyInfo] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -100,7 +103,19 @@ const CompanyInfo = () => {
                 </li>
                 <li>
                   홈페이지{" "}
-                  <span>{companyInfo ? companyInfo.homePg : "Loading..."}</span>
+                  <span>
+                    {companyInfo ? (
+                      <a
+                        href={`https://${companyInfo.homePg}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {companyInfo.homePg}
+                      </a>
+                    ) : (
+                      "Loading..."
+                    )}
+                  </span>
                 </li>
               </>
             )}
