@@ -1,50 +1,12 @@
 .background {
-  width: 52vw;
-  height: 60vh;
+  width: 70vw;
+  height: 65vh;
   margin-left: 18vw;
   margin-bottom: 0vh;
   overflow-y: scroll;
-}
-
-.text {
-  font-weight: bold;
-  font-size: large;
-}
-
-.inner-text {
-  margin-top: 2vh;
-  margin-left: 0.6vw;
-}
-
-.inner-box {
-  margin-left: 0.6vw;
-  justify-content: center;
-  align-items: center;
-  width: 50vw;
-  height: 20vh;
-}
-
-.box {
   margin-top: 1vh;
-  border: 1px solid #89969f;
   background: #fff;
-}
-
-.rank {
-  width: 20vw;
-  height: 20vh;
-  margin-left: 18vw;
-}
-
-.how {
-  width: 30vw;
-  height: 20vh;
-  margin-left: 2vw;
-}
-
-.next {
-  margin-top: 4vh;
-  margin-left: 2vw;
+  
 }
 
 .sub-text {
@@ -52,11 +14,94 @@
   margin-left: 18vw;
 }
 
-.contents {
-  display: block;
-  margin-bottom: 2vh;
-}
-
 .clicked-job {
   color: #b93234;
+}
+
+.text {
+  font-weight: bold;
+  font-size: large;
+}
+
+.label1 {
+  font-weight: bold;
+  font-size: large;
+  margin-left: 2vw;
+  margin-top: 5vh;
+}
+
+.inner-box1 {
+  border: 1px solid #89969f;
+  margin-top : 2vh;
+  margin-left: 2vw;
+  justify-content: center;
+  align-items: center;
+  width: 65vw;
+  height: 25vh;
+}
+
+.label2 {
+  font-weight: bold;
+  font-size: large;
+  margin-left: 2vw;
+  margin-top: 5vh;
+}
+
+.label2 span {
+  color: #b93234;
+}
+
+.inner-box2 {
+  border: 1px solid #89969f;
+  margin-top : 2vh;
+  margin-left: 2vw;
+  justify-content: center;
+  align-items: center;
+  width: 65vw;
+  height: 25vh;
+}
+
+.label3 {
+  font-weight: bold;
+  font-size: large;
+  margin-left: 2vw;
+  margin-top: 5vh;
+}
+
+.label3 span {
+  color: #b93234;
+}
+
+.inner-box3 {
+  border: 1px solid #89969f;
+  margin-top : 2vh;
+  margin-left: 2vw;
+  justify-content: center;
+  align-items: center;
+  width: 65vw;
+  height: 25vh;
+}
+
+
+/* 랭킹 라벨 */
+
+.rank1 {
+  font-weight: bold;
+  font-size: large;
+  margin-top : 6vh;
+  margin-left: 2vw;
+}
+
+.rank2 {
+  font-weight: bold;
+  font-size: large;
+  margin-top : 2vh;
+  margin-left: 2vw;
+}
+
+.rank3 {
+  font-weight: bold;
+  font-size: large;
+  margin-top : 2vh;
+  margin-left: 2vw;
 }

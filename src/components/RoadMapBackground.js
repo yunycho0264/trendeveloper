@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/RoadMap.module.css";
 import "../css/Navbar.css";
+import UploadFile from "./UploadFile";
 
 import SimpleSlider from "./Slider";
 import ApexCharts from "./charts";
@@ -8,6 +9,7 @@ import ApexCharts from "./charts";
 import { AiFillQuestionCircle } from "react-icons/ai";
 
 import Modal from "react-modal";
+
 
 const RoadMapBackground = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -28,41 +30,18 @@ const RoadMapBackground = () => {
       </div>
 
       {/* 클릭한 직업 */}
-      <div className={`${styles.background} ${styles.box}`}>
-        <div className={styles.contents}>
-          <div className={`${styles.text} ${styles["inner-text"]} `}>
-            <span className={`${styles["clicked-job"]} ${styles.text}`}>
-              풀스택 개발자
-            </span>{" "}
-            의 과거 6개월 간 채용 동향이에요!
-          </div>
-          <div className={`${styles.box} ${styles["inner-box"]}`}>
-            <ApexCharts />
-          </div>
-        </div>
-        <div className={styles.contents}>
-          <div className={`${styles.text} ${styles["inner-text"]} `}>
-            <span className={`${styles["clicked-job"]} ${styles.text}`}>
-              풀스택 개발자
-            </span>{" "}
-            와 다른 직군의 뉴스 언급도를 비교해볼까요?
-          </div>
-          <div className={`${styles.box} ${styles["inner-box"]}`}>
-            <ApexCharts />
-          </div>
-        </div>
-        <div className={styles.contents}>
-          <div className={`${styles.text} ${styles["inner-text"]} `}>
-            <span className={`${styles["clicked-job"]} ${styles.text}`}>
-              풀스택 개발자
-            </span>{" "}
-            와 관련된 다른 공고도 확인해볼까요?
-          </div>
-          <div className={`${styles.box} ${styles["inner-box"]}`}>
-            <SimpleSlider />
-          </div>
-        </div>
+    <div className={styles.background}>
+      <div className={styles.label1}>추천 직무</div>
+      <div className={styles['inner-box1']}>
+        <div className={styles.rank1}>1. </div>
+        <div className={styles.rank2}>2. </div>
+        <div className={styles.rank3}>3. </div>
       </div>
+      <div className={styles.label2}><span>파워레인저</span> 님의 상위 직군 역량</div>  
+      <div className={styles['inner-box2']} />
+      <div className={styles.label3}><span>풀스택 개발자</span> 와 관련 있는 공고에요!</div>  
+      <div className={styles['inner-box3']} />
+    </div>
     </div>
   );
 };
