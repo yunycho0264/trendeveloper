@@ -1,5 +1,5 @@
 import "./css/App.css";
-
+import { Link } from "react-router-dom";
 // import logo from "./logo.svg";
 // import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "../src/css/App.module.css";
@@ -25,6 +25,7 @@ import Signup from "./pages/Signup";
 import Trend from "./pages/Trend";
 import RoadMap from "./pages/RoadMap";
 import Recruitment from "./pages/RecruitmentPage";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         <div className="App">
           <Background />
           <MyHeader />
+          <Link to="/signup">회원가입</Link> |{" "}
+              <Link to="/signin">로그인</Link>
+          {/* <Navbar /> */}
           <div className="wrapper">
             <Routes>
               <Route path="/" element={<Main />} />

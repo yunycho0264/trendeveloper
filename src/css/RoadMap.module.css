@@ -6,7 +6,7 @@
   overflow-y: scroll;
   margin-top: 1vh;
   background: #fff;
-  
+  border: 1px solid #89969f;
 }
 
 .sub-text {
