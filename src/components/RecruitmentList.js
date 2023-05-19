@@ -8,19 +8,24 @@ import RecruitContent from "./RecruitmentContent";
 
 import ReactPaginate from "react-paginate";
 
-import "../css/paginate.css";
+import "../css/RecruitmentList.module.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
 const RecruitmentList = () => {
+  //전체 리스트
   const [jobPostings, setJobPostings] = useState([]);
 
+  // 페이지네이션
   const [postsPerPage, setPostsPerPage] = useState(10);
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + postsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = jobPostings.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(jobPostings.length / postsPerPage);
+
+  //검색
+  const [search, setSearch] = useState("");
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * postsPerPage) % jobPostings.length;
@@ -81,6 +86,17 @@ const RecruitmentList = () => {
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
+        marginPagesDisplayed={2}
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
       />
     </>
   );

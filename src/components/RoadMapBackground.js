@@ -9,7 +9,9 @@ import { AiFillQuestionCircle } from "react-icons/ai";
 
 import Modal from "react-modal";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ResponsiveBar } from '@nivo/bar'
+import { ResponsiveBar } from "@nivo/bar";
+import MyResponsiveBar from "./columnChart";
+import ColumnChart from "./columnChart";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -138,7 +140,7 @@ const RoadMapBackground = () => {
 
     fetchRoadmapRank();
   }, []);
-  
+
   return (
     <div>
       <div className={styles.contents}>
@@ -175,7 +177,9 @@ const RoadMapBackground = () => {
         <div className={styles.label2}>
           <span>파워레인저</span> 님의 상위 직군 역량
         </div>
-        <div className={styles["inner-box2"]} />
+        <div className={styles["inner-box2"]}>
+          <ColumnChart />
+        </div>
         <div className={styles.label3}>
           <span>풀스택 개발자</span> 와 관련 있는 공고에요!
         </div>
