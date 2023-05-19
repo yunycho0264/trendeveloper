@@ -9,6 +9,7 @@ import { AiFillQuestionCircle } from "react-icons/ai";
 
 import Modal from "react-modal";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ResponsiveBar } from '@nivo/bar'
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -137,7 +138,7 @@ const RoadMapBackground = () => {
 
     fetchRoadmapRank();
   }, []);
-
+  
   return (
     <div>
       <div className={styles.contents}>
