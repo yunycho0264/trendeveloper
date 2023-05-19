@@ -86,6 +86,7 @@
 /* 랭킹 라벨 */
 
 .rank1 {
+  color: #BA0C2F;
   font-weight: bold;
   font-size: large;
   margin-top : 6vh;
@@ -93,6 +94,7 @@
 }
 
 .rank2 {
+  color: #8B0C26;
   font-weight: bold;
   font-size: large;
   margin-top : 2vh;
@@ -100,6 +102,7 @@
 }
 
 .rank3 {
+  color: #3E1112;
   font-weight: bold;
   font-size: large;
   margin-top : 2vh;

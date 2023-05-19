@@ -35,7 +35,7 @@ function App() {
           <Background />
           <MyHeader />
           <Link to="/signup">회원가입</Link> |{" "}
-              <Link to="/signin">로그인</Link>
+          <Link to="/signin">로그인</Link>
           {/* <Navbar /> */}
           <div className="wrapper">
             <Routes>
