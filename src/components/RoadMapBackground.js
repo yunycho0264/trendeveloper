@@ -17,7 +17,6 @@ const API_URI = process.env.REACT_APP_API_URI;
 
 const RoadMapBackground = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const API_URI = process.env.REACT_APP_API_URI;
   let [roadmapRank, setRoadmapRank] = useState(null);
 
   const jobKor = useMemo(() => {
@@ -182,6 +181,27 @@ const RoadMapBackground = () => {
         </div>
         <div className={styles.label3}>
           <span>풀스택 개발자</span> 와 관련 있는 공고에요!
+          <div>
+            {roadmapRank && roadmapRank.length > 0 && (
+              <>
+                <div>
+                  1. {JSON.stringify(roadmapRank[0], null, 2)}
+                </div>
+                <div>
+                  2. {JSON.stringify(roadmapRank[1], null, 2)}
+                </div>
+                <div>
+                  3. {JSON.stringify(roadmapRank[2], null, 2)}
+                </div>
+                <div>
+                  4. {JSON.stringify(roadmapRank[3], null, 2)}
+                </div>
+                <div>
+                  5. {JSON.stringify(roadmapRank[4], null, 2)}
+                </div>
+              </>
+            )}
+          </div>
         </div>
         <div className={styles["inner-box3"]} />
       </div>

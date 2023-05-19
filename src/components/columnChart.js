@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import ApexCharts from "react-apexcharts";
 
+
+const API_URI = process.env.REACT_APP_API_URI;
+
+
 class ColumnChart extends Component {
+
   constructor(props) {
     super(props);
 
@@ -9,7 +14,7 @@ class ColumnChart extends Component {
       series: [
         {
           name: "Inflation",
-          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2],
+          data: [3.09, 3.0, 2.93, 2.937, 2.91],
         },
       ],
       options: {
@@ -39,18 +44,11 @@ class ColumnChart extends Component {
 
         xaxis: {
           categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
+            "빅데이터 엔지니어",
+            "게임 서버 개발자",
+            "SW/솔루션",
+            "인공지능/머신러닝",
+            "DBA",
           ],
           position: "top",
           axisBorder: {
@@ -90,7 +88,7 @@ class ColumnChart extends Component {
           },
         },
         title: {
-          text: "Monthly Inflation in Argentina, 2002",
+          text: "파워레인저 님의 상위 직군 역량",
           floating: true,
           offsetY: 330,
           align: "center",
