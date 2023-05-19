@@ -37,8 +37,8 @@ const SimpleSlider = () => {
     arrow: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     centerPadding: "0px", // 0px 하면 슬라이드 끝쪽 이미지가 안잘림

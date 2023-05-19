@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/Companylogo.module.css";
+import Loading from "./Loading";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
 const CompanySlide = (props) => {
   let [logoLink, setlogoLink] = useState(null);
+  const [companyName, setCompanyName] = useState("");
   let respJSON = useState({});
   //let logoLink = useState("");
   //
@@ -32,6 +34,7 @@ const CompanySlide = (props) => {
         respJSON = await resp.json();
         // console.log(respJSON);
         setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
+        setCompanyName(respJSON.companyName);
         //logoLink = respJSON["logoLink"];
       }
     };
@@ -46,15 +49,17 @@ const CompanySlide = (props) => {
   };
 
   return (
-    <div className="companyLogo">
-      {logoLink ? (
-        <img
-          className={styles.bp}
-          alt="bp-logo"
-          src={logoLink}
-          onClick={handleClick}
-        />
-      ) : null}
+    <div>
+      <div className={styles["slide-image"]}>
+        {logoLink ? (
+          <img
+            className={styles.bp}
+            alt="bp-logo"
+            src={logoLink}
+            onClick={handleClick}
+          />
+        ) : null}
+      </div>
     </div>
   );
 };

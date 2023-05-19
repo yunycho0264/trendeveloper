@@ -1,9 +1,11 @@
 .background {
-  width: 52vw;
-  height: 55vh;
+  width: 70vw;
+  height: 45vh;
   margin-left: 18vw;
   margin-bottom: 0vh;
   overflow-y: scroll;
+  margin-top: 1vh;
+  background: #fff;
 }
 
 .text {
@@ -31,7 +33,7 @@
 }
 
 .rank {
-  width: 52vw;
+  width: 70vw;
   height: 20vh;
   margin-left: 18vw;
   display: flex;
@@ -58,6 +60,8 @@
 .contents {
   display: block;
   /* float: left; */
+  justify-content: center;
+  align-items: center;
   margin-bottom: 2vh;
 }
 
