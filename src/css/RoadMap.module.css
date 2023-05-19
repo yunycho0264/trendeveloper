@@ -6,7 +6,7 @@
   overflow-y: scroll;
   margin-top: 1vh;
   background: #fff;
-  
+  border: 1px solid #89969f;
 }
 
 .sub-text {
@@ -86,22 +86,25 @@
 /* 랭킹 라벨 */
 
 .rank1 {
+  color: #BA0C2F;
   font-weight: bold;
-  font-size: large;
-  margin-top : 6vh;
+  font-size: 24px;
+  margin-top : 5.5vh;
   margin-left: 2vw;
 }
 
 .rank2 {
+  color: #8B0C26;
   font-weight: bold;
-  font-size: large;
+  font-size: 24px;
   margin-top : 2vh;
   margin-left: 2vw;
 }
 
 .rank3 {
+  color: #3E1112;
   font-weight: bold;
-  font-size: large;
+  font-size: 24px;
   margin-top : 2vh;
   margin-left: 2vw;
 }
