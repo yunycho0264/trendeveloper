@@ -33,3 +33,12 @@ const RoadMap = () => {
 };
 
 export default RoadMap;
+
+// 1. [] size로 판단
+// 1. 과목 직군 선택 -> 가중치 어떻게 할것인지
+// 드롭으로 과목 선택헤서
+
+// 1. [] => UploadFile
+// 2. ok => radio selectec
+// 3. roadmap
+// 분기 3개로
