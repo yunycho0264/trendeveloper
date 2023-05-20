@@ -21,7 +21,7 @@ const RecruitContent = (props) => {
         );
         const respJSON = await response.json();
         setCompanyInfo(respJSON);
-        console.log(respJSON);
+        // console.log(respJSON);
         // console.log(companyInfo);
       } catch (error) {
         console.error(error);
