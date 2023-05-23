@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/Companylogo.module.css";
 import Loading from "./Loading";
+import fallbackImage from "../img/No_logo-001.png";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -48,6 +49,10 @@ const CompanySlide = (props) => {
     window.location.href = `/recruitement/DetailPage?id=${data.id}`;
   };
 
+  const handleError = () => {
+    setlogoLink(fallbackImage);
+  };
+
   return (
     <div>
       <div className={styles["slide-image"]}>
@@ -57,6 +62,7 @@ const CompanySlide = (props) => {
             alt="bp-logo"
             src={logoLink}
             onClick={handleClick}
+            onError={handleError}
           />
         ) : null}
       </div>

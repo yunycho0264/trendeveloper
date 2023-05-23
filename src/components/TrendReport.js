@@ -18,7 +18,7 @@ const TrendReport = (props) => {
   const month = 6;
 
   useEffect(() => {
-    console.log(window.location.href);
+    // console.log(window.location.href);
     const urlSearchParams = new URLSearchParams(window.location.search);
     const id = urlSearchParams.get("id");
     const fetchData = async () => {
