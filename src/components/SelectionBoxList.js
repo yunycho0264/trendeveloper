@@ -56,17 +56,24 @@ const SelectionBoxList = () => {
   };
 
   const handleSubmit = () => {
-    // Send the selections data to the server
-    // axios
-    //   .post("/api/selections", selections) // Replace with your API endpoint
-    //   .then((response) => {
-    //     // Handle the response from the server
-    //     console.log(response.data);
+    console.log(selections);
+
+    //   fetch(API_URI + "/api/v1/lecture/set2", {
+    //     method: "POST",
+    //     body: JSON.stringify(selections),
+    //     headers: {
+    //       Authorization: "Bearer " + token,
+    //       "Content-Type": "application/json",
+    //     },
     //   })
-    //   .catch((error) => {
-    //     // Handle errors
-    //     console.error(error);
-    //   });
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       if (data.length > 0) {
+    //         navigate("/roadmap/stat");
+    //       }
+    //     })
+    //     .catch((error) => console.error(error));
+    // };
 
     if (
       selections.some((selection) => selection.level === "") ||
@@ -76,8 +83,6 @@ const SelectionBoxList = () => {
       alert("설정을 완료해 주세요! 업데이트까지 눌러주셔야 합니다!");
       return;
     }
-    console.log(selections);
-    navigate("/roadmap/stat");
   };
 
   return (
@@ -120,9 +125,9 @@ export const SelectionBox = ({ index, subjects, onDelete, onUpdate }) => {
   const handleUpdate = () => {
     let level = 0;
     if (selectedLevel === "upper") {
-      level = 20;
+      level = 40;
     } else if (selectedLevel === "middle") {
-      level = 15;
+      level = 20;
     } else if (selectedLevel === "lower") {
       level = 10;
     } else {
