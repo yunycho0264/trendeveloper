@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 
 const Navbar = () => {
-  const { isSignedIn, setSignout } = useContext(AuthContext);
+  const { setSignout } = useContext(AuthContext);
 
   // signout 버튼 클릭 이벤트
   const onClickSignout = async (e) => {
@@ -34,7 +34,7 @@ const Navbar = () => {
           </li>
         </li>
         <li className="top_bar">
-          {isSignedIn ? (
+          {/* {isSignedIn ? (
             <li>
               <Link to="/mypage">마이페이지</Link> |{" "}
               <Link to="/" onClick={onClickSignout}>
@@ -46,7 +46,7 @@ const Navbar = () => {
               <Link to="/signup">회원가입</Link> |{" "}
               <Link to="/signin">로그인</Link>
             </li>
-          )}
+          )} */}
         </li>
       </ul>
     </div>
