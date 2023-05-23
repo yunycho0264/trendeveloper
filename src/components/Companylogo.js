@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/Companylogo.module.css";
+import fallbackImage from "../img/No_logo-001.png";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -9,6 +10,7 @@ const Companylogo = () => {
   let [logoLink, setlogoLink] = useState(null);
   let respJSON = useState({});
   //let logoLink = useState("");
+
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
 
@@ -46,11 +48,20 @@ const Companylogo = () => {
 
   // console.log(logoLink);
 
+  const handleError = () => {
+    setlogoLink(fallbackImage);
+  };
+
   return (
     <div className={styles["company-logo"]}>
       <div className={styles["test-image"]}>
         {logoLink ? (
-          <img className={styles.bp} alt="bp-logo" src={logoLink} />
+          <img
+            className={styles.bp}
+            alt="logo"
+            src={logoLink}
+            onError={handleError}
+          />
         ) : null}
       </div>
     </div>

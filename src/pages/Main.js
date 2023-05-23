@@ -31,7 +31,7 @@ const Main = () => {
       </div>
 
       <div className={styles["banner-image"]}>
-        <Carousel autoPlay interval={3000} infiniteLoop>
+        <Carousel autoPlay interval={5000} infiniteLoop>
           <div>
             <img src={image1} alt="Slide 1" />
           </div>

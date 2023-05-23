@@ -31,3 +31,9 @@
   width: 300px;
   height: 200px;
 }
+
+img {
+  width: 100%;
+  height: auto; /* This could be 100% as well, it depends on what you want */
+  object-fit: cover; /* This will make the image cover the entire container, potentially cutting off parts of the image */
+}
