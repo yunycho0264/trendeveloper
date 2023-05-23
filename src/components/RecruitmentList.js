@@ -127,7 +127,7 @@ const RecruitmentList = () => {
     };
 
     fetchJobPostings();
-  }, []);
+  }, [search, searchCategory]);
 
   return (
     <>

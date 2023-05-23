@@ -1,3 +1,4 @@
+import { prop } from "dom7";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -7,6 +8,8 @@ const RecruitContent = (props) => {
   const [companyInfo, setCompanyInfo] = useState({});
 
   useEffect(() => {
+    console.log(props);
+
     const recruitmentID = props.id;
     const fetchCompanyInfo = async () => {
       try {
@@ -29,7 +32,7 @@ const RecruitContent = (props) => {
     };
     fetchCompanyInfo();
     // console.log(companyInfo);
-  }, []);
+  }, [props]);
 
   return (
     <tr key={props.index}>
