@@ -13,7 +13,7 @@
   height: 400px;
   position: relative;
   top: -570px;
-  left: -130px;
+  left: 450px;
 }
 
 .companyLabel{
@@ -25,4 +25,18 @@
 
 .companyName {
   color: #B93234;
+}
+
+.headline-label {
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top: 660px;
+  left: 570px;
+}
+
+.headline-label span {
+  text-align: center;
+  font-size: 12px;
+  font-weight: medium;
 }
