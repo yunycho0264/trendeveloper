@@ -13,6 +13,8 @@ const TrendReport = (props) => {
   let [statJSON, setStatJSON] = useState({});
   const [jobName, setJobName] = useState("");
 
+  const [silder, setSlider] = useState(null);
+
   let [apexChart, setApexChart] = useState(null);
 
   const month = 6;
@@ -54,6 +56,12 @@ const TrendReport = (props) => {
         setMonthValues(tmpValues);
         let ac = new ApexChart([tmpK, tmpV]);
         setApexChart(ac.render());
+
+        const tmpSlider = () => {
+          return <SimpleSlider id={id} />;
+        };
+
+        setSlider(tmpSlider);
       }
     };
     fetchData();
@@ -82,9 +90,7 @@ const TrendReport = (props) => {
           </span>{" "}
           와 관련된 다른 공고도 확인해볼까요?
         </div>
-        <div className={`${styles.box} ${styles["inner-box"]}`}>
-          <SimpleSlider />
-        </div>
+        <div className={`${styles.box} ${styles["inner-box"]}`}>{silder}</div>
       </div>
     </div>
   );

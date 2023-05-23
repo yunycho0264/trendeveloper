@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Recruitment from "../pages/RecruitmentPage";
 
 import RecruitContent from "./RecruitmentContent";
-// import Pagination from "./Pagination";
 
 import ReactPaginate from "react-paginate";
 
@@ -13,59 +12,44 @@ import "../css/RecruitmentList.module.css";
 const API_URI = process.env.REACT_APP_API_URI;
 
 const RecruitmentList = (props) => {
-  //전체 리스트
   const [jobPostings, setJobPostings] = useState([]);
-
-  // 페이지네이션
   const [postsPerPage, setPostsPerPage] = useState(10);
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + postsPerPage;
-  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = jobPostings.slice(itemOffset, endOffset);
+
+  const currentItems = jobPostings.length ? (
+    jobPostings
+      .slice(itemOffset, endOffset)
+      .map((item, index) => (
+        <RecruitContent
+          key={item.wantedAuthNo}
+          index={index + 1}
+          id={item.wantedAuthNo}
+        />
+      ))
+  ) : (
+    <tr>
+      <td colSpan={"4"}>등록된 게시물 정보가 없습니다.</td>
+    </tr>
+  );
+
   const pageCount = Math.ceil(jobPostings.length / postsPerPage);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * postsPerPage) % jobPostings.length;
-    // console.log(
-    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
-    // );
     setItemOffset(newOffset);
   };
 
   useEffect(() => {
-    console.log(props.post);
     const posts = props.post;
     const fetchJobPostings = async () => {
-      // const token = localStorage.getItem('token');
-
-      // const response = await fetch(API_URI + "/api/v1/recruitment/list", {
-      //   method: "GET",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     // 'Authorization': 'Bearer ' + token,
-      //   },
-      // });
-
-      // console.log(respJSON);
-      // console.log(search);
-
-      // const posts = posts.map((item, index) => (
-      //   <RecruitContent key={item.id} index={index + 1} />
-      // ));
-      // console.log(posts);
-
-      // console.log(checkFilter());
-      setJobPostings(
-        posts.map((item, index) => (
-          <RecruitContent key={item.id} index={index + 1} id={item.id} />
-        ))
-      );
-
-      // console.log(jobPostings);
+      if (posts.length > 0) {
+        setJobPostings(posts);
+      } else setJobPostings([]);
     };
 
     fetchJobPostings();
-  }, []);
+  }, [props.post]);
 
   return (
     <div>
@@ -78,15 +62,7 @@ const RecruitmentList = (props) => {
             <th className="index">마감일</th>
           </tr>
         </thead>
-        {jobPostings.length ? (
-          <tbody>{currentItems}</tbody>
-        ) : (
-          <tbody>
-            <tr>
-              <td colSpan={"4"}>등록된 게시물 정보가 없습니다.</td>
-            </tr>
-          </tbody>
-        )}
+        <tbody>{currentItems}</tbody>
       </table>
       <ReactPaginate
         breakLabel="..."

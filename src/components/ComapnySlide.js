@@ -16,9 +16,9 @@ const CompanySlide = (props) => {
   useEffect(() => {
     // console.log(data);
     const fetchData = async () => {
-      if ("id" in data) {
+      if ("wantedAuthNo" in data) {
         // console.log(props.id);
-        let recruitmentID = data.id;
+        let recruitmentID = data.wantedAuthNo;
         //const token = localStorage.getItem("token");
 
         let resp = await fetch(
@@ -33,20 +33,20 @@ const CompanySlide = (props) => {
           }
         );
         respJSON = await resp.json();
-        // console.log(respJSON);
+        console.log(respJSON);
         setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
         setCompanyName(respJSON.companyName);
         //logoLink = respJSON["logoLink"];
       }
     };
     fetchData();
-  }, []);
+  }, [props]);
 
   // console.log(logoLink);
 
   const handleClick = (event) => {
     event.preventDefault();
-    window.location.href = `/recruitement/DetailPage?id=${data.id}`;
+    window.location.href = `/recruitement/detail?id=${data.wantedAuthNo}`;
   };
 
   const handleError = () => {

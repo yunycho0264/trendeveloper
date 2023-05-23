@@ -6,6 +6,7 @@ import React from "react";
 import CompanySlide from "./ComapnySlide";
 
 import { useEffect, useState } from "react";
+import { prop } from "dom7";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -31,7 +32,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const SimpleSlider = () => {
+const SimpleSlider = (props) => {
   const settings = {
     dots: true,
     arrow: true,
@@ -49,34 +50,39 @@ const SimpleSlider = () => {
   const [randomList, setRandomList] = useState([]);
 
   useEffect(() => {
+    const id = props.id;
+    console.log(id);
     const fetchJobPostings = async () => {
       // const token = localStorage.getItem('token');
-
-      const response = await fetch(API_URI + "/api/v1/recruitment/list", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          // 'Authorization': 'Bearer ' + token,
-        },
-      });
-
+      const response = await fetch(
+        API_URI + "/api/v1/recruitment/list?id=" + id,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            // 'Authorization': 'Bearer ' + token,
+          },
+        }
+      );
       const respJSON = await response.json();
-      // console.log(respJSON);
+      console.log(respJSON);
       setJobPostings(respJSON);
+
+      if (respJSON.length > 0) {
+        // Randomly select 6 items from jobPostings
+        const shuffledPostings = respJSON.sort(() => 0.5 - Math.random());
+        const firstSixPostings = shuffledPostings.slice(0, 6);
+
+        setRandomList(firstSixPostings);
+
+        console.log(firstSixPostings);
+      }
     };
+
     fetchJobPostings();
-  }, []);
+  }, [props]);
   // console.log(firstSixPostings[1]);
 
-  useEffect(() => {
-    if (jobPostings.length > 0) {
-      // Randomly select 6 items from jobPostings
-      const shuffledPostings = jobPostings.sort(() => 0.5 - Math.random());
-      const firstSixPostings = shuffledPostings.slice(0, 6);
-
-      setRandomList(firstSixPostings);
-    }
-  }, [jobPostings]);
   // Render the topList elements
   return (
     <div>
