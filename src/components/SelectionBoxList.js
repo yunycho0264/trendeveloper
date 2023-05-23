@@ -77,7 +77,7 @@ const SelectionBoxList = () => {
       return;
     }
     console.log(selections);
-    // navigate("/roadmap");
+    navigate("/roadmap/stat");
   };
 
   return (

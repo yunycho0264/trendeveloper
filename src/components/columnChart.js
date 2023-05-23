@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import ApexCharts from "react-apexcharts";
 
-
 const API_URI = process.env.REACT_APP_API_URI;
 
-
 class ColumnChart extends Component {
-
   constructor(props) {
     super(props);
+
+    console.log(props);
 
     this.state = {
       series: [
         {
           name: "Inflation",
-          data: [3.09, 3.0, 2.93, 2.937, 2.91],
+          data: props[1],
         },
       ],
       options: {
@@ -43,13 +42,7 @@ class ColumnChart extends Component {
         },
 
         xaxis: {
-          categories: [
-            "빅데이터 엔지니어",
-            "게임 서버 개발자",
-            "SW/솔루션",
-            "인공지능/머신러닝",
-            "DBA",
-          ],
+          categories: props[0],
           position: "top",
           axisBorder: {
             show: false,
