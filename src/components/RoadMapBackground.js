@@ -162,13 +162,13 @@ const RoadMapBackground = () => {
           {roadmapRank && roadmapRank.length >= 5 && (
             <>
               <div className={styles.rank1}>
-                1. {transName(Object.keys(roadmapRank[0])[0], jobKor)}
+                1. {transName(Object.keys(roadmapRank[0][0])[0], jobKor)}
               </div>
               <div className={styles.rank2}>
-                2. {transName(Object.keys(roadmapRank[1])[0], jobKor)}
+                2. {transName(Object.keys(roadmapRank[1][0])[0], jobKor)}
               </div>
               <div className={styles.rank3}>
-                3. {transName(Object.keys(roadmapRank[2])[0], jobKor)}
+                3. {transName(Object.keys(roadmapRank[2][0])[0], jobKor)}
               </div>
             </>
           )}
@@ -184,21 +184,11 @@ const RoadMapBackground = () => {
           <div>
             {roadmapRank && roadmapRank.length > 0 && (
               <>
-                <div>
-                  1. {JSON.stringify(roadmapRank[0], null, 2)}
-                </div>
-                <div>
-                  2. {JSON.stringify(roadmapRank[1], null, 2)}
-                </div>
-                <div>
-                  3. {JSON.stringify(roadmapRank[2], null, 2)}
-                </div>
-                <div>
-                  4. {JSON.stringify(roadmapRank[3], null, 2)}
-                </div>
-                <div>
-                  5. {JSON.stringify(roadmapRank[4], null, 2)}
-                </div>
+                <div>1. {JSON.stringify(roadmapRank[0], null, 2)}</div>
+                <div>2. {JSON.stringify(roadmapRank[1], null, 2)}</div>
+                <div>3. {JSON.stringify(roadmapRank[2], null, 2)}</div>
+                <div>4. {JSON.stringify(roadmapRank[3], null, 2)}</div>
+                <div>5. {JSON.stringify(roadmapRank[4], null, 2)}</div>
               </>
             )}
           </div>
