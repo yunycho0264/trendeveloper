@@ -144,7 +144,7 @@ const TrendBackground = () => {
       console.log(id);
       // console.log(window.location.href);
     } else navigate(`/trend/stat?id=${ranks[0]}`);
-  }, [jobKor, navigate]);
+  }, []);
 
   return (
     <div>

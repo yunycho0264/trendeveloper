@@ -39,7 +39,7 @@ const CompanySlide = (props) => {
       }
     };
     fetchData();
-  }, [data]);
+  }, []);
 
   // console.log(logoLink);
 

@@ -5,6 +5,7 @@ const API_URI = process.env.REACT_APP_API_URI;
 
 const DetailBackground = () => {
   let [detailData, setdetailData] = useState(null);
+  let [worknetLink, setWorknetLink] = useState("");
   let respJSON = useState({});
   //let logoLink = useState("");
   useEffect(() => {
@@ -30,6 +31,10 @@ const DetailBackground = () => {
         respJSON = await resp.json();
         console.log(respJSON);
         setdetailData(respJSON);
+        setWorknetLink(
+          "http://www.work.go.kr/empInfo/empInfoSrch/detail/empDetailAuthView.do?callPage=detail&wantedAuthNo=" +
+            recruitmentID
+        );
         //logoLink = respJSON["logoLink"];
       }
     };
@@ -48,6 +53,9 @@ const DetailBackground = () => {
         <p className={styles.p1}>
           {detailData ? detailData.jobCont : "Loading..."}
         </p>
+        <a href={`${worknetLink}`} target="_blank" rel="noreferrer">
+          Link
+        </a>
       </div>
     </div>
   );

@@ -188,7 +188,7 @@ const RoadMapBackground = () => {
 
     fetchRoadmapRank();
     setStateName(transName(id, jobKor));
-  }, [jobKor, navigate, id]);
+  }, [id]);
 
   return (
     <div>
