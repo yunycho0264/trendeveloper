@@ -46,7 +46,7 @@ function App() {
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/roadmap/upload" element={<UploadFile />} />
               <Route path="/roadmap/select" element={<SelectionBoxList />} />
-              <Route path="/roadmap" element={<RoadMap />} />
+              <Route path="/roadmap/stat/:id?" element={<RoadMap />} />
               <Route path="/trend/stat/:id?" element={<Trend />} />
             </Routes>
           </div>

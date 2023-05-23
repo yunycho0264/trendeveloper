@@ -16,8 +16,17 @@ import ColumnChart from "./columnChart";
 const API_URI = process.env.REACT_APP_API_URI;
 
 const RoadMapBackground = () => {
+  const navigate = useNavigate();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let [roadmapRank, setRoadmapRank] = useState(null);
+  const [jobsList, setJobsList] = useState([]);
+
+  const [jobsName, setJobsName] = useState([]);
+  const [avgData, setAvgData] = useState([]);
+  let [columChart, setColumChart] = useState(null);
+
+  const [stateName, setStateName] = useState("");
 
   const jobKor = useMemo(() => {
     return [
@@ -119,6 +128,9 @@ const RoadMapBackground = () => {
     return name;
   };
 
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const id = urlSearchParams.get("id");
+
   useEffect(() => {
     const fetchRoadmapRank = async () => {
       const token = localStorage.getItem("token");
@@ -135,10 +147,48 @@ const RoadMapBackground = () => {
       const respJSON = await response.json();
       setRoadmapRank(respJSON);
       console.log(respJSON);
+      console.log(Object.values(respJSON[0][0])[0]);
+
+      const tmpList = respJSON.map((item, index) => {
+        return Object.keys(item[0])[0];
+      });
+
+      console.log(tmpList);
+      console.log(id);
+      console.log(tmpList[0]);
+
+      if (urlSearchParams.has("id")) {
+        console.log(id);
+        // console.log(window.location.href);
+      } else navigate(`?id=${tmpList[0]}`);
+
+      setJobsList(
+        tmpList.map((item) => {
+          const tmp = transName(item, jobKor);
+          return (
+            <div key={item}>
+              <Link to={`?id=${item}`}>{tmp}</Link>
+            </div>
+          );
+        })
+      );
+      const tmpName = tmpList.map((item, index) => {
+        return transName(item, jobKor);
+      });
+      const tmpData = respJSON.map((item, index) => {
+        return parseFloat(Object.values(item[0])[0].toFixed(2));
+      });
+      console.log(tmpData);
+      setJobsName(tmpName);
+      setAvgData(tmpData);
+
+      let ac = new ColumnChart([tmpName, tmpData]);
+      setColumChart(ac.render());
     };
 
     fetchRoadmapRank();
-  }, []);
+    setStateName(transName(id, jobKor));
+  }, [jobKor, navigate, id]);
 
   return (
     <div>
@@ -161,26 +211,20 @@ const RoadMapBackground = () => {
         <div className={styles["inner-box1"]}>
           {roadmapRank && roadmapRank.length >= 5 && (
             <>
-              <div className={styles.rank1}>
-                1. {transName(Object.keys(roadmapRank[0][0])[0], jobKor)}
-              </div>
-              <div className={styles.rank2}>
-                2. {transName(Object.keys(roadmapRank[1][0])[0], jobKor)}
-              </div>
-              <div className={styles.rank3}>
-                3. {transName(Object.keys(roadmapRank[2][0])[0], jobKor)}
-              </div>
+              <div className={styles.rank1}>1. {jobsName[0]}</div>
+              <div className={styles.rank2}>2. {jobsName[1]}</div>
+              <div className={styles.rank3}>3. {jobsName[2]}</div>
             </>
           )}
         </div>
         <div className={styles.label2}>
           <span>파워레인저</span> 님의 상위 직군 역량
         </div>
-        <div className={styles["inner-box2"]}>
-          <ColumnChart />
-        </div>
+        <div className={styles["inner-box2"]}>{columChart}</div>
+
+        {jobsList}
         <div className={styles.label3}>
-          <span>풀스택 개발자</span> 와 관련 있는 공고에요!
+          <span>{stateName}</span> 와 관련 있는 공고에요!
           <div>
             {roadmapRank && roadmapRank.length > 0 && (
               <>
@@ -193,6 +237,7 @@ const RoadMapBackground = () => {
             )}
           </div>
         </div>
+
         <div className={styles["inner-box3"]} />
       </div>
     </div>

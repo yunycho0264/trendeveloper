@@ -25,7 +25,7 @@ const Menu = () => {
           </Link>
         </li>
         <li className={styles.tag}>
-          <Link to="/roadmap" className={styles.nav} id="nav3">
+          <Link to="/roadmap/stat" className={styles.nav} id="nav3">
             로드맵
           </Link>
         </li>
