@@ -46,7 +46,7 @@ const SimpleSlider = () => {
 
   // 리스트 불러오기
   const [jobPostings, setJobPostings] = useState([]);
-  const [topList, setTopList] = useState([]);
+  const [randomList, setRandomList] = useState([]);
 
   useEffect(() => {
     const fetchJobPostings = async () => {
@@ -68,13 +68,20 @@ const SimpleSlider = () => {
   }, []);
   // console.log(firstSixPostings[1]);
 
-  const firstSixPostings = jobPostings.slice(0, 6); // Get the first six job posting
+  useEffect(() => {
+    if (jobPostings.length > 0) {
+      // Randomly select 6 items from jobPostings
+      const shuffledPostings = jobPostings.sort(() => 0.5 - Math.random());
+      const firstSixPostings = shuffledPostings.slice(0, 6);
 
+      setRandomList(firstSixPostings);
+    }
+  }, [jobPostings]);
   // Render the topList elements
   return (
     <div>
       <Slider {...settings}>
-        {firstSixPostings.map((items, index) => (
+        {randomList.map((items, index) => (
           <div key={index}>
             {/* Corporate logo image */}
             <CompanySlide data={items} />
