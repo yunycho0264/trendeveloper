@@ -34,9 +34,9 @@ function App() {
           <div className="wrapper">
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="/recruitement" element={<Recruitment />} />
+              <Route path="/recruitement/list" element={<Recruitment />} />
               <Route
-                path="/recruitement/DetailPage/:id?"
+                path="/recruitement/detail/:id?"
                 element={<DetailPage />}
               />
 

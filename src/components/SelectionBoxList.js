@@ -83,6 +83,7 @@ const SelectionBoxList = () => {
       alert("설정을 완료해 주세요! 업데이트까지 눌러주셔야 합니다!");
       return;
     }
+    navigate("/roadmap/stat");
   };
 
   return (

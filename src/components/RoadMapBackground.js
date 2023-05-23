@@ -153,9 +153,9 @@ const RoadMapBackground = () => {
         return Object.keys(item[0])[0];
       });
 
-      console.log(tmpList);
-      console.log(id);
-      console.log(tmpList[0]);
+      // console.log(tmpList);
+      // console.log(id);
+      // console.log(tmpList[0]);
 
       if (urlSearchParams.has("id")) {
         console.log(id);

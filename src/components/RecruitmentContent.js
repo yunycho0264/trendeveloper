@@ -8,7 +8,7 @@ const RecruitContent = (props) => {
   const [companyInfo, setCompanyInfo] = useState({});
 
   useEffect(() => {
-    console.log(props);
+    // console.log(props);
 
     const recruitmentID = props.id;
     const fetchCompanyInfo = async () => {
@@ -39,7 +39,7 @@ const RecruitContent = (props) => {
       <td>{props.index}</td>
       <td>{companyInfo.companyName}</td>
       <td>
-        <Link to={`DetailPage?id=${companyInfo.wantedAuthNo}`}>
+        <Link to={`/recruitement/detail?id=${companyInfo.wantedAuthNo}`}>
           {companyInfo.wantedTitle}
         </Link>
       </td>

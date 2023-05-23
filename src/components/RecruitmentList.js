@@ -12,7 +12,7 @@ import "../css/RecruitmentList.module.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
-const RecruitmentList = () => {
+const RecruitmentList = (props) => {
   //전체 리스트
   const [jobPostings, setJobPostings] = useState([]);
 
@@ -32,93 +32,31 @@ const RecruitmentList = () => {
     setItemOffset(newOffset);
   };
 
-  //검색
-  const [search, setSearch] = useState("");
-  const [searchInput, setSearchInput] = useState("");
-  const [searchCategory, setSearchCategory] = useState("");
-
-  const handleSearchInput = (e) => {
-    setSearchInput(e.target.value);
-    // console.log(searchInput);
-  };
-
-  const handleClickedSearchBtn = () => {
-    // console.log("clicked:", searchInput);
-    setSearch(searchInput);
-  };
-
-  const handleClickedResetBtn = () => {
-    // console.log("clicked:", searchInput);
-    setSearch("");
-    setSearchInput("");
-  };
-
-  const [isSearched, setIsSearched] = useState(true);
-
-  const OPTIONS = [
-    { value: "title", name: "공고 제목" },
-    { value: "cname", name: "회사명" },
-  ];
-
-  const SelectBox = (props) => {
-    const handleChange = (e) => {
-      console.log(e.target.value);
-      setSearchCategory(e.target.value);
-    };
-
-    return (
-      <select value={searchCategory} onChange={handleChange}>
-        {props.options.map((option) => (
-          <option
-            key={option.value}
-            value={option.value}
-            defaultValue={props.defaultValue === option.value}
-          >
-            {option.name}
-          </option>
-        ))}
-      </select>
-    );
-  };
-
   useEffect(() => {
+    console.log(props.post);
+    const posts = props.post;
     const fetchJobPostings = async () => {
       // const token = localStorage.getItem('token');
 
-      const response = await fetch(API_URI + "/api/v1/recruitment/list", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          // 'Authorization': 'Bearer ' + token,
-        },
-      });
+      // const response = await fetch(API_URI + "/api/v1/recruitment/list", {
+      //   method: "GET",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     // 'Authorization': 'Bearer ' + token,
+      //   },
+      // });
 
-      const respJSON = await response.json();
       // console.log(respJSON);
       // console.log(search);
-      console.log(searchCategory);
 
-      const filter = respJSON.filter((value) => {
-        const category = value[searchCategory];
-
-        if (search === "") {
-          return value;
-        } else if (
-          category &&
-          category.toLowerCase().includes(search.toLowerCase())
-        ) {
-          return value;
-        }
-      });
-
-      const posts = respJSON.map((item, index) => (
-        <RecruitContent key={item.id} index={index + 1} />
-      ));
+      // const posts = posts.map((item, index) => (
+      //   <RecruitContent key={item.id} index={index + 1} />
+      // ));
       // console.log(posts);
 
       // console.log(checkFilter());
       setJobPostings(
-        filter.map((item, index) => (
+        posts.map((item, index) => (
           <RecruitContent key={item.id} index={index + 1} id={item.id} />
         ))
       );
@@ -127,23 +65,10 @@ const RecruitmentList = () => {
     };
 
     fetchJobPostings();
-  }, [search, searchCategory]);
+  }, []);
 
   return (
-    <>
-      <SelectBox options={OPTIONS} defaultValue="title" />
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchInput}
-        onChange={handleSearchInput}
-      ></input>{" "}
-      <button type="button" onClick={handleClickedSearchBtn}>
-        검색
-      </button>{" "}
-      <button type="button" onClick={handleClickedResetBtn}>
-        초기화
-      </button>
+    <div>
       <table>
         <thead>
           <tr>
@@ -183,7 +108,7 @@ const RecruitmentList = () => {
         containerClassName="pagination"
         activeClassName="active"
       />
-    </>
+    </div>
   );
 };
 
