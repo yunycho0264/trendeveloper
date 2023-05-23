@@ -1,11 +1,16 @@
 import * as XLSX from "xlsx/xlsx.mjs";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/Auth.context.js";
-
+import { useNavigate } from "react-router-dom";
+// import SelectionBoxList from "./SelectionBoxList.js";
 const API_URI = process.env.REACT_APP_API_URI;
 
 const UploadFile = () => {
   const { changeSubmitted } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {}, []);
+
   const handleFileUpload = (event) => {
     var XLSX = require("xlsx");
     const file = event.target.files[0];
@@ -41,7 +46,11 @@ const UploadFile = () => {
         },
       })
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+          if (data.length > 0) {
+            navigate("/roadmap/select");
+          }
+        })
         .catch((error) => console.error(error));
     };
 

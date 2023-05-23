@@ -6,8 +6,21 @@ import { useNavigate } from "react-router-dom";
 import "../css/Common.css";
 import "../css/App.css";
 
+const API_URI = process.env.REACT_APP_API_URI;
+
+// 로그인
+async function signinUser(credentials) {
+  return fetch(API_URI + "/api/v1/auth/signin", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data);
+}
+
 const Signin = () => {
-  const { setSignin } = useContext(AuthContext);
+  const { changeSubmitted, changeSignedIn } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +35,26 @@ const Signin = () => {
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
+  };
+
+  const setSignin = async (email, password) => {
+    const response = await signinUser({
+      email,
+      password,
+    });
+    if (response === 403) {
+      window.alert("403 Forbidden");
+    } else if (response.status === 200) {
+      const responseJSON = await response.json();
+      if ("token" in responseJSON) {
+        const receivedToken = responseJSON["token"];
+        localStorage.setItem("token", receivedToken);
+        window.alert("Token: " + receivedToken);
+        console.log(responseJSON);
+        changeSignedIn();
+        navigate("/");
+      }
+    }
   };
 
   // signin 버튼 클릭 이벤트

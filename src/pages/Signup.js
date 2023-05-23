@@ -7,13 +7,28 @@ import "../css/App.css";
 import "../css/Common.css";
 import "../css/Sign.css";
 
+const API_URI = process.env.REACT_APP_API_URI;
+
+//회원가입
+
+async function signupUser(credentials) {
+  return fetch(API_URI + "/api/v1/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+
 const Signup = () => {
   const navigate = useNavigate();
+
+  const { changeSignedIn } = useContext(AuthContext);
 
   const navigateToSignin = () => {
     navigate("/signin");
   };
-  const { setSignup } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +43,25 @@ const Signup = () => {
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
+  };
+
+  const setSignup = async (name, email, password) => {
+    const response = await signupUser({
+      name,
+      email,
+      password,
+    });
+    if ("token" in response) {
+      var receivedToken = response["token"];
+      if (receivedToken === "EXISTS") {
+        window.alert("already registered email");
+      } else {
+        localStorage.setItem("token", receivedToken);
+        window.alert("Token: " + receivedToken);
+      }
+      changeSignedIn();
+      navigate("/");
+    }
   };
 
   // signup 버튼 클릭 이벤트
