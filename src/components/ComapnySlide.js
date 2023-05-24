@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../css/Companylogo.module.css";
+import styles from "../css/Main.module.css";
 import Loading from "./Loading";
 import fallbackImage from "../img/No_logo-001.png";
 
@@ -54,19 +54,23 @@ const CompanySlide = (props) => {
   };
 
   return (
-    <div>
-      <div className={styles["slide-image"]}>
-        {logoLink ? (
-          <img
-            className={styles.bp}
-            alt="bp-logo"
-            src={logoLink}
-            onClick={handleClick}
-            onError={handleError}
-          />
-        ) : null}
-      </div>
-    </div>
+    <>
+      {logoLink ? (
+        <img
+          style={{
+            width: "300px",
+            height: "200px",
+            margin: "0 20px",
+            border: "1px solid #89969f",
+          }}
+          className={styles.bp}
+          alt="bp-logo"
+          src={logoLink}
+          onClick={handleClick}
+          onError={handleError}
+        />
+      ) : null}
+    </>
   );
 };
 

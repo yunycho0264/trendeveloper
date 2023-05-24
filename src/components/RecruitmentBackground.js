@@ -63,6 +63,8 @@ const RecruitBackground = () => {
 
   const handleClickedResetBtn = () => {
     // console.log("clicked:", searchInput);
+    setCheckboxValues({});
+
     setSearch("");
     setSearchInput("");
   };

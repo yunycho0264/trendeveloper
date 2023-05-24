@@ -9,10 +9,11 @@ import CompanySlide from "./ComapnySlide";
 import { useEffect, useState } from "react";
 
 import { Carousel } from "react-responsive-carousel";
+import BootCampSlide from "./BootCampSlider";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
-const SimpleSlider = (props) => {
+const CarouselSlider = (props) => {
   // 리스트 불러오기
   const [jobPostings, setJobPostings] = useState([]);
   const [randomList, setRandomList] = useState([]);
@@ -22,16 +23,15 @@ const SimpleSlider = (props) => {
     console.log(id);
     const fetchJobPostings = async () => {
       // const token = localStorage.getItem('token');
-      const response = await fetch(
-        API_URI + "/api/v1/recruitment/list?id=" + id,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            // 'Authorization': 'Bearer ' + token,
-          },
-        }
-      );
+      const url = API_URI + "/api/v1/bootcamp/list?id=" + id;
+      console.log(url);
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Authorization': 'Bearer ' + token,
+        },
+      });
       const respJSON = await response.json();
       console.log(respJSON);
       setJobPostings(respJSON);
@@ -53,35 +53,17 @@ const SimpleSlider = (props) => {
 
   // Render the topList elements
   return (
-    <div
-      style={{
-        position: "absolute",
-        width: "1100px",
-        height: "200px",
-        background: "#fff",
-        display: "flex",
-        overflowX: "auto",
-        overflowY: "hidden",
-        whiteSpace: "nowrap",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          overflowX: "auto",
-          width: "1100px",
-          height: "200px",
-        }}
-      >
+    <>
+      <Carousel autoPlay interval={5000} infiniteLoop>
         {randomList.map((items, index) => (
           <div key={index}>
             {/* Corporate logo image */}
-            <CompanySlide data={items} />
+            <BootCampSlide data={items} />
           </div>
         ))}
-      </div>
-    </div>
+      </Carousel>
+    </>
   );
 };
 
-export default SimpleSlider;
+export default CarouselSlider;
