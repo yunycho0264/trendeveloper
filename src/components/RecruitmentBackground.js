@@ -63,6 +63,8 @@ const RecruitBackground = () => {
 
   const handleClickedResetBtn = () => {
     // console.log("clicked:", searchInput);
+    setCheckboxValues({});
+
     setSearch("");
     setSearchInput("");
   };
@@ -104,6 +106,7 @@ const RecruitBackground = () => {
     setSelectedCheckboxString(string);
 
     console.log(searchCategory);
+    console.log(search);
 
     const queryParams = new URLSearchParams();
     const selectedIds = Object.keys(checkboxValues).filter(
@@ -120,14 +123,16 @@ const RecruitBackground = () => {
         queryParams.append("company", search);
       }
     }
+    const queryString = decodeURIComponent(queryParams.toString());
+    // if (queryString) {
+    //   window.location.href = `/recruitment/list?${queryString}`;
+    // }
 
     // console.log(decodeURIComponent(queryParams.toString()));
 
     const fetchJobPostings = async () => {
-      // const url = `${API_URI}/api/v1/recruitment/list?${decodeURIComponent(
-      //   queryParams.toString()
-      // )}`;
-      const url = `${API_URI}/api/v1/recruitment/list`;
+      const url = `${API_URI}/api/v1/recruitment/list?${queryString}`;
+
       console.log(url);
       const response = await fetch(url, {
         method: "GET",
@@ -138,7 +143,7 @@ const RecruitBackground = () => {
 
       const respJSON = await response.json();
 
-      console.log(respJSON);
+      // console.log(respJSON);
       setJobPostings(<RecruitmentList post={respJSON} />);
     };
 
