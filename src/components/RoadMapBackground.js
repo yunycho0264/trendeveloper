@@ -12,6 +12,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ResponsiveBar } from "@nivo/bar";
 import MyResponsiveBar from "./columnChart";
 import ColumnChart from "./columnChart";
+import CarouselSlider from "./CarouselSlider";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -127,9 +128,14 @@ const RoadMapBackground = () => {
 
     return name;
   };
-
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = urlSearchParams.get("id");
+
+  const [subject, setSubject] = useState([]);
+  const [recomend, setRecomend] = useState([]);
+
+  const [companySilder, setCompanySlider] = useState(null);
+  const [bootSilder, setBootSlider] = useState(null);
 
   useEffect(() => {
     const fetchRoadmapRank = async () => {
@@ -153,14 +159,49 @@ const RoadMapBackground = () => {
         return Object.keys(item[0])[0];
       });
 
-      // console.log(tmpList);
-      // console.log(id);
-      // console.log(tmpList[0]);
-
       if (urlSearchParams.has("id")) {
         console.log(id);
-        // console.log(window.location.href);
-      } else navigate(`?id=${tmpList[0]}`);
+        respJSON.forEach((item, index) => {
+          console.log(Object.keys(item[0])[0]);
+          console.log(item[1]);
+
+          if (id === Object.keys(item[0])[0]) {
+            const tmpSubject = item[1].map((item, index) => {
+              return (
+                <div key={index}>
+                  <div>
+                    과목 : {Object.keys(item)} 평점 : {Object.values(item)}
+                  </div>
+                </div>
+              );
+            });
+            const tmpRecomend = item[2].map((item, index) => {
+              return (
+                <div key={index}>
+                  <div>과목 : {item}</div>
+                </div>
+              );
+            });
+            console.log(tmpSubject);
+            setSubject(tmpSubject);
+            setRecomend(tmpRecomend);
+          }
+        });
+      } else {
+        navigate(`?id=${tmpList[0]}`);
+      }
+
+      const tmpSlider = () => {
+        return <SimpleSlider id={id} />;
+      };
+
+      setCompanySlider(tmpSlider);
+
+      const tmpBoot = () => {
+        return <CarouselSlider id={id} />;
+      };
+
+      setBootSlider(tmpBoot);
 
       setJobsList(
         tmpList.map((item) => {
@@ -223,22 +264,14 @@ const RoadMapBackground = () => {
         <div className={styles["inner-box2"]}>{columChart}</div>
 
         {jobsList}
+        <div>{subject}</div>
+        <div>{recomend}</div>
         <div className={styles.label3}>
           <span>{stateName}</span> 와 관련 있는 공고에요!
-          <div>
-            {roadmapRank && roadmapRank.length > 0 && (
-              <>
-                <div>1. {JSON.stringify(roadmapRank[0], null, 2)}</div>
-                <div>2. {JSON.stringify(roadmapRank[1], null, 2)}</div>
-                <div>3. {JSON.stringify(roadmapRank[2], null, 2)}</div>
-                <div>4. {JSON.stringify(roadmapRank[3], null, 2)}</div>
-                <div>5. {JSON.stringify(roadmapRank[4], null, 2)}</div>
-              </>
-            )}
-          </div>
         </div>
 
-        <div className={styles["inner-box3"]} />
+        <div className={styles["inner-box3"]}>{bootSilder}</div>
+        <div className={styles["inner-box3"]}>{companySilder}</div>
       </div>
     </div>
   );
