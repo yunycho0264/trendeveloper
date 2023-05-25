@@ -35,8 +35,7 @@ const UploadFile = () => {
       });
 
       const token = localStorage.getItem("token");
-      console.log(token);
-
+      // console.log(token);
       fetch(API_URI + "/api/v1/lecture/set", {
         method: "POST",
         body: JSON.stringify(lectures),
@@ -47,6 +46,7 @@ const UploadFile = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           if (data.length > 0) {
             navigate("/roadmap/select");
           }

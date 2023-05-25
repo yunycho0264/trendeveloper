@@ -1,6 +1,10 @@
+// |Great! How can I assist you today?
+// |
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RoadMap from "../pages/RoadMap";
+
+const API_URI = process.env.REACT_APP_API_URI;
 
 const SelectionBoxList = () => {
   const [selections, setSelections] = useState([]);
@@ -56,25 +60,6 @@ const SelectionBoxList = () => {
   };
 
   const handleSubmit = () => {
-    console.log(selections);
-
-    //   fetch(API_URI + "/api/v1/lecture/set2", {
-    //     method: "POST",
-    //     body: JSON.stringify(selections),
-    //     headers: {
-    //       Authorization: "Bearer " + token,
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       if (data.length > 0) {
-    //         navigate("/roadmap/stat");
-    //       }
-    //     })
-    //     .catch((error) => console.error(error));
-    // };
-
     if (
       selections.some((selection) => selection.level === "") ||
       selections.some((selection) => selection.subject === "")
@@ -83,7 +68,32 @@ const SelectionBoxList = () => {
       alert("설정을 완료해 주세요! 업데이트까지 눌러주셔야 합니다!");
       return;
     }
-    navigate("/roadmap/stat");
+    console.log(selections);
+
+    const data = selections.reduce((acc, { subject, level }) => {
+      acc[subject] = level;
+      return acc;
+    }, {});
+
+    console.log(data);
+    const token = localStorage.getItem("token");
+
+    fetch(API_URI + "/api/v1/lecture/set2", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.length > 0) {
+          navigate("/roadmap/stat");
+        }
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -126,11 +136,11 @@ export const SelectionBox = ({ index, subjects, onDelete, onUpdate }) => {
   const handleUpdate = () => {
     let level = 0;
     if (selectedLevel === "upper") {
-      level = 40;
+      level = 4.5;
     } else if (selectedLevel === "middle") {
-      level = 20;
+      level = 3.5;
     } else if (selectedLevel === "lower") {
-      level = 10;
+      level = 2.5;
     } else {
       level = 0;
     }

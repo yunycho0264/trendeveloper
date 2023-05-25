@@ -19,7 +19,7 @@ const SimpleSlider = (props) => {
 
   useEffect(() => {
     const id = props.id;
-    console.log(id);
+    //console.log(id);
     const fetchJobPostings = async () => {
       // const token = localStorage.getItem('token');
       const response = await fetch(
@@ -33,7 +33,7 @@ const SimpleSlider = (props) => {
         }
       );
       const respJSON = await response.json();
-      console.log(respJSON);
+      //console.log(respJSON);
       setJobPostings(respJSON);
 
       if (respJSON.length > 0) {
@@ -43,13 +43,13 @@ const SimpleSlider = (props) => {
 
         setRandomList(firstSixPostings);
 
-        console.log(firstSixPostings);
+        //console.log(firstSixPostings);
       }
     };
 
     fetchJobPostings();
   }, [props]);
-  // console.log(firstSixPostings[1]);
+  // //console.log(firstSixPostings[1]);
 
   // Render the topList elements
   return (
