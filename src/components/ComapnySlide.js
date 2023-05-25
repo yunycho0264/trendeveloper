@@ -34,7 +34,8 @@ const CompanySlide = (props) => {
         );
         respJSON = await resp.json();
         console.log(respJSON);
-        setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
+
+        setlogoLink(`https://work.go.kr/${respJSON.logoLink}`);
         setCompanyName(respJSON.companyName);
         //logoLink = respJSON["logoLink"];
       }
