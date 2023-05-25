@@ -18,10 +18,10 @@ const BootCampSlide = (props) => {
   const data = props.data;
 
   useEffect(() => {
-    // console.log(data);
+    // //console.log(data);
     const fetchData = async () => {
       if ("link" in data) {
-        console.log(data);
+        //console.log(data);
         // let recruitmentID = data.wantedAuthNo;
         //const token = localStorage.getItem("token");
         // let resp = await fetch(
@@ -36,8 +36,8 @@ const BootCampSlide = (props) => {
         //   }
         // );
         // respJSON = await resp.json();
-        // console.log(respJSON);
-        console.log(data.link);
+        // //console.log(respJSON);
+        //console.log(data.link);
         setlogoLink(image1);
         setBootTitle(data.title);
         // logoLink = respJSON["logoLink"];
@@ -46,11 +46,11 @@ const BootCampSlide = (props) => {
     fetchData();
   }, [data]);
 
-  // console.log(logoLink);
+  // //console.log(logoLink);
 
   const handleClick = (event) => {
     event.preventDefault();
-    console.log(data.link);
+    //console.log(data.link);
     window.location.href = data.link;
   };
 
