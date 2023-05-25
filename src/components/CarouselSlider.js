@@ -20,11 +20,11 @@ const CarouselSlider = (props) => {
 
   useEffect(() => {
     const id = props.id;
-    console.log(id);
+    // console.log(id);
     const fetchJobPostings = async () => {
       // const token = localStorage.getItem('token');
       const url = API_URI + "/api/v1/bootcamp/list?id=" + id;
-      console.log(url);
+      // //console.log(url);
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -33,7 +33,7 @@ const CarouselSlider = (props) => {
         },
       });
       const respJSON = await response.json();
-      console.log(respJSON);
+      //console.log(respJSON);
       setJobPostings(respJSON);
 
       if (respJSON.length > 0) {
@@ -43,13 +43,13 @@ const CarouselSlider = (props) => {
 
         setRandomList(firstSixPostings);
 
-        console.log(firstSixPostings);
+        //console.log(firstSixPostings);
       }
     };
 
     fetchJobPostings();
   }, [props]);
-  // console.log(firstSixPostings[1]);
+  // //console.log(firstSixPostings[1]);
 
   // Render the topList elements
   return (

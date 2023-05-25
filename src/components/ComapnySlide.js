@@ -14,10 +14,10 @@ const CompanySlide = (props) => {
   const data = props.data;
 
   useEffect(() => {
-    // console.log(data);
+    // //console.log(data);
     const fetchData = async () => {
       if ("wantedAuthNo" in data) {
-        // console.log(props.id);
+        // //console.log(props.id);
         let recruitmentID = data.wantedAuthNo;
         //const token = localStorage.getItem("token");
 
@@ -33,7 +33,7 @@ const CompanySlide = (props) => {
           }
         );
         respJSON = await resp.json();
-        console.log(respJSON);
+        //console.log(respJSON);
 
         setlogoLink(`https://work.go.kr/${respJSON.logoLink}`);
         setCompanyName(respJSON.companyName);
@@ -43,7 +43,7 @@ const CompanySlide = (props) => {
     fetchData();
   }, [props]);
 
-  // console.log(logoLink);
+  // //console.log(logoLink);
 
   const handleClick = (event) => {
     event.preventDefault();

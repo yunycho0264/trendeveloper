@@ -25,6 +25,7 @@ async function signoutUser() {
 
 const Sign = () => {
   const navigate = useNavigate();
+  const name = localStorage.getItem("name");
 
   const [signState, setSignState] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -38,6 +39,9 @@ const Sign = () => {
     const setSignout = async () => {
       const response = await signoutUser();
       localStorage.removeItem("token");
+      localStorage.removeItem("name");
+      localStorage.removeItem("email");
+
       console.log(response.status);
       if (response.ok) {
         console.log("로그아웃에 성공했습니다.");
@@ -54,10 +58,10 @@ const Sign = () => {
 
     const menu = () => {
       return (
-        <li>
+        <>
           {tmp ? (
             <>
-              <Link to="/mypage">마이페이지</Link> |{" "}
+              <span>{name} 님</span> <Link to="/mypage">마이페이지</Link> |{" "}
               <Link to="/" onClick={setSignout}>
                 Logout
               </Link>
@@ -68,7 +72,7 @@ const Sign = () => {
               <Link to="/signin">로그인</Link>
             </>
           )}
-        </li>
+        </>
       );
     };
     // setToken(tmp);

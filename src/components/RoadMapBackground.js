@@ -16,8 +16,10 @@ import CarouselSlider from "./CarouselSlider";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
-const RoadMapBackground = () => {
+const RoadMapBackground = (props) => {
   const navigate = useNavigate();
+
+  const name = localStorage.getItem("name");
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let [roadmapRank, setRoadmapRank] = useState(null);
@@ -54,7 +56,6 @@ const RoadMapBackground = () => {
       "기술지원",
     ];
   }, []);
-
   const transName = (id, jobKor) => {
     let name = "";
     switch (id) {
@@ -131,60 +132,63 @@ const RoadMapBackground = () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const id = urlSearchParams.get("id");
 
-  const [subject, setSubject] = useState([]);
-  const [recomend, setRecomend] = useState([]);
+  const [subject, setSubject] = useState(null);
+  const [recomend, setRecomend] = useState(null);
+  const [plus, setPlus] = useState(null);
 
   const [companySilder, setCompanySlider] = useState(null);
   const [bootSilder, setBootSlider] = useState(null);
 
   useEffect(() => {
     const fetchRoadmapRank = async () => {
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(API_URI + "/api/v1/lecture/get?count=" + 5, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify(),
-      });
-
-      const respJSON = await response.json();
+      const respJSON = props.data;
       setRoadmapRank(respJSON);
       console.log(respJSON);
-      console.log(Object.values(respJSON[0][0])[0]);
+      // console.log(Object.values(respJSON[0][0])[0]);
 
       const tmpList = respJSON.map((item, index) => {
         return Object.keys(item[0])[0];
       });
+      // console.log(tmpList);
 
       if (urlSearchParams.has("id")) {
-        console.log(id);
+        // console.log(id);
         respJSON.forEach((item, index) => {
-          console.log(Object.keys(item[0])[0]);
-          console.log(item[1]);
+          // console.log(Object.keys(item[0])[0]);
+          // console.log(item[1]);
 
           if (id === Object.keys(item[0])[0]) {
-            const tmpSubject = item[1].map((item, index) => {
-              return (
-                <div key={index}>
-                  <div>
-                    과목 : {Object.keys(item)} 평점 : {Object.values(item)}
+            if (item[1]) {
+              const tmpSubject = item[1].map((item, index) => {
+                return (
+                  <div key={index}>
+                    <div>
+                      과목 : {Object.keys(item)} 평점 : {Object.values(item)}
+                    </div>
                   </div>
-                </div>
-              );
-            });
-            const tmpRecomend = item[2].map((item, index) => {
-              return (
-                <div key={index}>
-                  <div>과목 : {item}</div>
-                </div>
-              );
-            });
-            console.log(tmpSubject);
-            setSubject(tmpSubject);
-            setRecomend(tmpRecomend);
+                );
+              });
+              setSubject(tmpSubject);
+            }
+            if (item[2]) {
+              const tmpRecomend = item[2].map((item, index) => {
+                return (
+                  <div key={index}>
+                    <div>추천 과목 : {item}</div>
+                  </div>
+                );
+              });
+              setRecomend(tmpRecomend);
+            }
+
+            if (item[4] > 0) {
+              setPlus(<div>추가한 값 : {item[4]}</div>);
+            } else {
+              setPlus(<div>추가한 값이 없습니다.</div>);
+            }
+
+            // console.log(tmpSubject);
+            // setPlus(tmpPlus);
           }
         });
       } else {
@@ -219,7 +223,7 @@ const RoadMapBackground = () => {
       const tmpData = respJSON.map((item, index) => {
         return parseFloat(Object.values(item[0])[0].toFixed(2));
       });
-      console.log(tmpData);
+      // console.log(tmpData);
       setJobsName(tmpName);
       setAvgData(tmpData);
 
@@ -236,7 +240,7 @@ const RoadMapBackground = () => {
       <div className={styles.contents}>
         <div className={`${styles["sub-text"]} ${styles.text}`}>
           <span className={`${styles["clicked-job"]} ${styles.text}`}>
-            파워레인저
+            {name}
           </span>{" "}
           님의 로드맵
           <span>
@@ -266,6 +270,7 @@ const RoadMapBackground = () => {
         {jobsList}
         <div>{subject}</div>
         <div>{recomend}</div>
+        <div>{plus}</div>
         <div className={styles.label3}>
           <span>{stateName}</span> 와 관련 있는 공고에요!
         </div>

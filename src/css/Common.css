@@ -2,7 +2,8 @@
   margin-top: 20px;
 
   display: flex;
-  align-items: center;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
   text-align: center;
 
   width: 400px;
