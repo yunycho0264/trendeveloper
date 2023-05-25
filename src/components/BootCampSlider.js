@@ -22,7 +22,7 @@ const BootCampSlide = (props) => {
     const fetchData = async () => {
       if ("link" in data) {
         console.log(data);
-        let recruitmentID = data.wantedAuthNo;
+        // let recruitmentID = data.wantedAuthNo;
         //const token = localStorage.getItem("token");
         // let resp = await fetch(
         //   API_URI + "/api/v1/recruitment/detail?id=" + recruitmentID,
@@ -37,6 +37,7 @@ const BootCampSlide = (props) => {
         // );
         // respJSON = await resp.json();
         // console.log(respJSON);
+        console.log(data.link);
         setlogoLink(image1);
         setBootTitle(data.title);
         // logoLink = respJSON["logoLink"];
@@ -60,13 +61,17 @@ const BootCampSlide = (props) => {
   return (
     <>
       {logoLink ? (
-        <img
-          className={styles.bp}
-          alt="bp-logo"
-          src={logoLink}
-          onClick={handleClick}
-          onError={handleError}
-        />
+        <a href={data.link} target="_blank" rel="noreferrer">
+          <div>
+            <img
+              className={styles.bp}
+              alt="bp-logo"
+              src={logoLink}
+              onClick={handleClick}
+              onError={handleError}
+            />
+          </div>
+        </a>
       ) : null}
     </>
   );
