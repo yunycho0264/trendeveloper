@@ -133,7 +133,7 @@ const TrendBackground = () => {
         <div key={key}>
           {/* <li onClick={handleParameterChange}>{tmp}</li> */}
           <li>
-            <Link to={`?id=${key}`}>{tmp}</Link>
+            <Link to={`?id=${key}`} className={styles.anker}>{tmp}</Link>
           </li>
         </div>
       );
@@ -159,7 +159,7 @@ const TrendBackground = () => {
           </span>
         </div>
         <div className={`${styles.box} ${styles.rank} ${styles.text}`}>
-          <ol className="list">{topList}</ol>
+          <ol className={styles.list}>{topList}</ol>
         </div>
       </div>
 

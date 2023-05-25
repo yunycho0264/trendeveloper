@@ -1,10 +1,11 @@
 .background {
   width: 70vw;
-  height: 45vh;
+  height: 75vh;
   margin-left: 18vw;
   margin-bottom: 0vh;
   overflow-y: scroll;
   margin-top: 1vh;
+  margin-bottom: 100px;
   background: #fff;
 }
 
@@ -14,16 +15,16 @@
 }
 
 .inner-text {
-  margin-top: 2vh;
+  margin-top: 5vh;
   margin-left: 0.6vw;
 }
 
 .inner-box {
-  margin-left: 0.6vw;
+  margin-left: 0.7vw;
   justify-content: center;
   align-items: center;
-  width: 50vw;
-  height: 20vh;
+  width: 68vw;
+  height: 28vh;
 }
 
 .box {
@@ -67,4 +68,19 @@
 
 .clicked-job {
   color: #b93234;
+}
+
+.ranklist {
+  text-decoration: none;
+}
+
+.notice {
+  margin-top: 10px;
+}
+
+.anker {
+  text-decoration: none;
+  margin-right: 55vw;
+  color: #000;
+  font-weight: 500;
 }

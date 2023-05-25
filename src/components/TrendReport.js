@@ -90,7 +90,7 @@ const TrendReport = (props) => {
           </span>{" "}
           와 관련된 다른 공고도 확인해볼까요?
         </div>
-        <div className={`${styles.box} ${styles["inner-box"]}`}>{silder}</div>
+        <div className={styles.notice}>{silder}</div>
       </div>
     </div>
   );
