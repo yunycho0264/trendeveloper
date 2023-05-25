@@ -33,10 +33,11 @@ class ApexChart extends Component {
           },
         },
         xaxis: {
+          title: {text : "날짜", rotate: 0, offsetX: 0, offsetY: -20 },
           categories: props[0],
         },
         yaxis: {
-          title: { text: "공고수", rotate: 0, offsetX: 10, offsetY: -55 },
+          title: { text: "공고수", rotate: 0, offsetX: -8, offsetY: -80 },
         },
       },
     };
@@ -49,7 +50,8 @@ class ApexChart extends Component {
           options={this.state.options}
           series={this.state.series}
           type="line"
-          height={150}
+          height={250}
+          width={1100}
         />
       </div>
     );

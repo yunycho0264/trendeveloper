@@ -3,6 +3,7 @@
   margin-left: 18vw;
   margin-bottom: 0vh;
   margin-top: 1vh;
+  margin-bottom: 100px;
   background: #fff;
 }
 
@@ -12,16 +13,16 @@
 }
 
 .inner-text {
-  margin-top: 2vh;
+  margin-top: 5vh;
   margin-left: 0.6vw;
 }
 
 .inner-box {
-  margin-left: 0.6vw;
+  margin-left: 0.7vw;
   justify-content: center;
   align-items: center;
-  width: 50vw;
-  height: 20vh;
+  width: 68vw;
+  height: 28vh;
 }
 
 .box {
@@ -67,7 +68,18 @@
   color: #b93234;
 }
 
+
+.ranklist {
+  text-decoration: none;
+}
+
+.notice {
+  margin-top: 10px;
+}
+
 .anker {
   text-decoration: none;
-  color: black;
+  margin-right: 55vw;
+  color: #000;
+  font-weight: 500;
 }

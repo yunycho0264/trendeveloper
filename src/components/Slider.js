@@ -55,8 +55,8 @@ const SimpleSlider = (props) => {
   return (
     <div
       style={{
-        position: "absolute",
-        width: "1100px",
+        position: "relative",
+        width: "1140px",
         height: "200px",
         background: "#fff",
         display: "flex",
@@ -69,7 +69,7 @@ const SimpleSlider = (props) => {
         style={{
           display: "flex",
           overflowX: "auto",
-          width: "1100px",
+          width: "1140px",
           height: "200px",
         }}
       >
