@@ -1,3 +1,4 @@
+import { faL } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import ApexCharts from "react-apexcharts";
 
@@ -7,12 +8,12 @@ class ColumnChart extends Component {
   constructor(props) {
     super(props);
 
-    //console.log(props);
+    console.log(props[2]);
 
     this.state = {
       series: [
         {
-          name: "Inflation",
+          name: "총점수",
           data: props[1],
         },
       ],
@@ -32,7 +33,7 @@ class ColumnChart extends Component {
         dataLabels: {
           enabled: true,
           formatter: function (val) {
-            return val + "%";
+            return val;
           },
           offsetY: -20,
           style: {
@@ -63,7 +64,7 @@ class ColumnChart extends Component {
             },
           },
           tooltip: {
-            enabled: true,
+            enabled: false,
           },
         },
         yaxis: {
@@ -76,10 +77,24 @@ class ColumnChart extends Component {
           labels: {
             show: false,
             formatter: function (val) {
-              return val + "%";
+              return val + "점";
             },
           },
         },
+        tooltip: {
+          enabled: true,
+          custom: function ({ dataPointIndex }) {
+            const label = props[2][dataPointIndex];
+
+            const tooltipContent = label
+              .map((data) => "<div>" + data + "</div>")
+              .join("");
+
+            return tooltipContent;
+            // return label;
+          },
+        },
+
         title: {
           text: "파워레인저 님의 상위 직군 역량",
           floating: true,

@@ -1,0 +1,10 @@
+.tooltip-content {
+  background-color: #3a8bf5;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.tooltip-item {
+  margin-bottom: 5px;
+  color: #333;
+}
