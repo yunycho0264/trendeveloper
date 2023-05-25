@@ -54,7 +54,7 @@ const CarouselSlider = (props) => {
   // Render the topList elements
   return (
     <>
-      <Carousel autoPlay interval={5000} infiniteLoop>
+      <Carousel autoPlay interval={5000} infiniteLoop showThumbs={false}>
         {randomList.map((items, index) => (
           <div key={index}>
             {/* Corporate logo image */}
