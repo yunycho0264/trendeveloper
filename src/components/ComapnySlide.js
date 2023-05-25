@@ -56,19 +56,17 @@ const CompanySlide = (props) => {
   return (
     <>
       {logoLink ? (
-        <img
-          style={{
-            width: "300px",
-            height: "200px",
-            margin: "0 20px",
-            border: "1px solid #89969f",
-          }}
-          className={styles.bp}
-          alt="bp-logo"
-          src={logoLink}
-          onClick={handleClick}
-          onError={handleError}
-        />
+        <div className={styles.container} onClick={handleClick}>
+          <img
+            className={styles.image}
+            alt="로고 이미지가 존재하지 않습니다."
+            src={logoLink}
+            onError={handleError}
+          />
+          <div className={styles.overlay}>
+            <div className={styles.text}>{companyName}</div>
+          </div>
+        </div>
       ) : null}
     </>
   );
