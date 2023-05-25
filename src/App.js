@@ -28,8 +28,8 @@ function App() {
     <BrowserRouter>
       <ContextProvider>
         <div className="App">
-          <Background />
           <MyHeader />
+
           <Sign />
           <div className="wrapper">
             <Routes>
@@ -50,6 +50,7 @@ function App() {
               <Route path="/trend/stat/:id?" element={<Trend />} />
             </Routes>
           </div>
+          <Background />
         </div>
       </ContextProvider>
     </BrowserRouter>
