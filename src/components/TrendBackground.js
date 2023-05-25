@@ -130,12 +130,14 @@ const TrendBackground = () => {
       //   // navigate(`/trend/stat?id=${key}`);
       // };
       return (
-        <div key={key}>
+        <>
           {/* <li onClick={handleParameterChange}>{tmp}</li> */}
           <li>
+
             <Link to={`?id=${key}`} className={styles.anker}>{tmp}</Link>
+
           </li>
-        </div>
+        </>
       );
     });
     setTopList(tmpList);

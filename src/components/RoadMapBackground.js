@@ -158,18 +158,6 @@ const RoadMapBackground = (props) => {
           // console.log(item[1]);
 
           if (id === Object.keys(item[0])[0]) {
-            if (item[1]) {
-              const tmpSubject = item[1].map((item, index) => {
-                return (
-                  <div key={index}>
-                    <div>
-                      과목 : {Object.keys(item)} 평점 : {Object.values(item)}
-                    </div>
-                  </div>
-                );
-              });
-              setSubject(tmpSubject);
-            }
             if (item[2]) {
               const tmpRecomend = item[2].map((item, index) => {
                 return (
@@ -217,6 +205,22 @@ const RoadMapBackground = (props) => {
           );
         })
       );
+      const tmpSubject = respJSON.map((items, index) => {
+        console.log(items[1]);
+        if (items[1].length > 0) {
+          const sub = items[1].map((item, index) => {
+            const subject = Object.keys(item)[0];
+            const grade = Object.values(item)[0][0];
+            return `과목: ${subject} | 평점: ${grade}`;
+          });
+
+          console.log(sub);
+          return sub;
+        } else return ["empty"];
+      });
+      setSubject(tmpSubject);
+
+      console.log(tmpSubject);
       const tmpName = tmpList.map((item, index) => {
         return transName(item, jobKor);
       });
@@ -227,7 +231,7 @@ const RoadMapBackground = (props) => {
       setJobsName(tmpName);
       setAvgData(tmpData);
 
-      let ac = new ColumnChart([tmpName, tmpData]);
+      let ac = new ColumnChart([tmpName, tmpData, tmpSubject]);
       setColumChart(ac.render());
     };
 
@@ -263,7 +267,7 @@ const RoadMapBackground = (props) => {
           )}
         </div>
         <div className={styles.label2}>
-          <span>파워레인저</span> 님의 상위 직군 역량
+          <span>{name}</span> 님의 상위 직군 역량
         </div>
         <div className={styles["inner-box2"]}>{columChart}</div>
 

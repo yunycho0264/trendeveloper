@@ -1,9 +1,7 @@
 .background {
   width: 70vw;
-  height: 75vh;
   margin-left: 18vw;
   margin-bottom: 0vh;
-  overflow-y: scroll;
   margin-top: 1vh;
   margin-bottom: 100px;
   background: #fff;
@@ -69,6 +67,7 @@
 .clicked-job {
   color: #b93234;
 }
+
 
 .ranklist {
   text-decoration: none;
