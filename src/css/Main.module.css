@@ -42,12 +42,6 @@
   margin: 0 10px;
 }
 
-.logo img {
-  width: 100%;
-  height: auto; /* This could be 100% as well, it depends on what you want */
-  object-fit: cover; /* This will make the image cover the entire container, potentially cutting off parts of the image */
-}
-
 .container {
   position: relative;
   width: 300px;
@@ -62,6 +56,8 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
+  position: relative; /* Add this line */
+  top: 0; /* Add this line */
 }
 
 .overlay {

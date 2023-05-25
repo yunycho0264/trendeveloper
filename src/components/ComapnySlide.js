@@ -55,22 +55,19 @@ const CompanySlide = (props) => {
   };
 
   return (
-    <>
-      {logoLink ? (
-        <div className={styles.container} onClick={handleClick}>
-          <img
-            className={styles.image}
-            alt="로고 이미지가 존재하지 않습니다."
-            src={logoLink}
-            onError={handleError}
-          />
-          <div className={styles.overlay}>
-            <div className={styles.text}>{companyName}</div>
-          </div>
+    logoLink && (
+      <div className={styles.container} onClick={handleClick}>
+        <img
+          className={styles.image}
+          alt="로고 이미지가 없습니다"
+          src={logoLink}
+          onError={handleError}
+        />
+        <div className={styles.overlay}>
+          <div className={styles.text}>{companyName}</div>
         </div>
-      ) : null}
-    </>
+      </div>
+    )
   );
 };
-
 export default CompanySlide;
