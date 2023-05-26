@@ -81,17 +81,43 @@ const NewsList = () => {
     //   <div href="">3.</div>
     // </div>
     <div className={styles.headline}>
-      <h3>Positive News:</h3>
+      <h3 className={styles.positive}>Positive News:</h3>
       {positiveNews.map((news, index) => (
-        <div key={index}>{news ? news.headline : "Loading..."}</div>
+        <div key={index}>
+          {news ? (
+            <a href={news.link} target="_blank" rel="noreferrer">
+              {news.headline}
+            </a>
+          ) : (
+            "Loading..."
+          )}
+        </div>
       ))}
-      <h3>Negative News:</h3>
+
+      <h3 className={styles.negative}>Negative News:</h3>
       {negativeNews.map((news, index) => (
-        <div key={index}>{news ? news.headline : "Loading..."}</div>
+        <div key={index}>
+          {news ? (
+            <a href={news.link} target="_blank" rel="noreferrer">
+              {news.headline}
+            </a>
+          ) : (
+            "Loading..."
+          )}
+        </div>
       ))}
-      <h3>Neutral News:</h3>
+
+      <h3 className={styles.neutral}>Neutral News:</h3>
       {neutralNews.map((news, index) => (
-        <div key={index}>{news ? news.headline : "Loading..."}</div>
+        <div key={index}>
+          {news ? (
+            <a href={news.link} target="_blank" rel="noreferrer">
+              {news.headline}
+            </a>
+          ) : (
+            "Loading..."
+          )}
+        </div>
       ))}
     </div>
   );

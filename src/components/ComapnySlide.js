@@ -8,6 +8,7 @@ const API_URI = process.env.REACT_APP_API_URI;
 const CompanySlide = (props) => {
   let [logoLink, setlogoLink] = useState(null);
   const [companyName, setCompanyName] = useState("");
+  const [jobsNm, setjobsNm] = useState("");
   let respJSON = useState({});
   //let logoLink = useState("");
   //
@@ -37,6 +38,7 @@ const CompanySlide = (props) => {
 
         setlogoLink(`https://work.go.kr/${respJSON.logoLink}`);
         setCompanyName(respJSON.companyName);
+        setjobsNm(respJSON.jobsNm);
         //logoLink = respJSON["logoLink"];
       }
     };
@@ -64,7 +66,7 @@ const CompanySlide = (props) => {
           onError={handleError}
         />
         <div className={styles.overlay}>
-          <div className={styles.text}>{companyName}</div>
+          <div className={styles.text}>{companyName}<span>{jobsNm}</span></div>
         </div>
       </div>
     )

@@ -79,3 +79,12 @@
 .container:hover .overlay {
   height: 50%;
 }
+
+.text span {
+  display: block;
+  font-size: 14px;
+}
+
+.text {
+  text-align: center;
+}

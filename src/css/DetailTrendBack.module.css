@@ -1,9 +1,8 @@
 .background {
   border: 1px solid #89969f;
   width: 800px;
-  height: 620px;
+  height: 1000px;
   margin-left: 300px;
-  margin-top: -76px;
   background: #fff;
   overflow: auto;
 }
@@ -11,8 +10,8 @@
 .chart {
   width : auto;
   height: 400px;
-  position: relative;
-  top: -570px;
+  bottom: 270px;
+  position: absolute;
   left: 450px;
 }
 
