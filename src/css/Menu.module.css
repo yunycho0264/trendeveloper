@@ -45,10 +45,40 @@ header a span {
   color: #fc5230;
 }
 
-.menu-line{
-  border-top: 2px solid #89969F;
+.menu-line {
+  border-top: 2px solid #89969f;
   margin: 50px auto 30px;
   margin-left: -500px;
   width: 1100px;
   height: 0px;
+}
+
+.userTag {
+  margin-right: 10px;
+}
+
+.separator {
+  margin: 0 5px;
+}
+
+.authLinks {
+  display: flex;
+  align-items: center;
+}
+
+.authLinks p {
+  margin: 0 5px;
+}
+
+.authLinks .nav {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.authLinks .nav:hover {
+  color: #fc5230;
+  text-decoration: underline;
 }

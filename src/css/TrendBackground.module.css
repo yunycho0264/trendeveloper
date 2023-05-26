@@ -33,7 +33,7 @@
 
 .rank {
   width: 70vw;
-  height: 20vh;
+  /* height: 20vh; */
   margin-left: 18vw;
   display: flex;
   justify-content: center; /* Horizontal center alignment */
@@ -68,11 +68,45 @@
   color: #b93234;
 }
 
-
-.ranklist {
-  text-decoration: none;
+.rank1 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 2vh;
+  margin-left: 2vw;
+  color: rgba(186, 12, 47, 1);
 }
 
+.rank2 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 2vh;
+  margin-left: 2vw;
+  color: rgb(169, 11, 43);
+}
+
+.rank3 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 2vh;
+  margin-left: 2vw;
+  color: rgb(147, 10, 37);
+}
+
+.rank4 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 2vh;
+  margin-left: 2vw;
+  color: rgb(112, 7, 28);
+}
+
+.rank5 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 2vh;
+  margin-left: 2vw;
+  color: rgb(61, 4, 15);
+}
 .notice {
   margin-top: 10px;
 }
@@ -80,11 +114,27 @@
 .anker {
   text-decoration: none;
   margin-right: 55vw;
-  color: #000;
   font-weight: bold;
+  color: black;
 }
 
 .list {
   position: relative;
   top: 1vh;
+  list-style-type: none;
+  padding: 0;
+}
+
+.list li {
+  margin-bottom: 10px;
+}
+
+.list li a {
+  /* color: #333; */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.list li a:hover {
+  color: #ba0c2f;
 }

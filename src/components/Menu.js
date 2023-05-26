@@ -14,7 +14,6 @@ const Menu = () => {
         </Link>
       </header>
       {/* 메뉴 태그 */}
-
       <ul className={styles.group}>
         <li className={styles.tag}>
           <Link to="/recruitement/list" className={styles.nav} id="nav1">
@@ -32,6 +31,8 @@ const Menu = () => {
           </Link>
         </li>
       </ul>
+      <Sign />
+
       {/* 메뉴 밑 구분선 */}
       <div className={styles["menu-line"]} />
     </div>

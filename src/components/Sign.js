@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../context/Auth.context.js";
 
+import styles from "../css/Menu.module.css";
+
 const API_URI = process.env.REACT_APP_API_URI;
 
 // 로그아웃
@@ -58,21 +60,39 @@ const Sign = () => {
 
     const menu = () => {
       return (
-        <>
+        <ul className={styles.group}>
           {tmp ? (
             <>
-              <span>{name} 님</span> <Link to="/mypage">마이페이지</Link> |{" "}
-              <Link to="/" onClick={setSignout}>
-                Logout
-              </Link>
+              {/* <li className={styles.userTag}>{name} 님</li> */}
+              <li className={styles.userTag}>
+                <Link to="/mypage" className={styles.nav}>
+                  마이페이지
+                </Link>
+              </li>
+              {/* <li className={styles.userTag}>
+                <span className={styles.separator}>|</span>
+              </li> */}
+              <li className={styles.userTag}>
+                <Link to="/" className={styles.nav} onClick={setSignout}>
+                  Logout
+                </Link>
+              </li>
             </>
           ) : (
             <>
-              <Link to="/signup">회원가입</Link> |{" "}
-              <Link to="/signin">로그인</Link>
+              <li className={styles.userTag}>
+                <Link to="/signup" className={styles.nav}>
+                  회원가입
+                </Link>
+              </li>
+              <li className={styles.userTag}>
+                <Link to="/signin" className={styles.nav}>
+                  로그인
+                </Link>
+              </li>
             </>
           )}
-        </>
+        </ul>
       );
     };
     // setToken(tmp);
