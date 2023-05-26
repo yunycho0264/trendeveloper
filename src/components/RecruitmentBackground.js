@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import "../css/Navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import "../css/RecruitmentList.module.css";
+import styles from "../css/RecruitmentList.module.css";
 
 import RecruitmentList from "./RecruitmentList";
 const API_URI = process.env.REACT_APP_API_URI;
@@ -62,11 +62,19 @@ const RecruitBackground = () => {
   };
 
   const handleClickedResetBtn = () => {
-    // console.log("clicked:", searchInput);
-    setCheckboxValues({});
+    const confirmation = window.confirm(
+      "선택된 카테고리와 검색 모두 초기화 하시겠습니까?"
+    );
 
-    setSearch("");
-    setSearchInput("");
+    if (confirmation) {
+      setCheckboxValues({});
+
+      setSearch("");
+      setSearchInput("");
+    } else {
+      // User clicked Cancel, do nothing or handle accordingly
+      // ...
+    }
   };
 
   const OPTIONS = [
@@ -79,14 +87,18 @@ const RecruitBackground = () => {
       console.log(e.target.value);
       setSearchCategory(e.target.value);
     };
-
     return (
-      <select value={searchCategory} onChange={handleChange}>
+      <select
+        value={searchCategory}
+        onChange={handleChange}
+        className={styles["select-box"]}
+      >
         {props.options.map((option) => (
           <option
             key={option.value}
             value={option.value}
             defaultValue={props.defaultValue === option.value}
+            className={styles["select-option"]}
           >
             {option.name}
           </option>
@@ -124,11 +136,6 @@ const RecruitBackground = () => {
       }
     }
     const queryString = decodeURIComponent(queryParams.toString());
-    // if (queryString) {
-    //   window.location.href = `/recruitment/list?${queryString}`;
-    // }
-
-    // console.log(decodeURIComponent(queryParams.toString()));
 
     const fetchJobPostings = async () => {
       const url = `${API_URI}/api/v1/recruitment/list?${queryString}`;
@@ -153,34 +160,52 @@ const RecruitBackground = () => {
   return (
     <>
       {/* Render checkboxes for categories */}
-      <div>
+      <div className={styles["btn-container"]}>
         {subjects.map((subject) => (
-          <label key={subject.value}>
+          <div key={subject.value}>
             <input
               type="checkbox"
+              id={subject.value}
               name={subject.value}
               checked={checkboxValues[subject.value] || false}
               onChange={handleCheckboxChange}
+              className={styles.checkbox}
             />
-            {subject.display}
-          </label>
+            <label htmlFor={subject.value} className={styles.btn}>
+              {subject.display}
+            </label>
+          </div>
         ))}
       </div>
       {/* Display selected checkbox string */}
-      <p>Selected Categories: {selectedCheckboxString}</p>
-      <SelectBox options={OPTIONS} defaultValue="title" />
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchInput}
-        onChange={handleSearchInput}
-      ></input>{" "}
-      <button type="button" onClick={handleClickedSearchBtn}>
-        검색
-      </button>{" "}
-      <button type="button" onClick={handleClickedResetBtn}>
-        초기화
-      </button>
+      {/* <p className={styles["selected-categories"]}>
+        Selected Categories: {selectedCheckboxString}
+      </p> */}
+      <div className={styles["search-container"]}>
+        <SelectBox options={OPTIONS} defaultValue="title" />
+
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchInput}
+          onChange={handleSearchInput}
+          className={styles["search-input"]}
+        />
+        <button
+          type="button"
+          onClick={handleClickedSearchBtn}
+          className={styles["search-button"]}
+        >
+          검색
+        </button>
+        <button
+          type="button"
+          onClick={handleClickedResetBtn}
+          className={styles["reset-button"]}
+        >
+          초기화
+        </button>
+      </div>
       {jobPostings}
     </>
   );

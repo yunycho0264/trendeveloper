@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import styles from "../css/DetailTrendBack.module.css";
 // import { ResponsivePie } from "@nivo/pie";
 import ReactApexChart from "react-apexcharts";
+import NewsList from "./NewsList";
 
 //API 연결
 const API_URI = process.env.REACT_APP_API_URI;
-
 
 const DetailTrendBack = () => {
   let [companyInfo, setCompanyInfo] = useState(null);
@@ -47,14 +47,18 @@ const DetailTrendBack = () => {
       const respJSON2 = await response2.json();
       console.log(respJSON2);
       setCompanyInfo(respJSON2);
-      setChartData([respJSON2.negative * 100, respJSON2.positive * 100, respJSON2.neutral * 100]);
+      setChartData([
+        respJSON2.negative * 100,
+        respJSON2.positive * 100,
+        respJSON2.neutral * 100,
+      ]);
     };
 
     fetchCompanyInfo();
   }, []);
 
   return (
-    <div> 
+    <div>
       <div className={styles.background} />
       <div className={styles.chart}>
         <ReactApexChart
@@ -64,8 +68,10 @@ const DetailTrendBack = () => {
           width="500"
         />
       </div>
-      <div className={styles["headline-label"]}>관련 뉴스 헤드라인을 살펴볼까요?<br/>
-      <span>(클릭하면 관련 뉴스 기사 페이지로 이동해요!)</span>
+      <div className={styles["headline-label"]}>
+        관련 뉴스 헤드라인을 살펴볼까요?
+        <br />
+        <span>(클릭하면 관련 뉴스 기사 페이지로 이동해요!)</span>
       </div>
     </div>
   );
@@ -77,7 +83,7 @@ const donutData = {
     chart: {
       type: "pie",
     },
-    colors: ["#FF6666", "#8BC34A", "#D9D9D9"],   
+    colors: ["#FF6666", "#8BC34A", "#D9D9D9"],
     legend: {
       position: "bottom",
     },
@@ -94,6 +100,5 @@ const donutData = {
     },
   },
 };
-
 
 export default DetailTrendBack;

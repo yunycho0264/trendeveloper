@@ -11,7 +11,7 @@ const DetailMenu = (props) => {
       {/*상세 요건*/}
       <div className={styles.requirement}>
         <Link
-          to={`/recruitement/DetailPage?id=${recruitmentID}`}
+          to={`/recruitement/detail?id=${recruitmentID}`}
           className={styles.nav}
           id="nav1"
         >

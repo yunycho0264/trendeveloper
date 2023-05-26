@@ -56,8 +56,7 @@ const SimpleSlider = (props) => {
     <div
       style={{
         position: "relative",
-        width: "1140px",
-        height: "200px",
+        // height: "200px",
         background: "#fff",
         display: "flex",
         overflowX: "auto",
@@ -69,8 +68,8 @@ const SimpleSlider = (props) => {
         style={{
           display: "flex",
           overflowX: "auto",
-          width: "1140px",
-          height: "200px",
+
+          // height: "200px",
         }}
       >
         {randomList.map((items, index) => (

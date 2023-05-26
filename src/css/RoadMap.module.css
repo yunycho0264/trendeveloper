@@ -2,7 +2,7 @@
   width: 70vw;
   /* height: 65vh; */
   margin-left: 18vw;
-  margin-bottom: 0vh;
+  margin-bottom: 10vh;
   margin-top: 1vh;
   background: #fff;
   border: 1px solid #89969f;
@@ -75,6 +75,7 @@
   border: 1px solid #89969f;
   margin-top: 2vh;
   margin-left: 2vw;
+  margin-bottom: 2vh;
   justify-content: center;
   align-items: center;
   width: 65vw;
@@ -105,4 +106,66 @@
   font-size: 24px;
   margin-top: 2vh;
   margin-left: 2vw;
+}
+
+.btn-container {
+  margin-top: 5vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Adjust this property to align the buttons as desired */
+}
+
+.btn {
+  margin: 10px;
+
+  padding: 10px 17px;
+  background-color: #e0e0e0;
+  color: #333;
+  font-size: small;
+  text-decoration: none;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.selected {
+  background-color: #ba0c2f;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #ba0c2f;
+  color: white;
+}
+
+.btn:last-child {
+  margin-right: 0;
+}
+
+/* 테이블 */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f5f5f5;
 }

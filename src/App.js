@@ -7,7 +7,11 @@ import Menu from "../src/components/Menu";
 import DetailPage from "../src/pages/DetailPage";
 import DetailTrend from "./pages/DetailTrend";
 import React, { useContext } from "react";
-import { AuthContext, ContextProvider } from "./context/Auth.context";
+import {
+  AuthContext,
+  AuthContextProvider,
+  ContextProvider,
+} from "./context/Auth.context";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyHeader from "../src/components/MyHeader";
 import MyFooter from "../src/components/MyFooter";
@@ -22,37 +26,40 @@ import Navbar from "./components/Navbar";
 import Sign from "./components/Sign";
 import UploadFile from "./components/UploadFile";
 import SelectionBoxList from "./components/SelectionBoxList";
+import { ComContextProvider } from "./context/Com.context";
 
 function App() {
   return (
     <BrowserRouter>
-      <ContextProvider>
-        <div className="App">
-          <MyHeader />
+      <ComContextProvider>
+        <AuthContextProvider>
+          <div className="App">
+            <MyHeader />
 
-          <Sign />
-          <div className="wrapper">
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/recruitement/list" element={<Recruitment />} />
-              <Route
-                path="/recruitement/detail/:id?"
-                element={<DetailPage />}
-              />
+            <Sign />
+            <div className="wrapper">
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/recruitement/list" element={<Recruitment />} />
+                <Route
+                  path="/recruitement/detail/:id?"
+                  element={<DetailPage />}
+                />
 
-              <Route path="/company/detail/:id?" element={<DetailTrend />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/signin" element={<Signin />} />
-              <Route path="/mypage" element={<MyPage />} />
-              <Route path="/roadmap/upload" element={<UploadFile />} />
-              <Route path="/roadmap/select" element={<SelectionBoxList />} />
-              <Route path="/roadmap/stat/:id?" element={<RoadMap />} />
-              <Route path="/trend/stat/:id?" element={<Trend />} />
-            </Routes>
+                <Route path="/company/detail/:id?" element={<DetailTrend />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/signin" element={<Signin />} />
+                <Route path="/mypage" element={<MyPage />} />
+                <Route path="/roadmap/upload" element={<UploadFile />} />
+                <Route path="/roadmap/select" element={<SelectionBoxList />} />
+                <Route path="/roadmap/stat/:id?" element={<RoadMap />} />
+                <Route path="/trend/stat/:id?" element={<Trend />} />
+              </Routes>
+            </div>
+            <Background />
           </div>
-          <Background />
-        </div>
-      </ContextProvider>
+        </AuthContextProvider>
+      </ComContextProvider>
     </BrowserRouter>
   );
 }

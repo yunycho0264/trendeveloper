@@ -10,6 +10,7 @@ const DetailTrend = () => {
   return (
     <div>
       <NewsList />
+
       <CompanyInfo />
       <Companylogo />
       <DetailMenu />

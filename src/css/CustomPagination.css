@@ -1,0 +1,25 @@
+/* Example customization */
+.react-paginate {
+  /* Adjust the positioning properties */
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.react-paginate ul li {
+  /* Adjust the color properties */
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.react-paginate ul li.selected {
+  /* Adjust the color properties for the selected item */
+  background-color: #ba0c2f;
+  color: white;
+}
+
+.react-paginate ul li:hover {
+  /* Adjust the color properties for the hover effect */
+  background-color: #ba0c2f;
+  color: white;
+}
