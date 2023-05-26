@@ -3,9 +3,9 @@
   width: 800px;
   height: 620px;
   margin-left: 300px;
-  margin-top: -4px;
   background: #fff;
   overflow: auto;
+  position: absolute;
 }
 
 .top-bar {
@@ -19,7 +19,7 @@
   border-top-right-radius: 10px;
 }
 
-.inner-box {
+/* .inner-box {
   background-color: #fff;
   margin-left: 50px;
   margin-bottom: 30px;
@@ -28,7 +28,7 @@
   position: relative;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 1.5px 1.5px 1.5px 1.5px #b4b7ba;
-}
+} */
 
 .box2 {
   position: static;

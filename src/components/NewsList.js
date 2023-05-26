@@ -5,6 +5,9 @@ const API_URI = process.env.REACT_APP_API_URI;
 
 const NewsList = () => {
   let [newsData, setnewsData] = useState(null);
+  let [positiveNews, setPositiveNews] = useState([]);
+  let [negativeNews, setNegativeNews] = useState([]);
+  let [neutralNews, setNeutralNews] = useState([]);
 
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -42,10 +45,29 @@ const NewsList = () => {
       const respJSON2 = await response2.json();
       console.log(respJSON2);
       setnewsData(respJSON2);
+
+      if (respJSON2) {
+        const maxSize = 3;
+        const positive = respJSON2
+          .filter((news) => news.positive === true)
+          .slice(0, maxSize);
+        const negative = respJSON2
+          .filter((news) => news.negative === true)
+          .slice(0, maxSize);
+        const neutral = respJSON2
+          .filter((news) => !news.positive && !news.negative)
+          .slice(0, maxSize);
+
+        setPositiveNews(positive);
+        setNegativeNews(negative);
+        setNeutralNews(neutral);
+      }
     };
 
     fetchNewsData();
   }, []);
+
+  //뉴스 담을 배열 설정
 
   // <div className={styles.headline}>
   //     <div className={styles.headline1} href="">1. {newsData ? newsData[0].headline : "Loading..."}</div>
@@ -53,10 +75,24 @@ const NewsList = () => {
   //     <div className={styles.headline3} href="">3. {newsData ? newsData[2].headline : "Loading..."}</div>
   //   </div>
   return (
-    <div>
-      <div href="">1. </div>
-      <div href="">2. </div>
-      <div href="">3.</div>
+    // <div>
+    //   <div href="">1. </div>
+    //   <div href="">2. </div>
+    //   <div href="">3.</div>
+    // </div>
+    <div className={styles.headline}>
+      <h3>Positive News:</h3>
+      {positiveNews.map((news, index) => (
+        <div key={index}>{news ? news.headline : "Loading..."}</div>
+      ))}
+      <h3>Negative News:</h3>
+      {negativeNews.map((news, index) => (
+        <div key={index}>{news ? news.headline : "Loading..."}</div>
+      ))}
+      <h3>Neutral News:</h3>
+      {neutralNews.map((news, index) => (
+        <div key={index}>{news ? news.headline : "Loading..."}</div>
+      ))}
     </div>
   );
 };
