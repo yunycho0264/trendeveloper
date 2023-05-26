@@ -52,12 +52,16 @@ const Signup = () => {
       password,
     });
     if ("token" in response) {
-      var receivedToken = response["token"];
+      const receivedToken = response["token"];
+      const receivedName = response["name"];
+      const receivedEmail = response["email"];
+
       if (receivedToken === "EXISTS") {
         window.alert("already registered email");
       } else {
         localStorage.setItem("token", receivedToken);
-        window.alert("Token: " + receivedToken);
+        localStorage.setItem("name", receivedName);
+        localStorage.setItem("email", receivedEmail);
       }
       changeSignedIn();
       navigate("/");

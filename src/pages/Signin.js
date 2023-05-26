@@ -54,7 +54,6 @@ const Signin = () => {
         localStorage.setItem("name", receivedName);
         const receivedEmail = responseJSON["email"];
         localStorage.setItem("email", receivedEmail);
-        window.alert("Token: " + receivedToken);
         console.log(responseJSON);
         changeSignedIn();
         navigate("/");

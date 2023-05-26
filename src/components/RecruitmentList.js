@@ -61,6 +61,7 @@ const RecruitmentList = (props) => {
             <th className="index">회사</th>
             <th className="index">제목</th>
             <th className="index">마감일</th>
+            <th className="index">채용시마감</th>
           </tr>
         </thead>
         <tbody>{currentItems}</tbody>
