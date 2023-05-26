@@ -9,6 +9,7 @@ const API_URI = process.env.REACT_APP_API_URI;
 
 const RecruitContent = (props) => {
   const [companyInfo, setCompanyInfo] = useState({});
+  const [closeDtInfo, setCloseDtInfo] = useState({});
 
   useEffect(() => {
     // console.log(props);
@@ -26,9 +27,24 @@ const RecruitContent = (props) => {
           }
         );
         const respJSON = await response.json();
-        setCompanyInfo(respJSON);
         // console.log(respJSON);
-        // console.log(companyInfo);
+        const closeDtSrc = respJSON.closeDt;
+        let closeDtInfoTmp = {};
+        if (closeDtSrc.length > 0) {
+          const closeDtArr = closeDtSrc.split("  ");
+          if (closeDtArr.length === 1) {
+            closeDtInfoTmp.date = closeDtArr[0];
+            closeDtInfoTmp.until = "🚫아니하다.🚫";
+            // console.log(closeDtInfo.date);
+          } else {
+            closeDtInfoTmp.date = closeDtArr[1];
+            closeDtInfoTmp.until = "🙆그러하다.🙆";
+            // console.log(closeDtInfo.date);
+          }
+        }
+        setCompanyInfo(respJSON);
+        setCloseDtInfo(closeDtInfoTmp);
+        // console.log(respJSON);
       } catch (error) {
         console.error(error);
       }
@@ -46,7 +62,9 @@ const RecruitContent = (props) => {
           {companyInfo.wantedTitle}
         </Link>
       </td>
-      <td>{companyInfo.closeDt}</td>
+      {/* <td>{companyInfo.closeDt}</td> */}
+      <td>{closeDtInfo.date}</td>
+      <td>{closeDtInfo.until}</td>
     </tr>
   );
 };

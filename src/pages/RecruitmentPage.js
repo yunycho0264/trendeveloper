@@ -11,12 +11,11 @@ const Recruitment = () => {
       style={{
         width: "70vw",
         marginLeft: "18vw",
-        marginBottom: "0vh",
+        marginBottom: "10vh",
         marginTop: "1vh",
         background: "#fff",
         justifyContent: "center",
         alignItems: "center",
-        height: "500px",
         margin: "0 auto 100px",
       }}
     >
