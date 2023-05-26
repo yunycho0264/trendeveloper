@@ -59,9 +59,47 @@ const UploadFile = () => {
   };
 
   return (
-    <form>
-      <input type="file" onChange={handleFileUpload} accept=".xlsx, .xls" />
-    </form>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        backgroundColor: "#fff",
+        padding: "10px",
+        borderRadius: "4px",
+      }}
+    >
+      <form>
+        <input
+          type="file"
+          id="upload-input" // 추가: id 속성 추가
+          onChange={handleFileUpload}
+          accept=".xlsx, .xls"
+          style={{
+            position: "absolute",
+            left: "-9999px",
+          }}
+        />
+        <label
+          htmlFor="upload-input"
+          style={{
+            display: "inline-block",
+            padding: "10px 20px",
+            backgroundColor: "#fc5230",
+            color: "#fff",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontWeight: "bold",
+          }}
+        >
+          파일 업로드
+        </label>
+      </form>
+    </div>
   );
 };
 

@@ -44,9 +44,12 @@ const RoadMap = () => {
       console.log(respJSON);
 
       const tmp = () => {
-        let len = respJSON[0].length;
-        if (len === 0) return <UploadFile />;
-        else return <RoadMapBackground data={respJSON} />;
+        let len = Object.values(respJSON[0][0]);
+        console.log(len);
+        if (len > 100) {
+          alert("파일을 다시 올려주세요!");
+          return <UploadFile />;
+        } else return <RoadMapBackground data={respJSON} />;
       };
 
       setView(tmp());
