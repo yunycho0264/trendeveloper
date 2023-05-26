@@ -35,8 +35,6 @@ function App() {
         <AuthContextProvider>
           <div className="App">
             <MyHeader />
-
-            <Sign />
             <div className="wrapper">
               <Routes>
                 <Route path="/" element={<Main />} />

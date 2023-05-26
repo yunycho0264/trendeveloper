@@ -152,8 +152,17 @@ export const SelectionBox = ({ index, subjects, onDelete, onUpdate }) => {
   };
 
   return (
-    <div>
-      <select value={selectedSubject} onChange={handleSubjectChange}>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <select
+        value={selectedSubject}
+        onChange={handleSubjectChange}
+        style={{
+          marginRight: "10px",
+          padding: "5px",
+          borderRadius: "4px",
+          border: "1px solid #ccc",
+        }}
+      >
         <option value="">-선택-</option>
         {subjects.map((subject) => (
           <option key={subject.value} value={subject.value}>
@@ -161,34 +170,39 @@ export const SelectionBox = ({ index, subjects, onDelete, onUpdate }) => {
           </option>
         ))}
       </select>
-      <label>
+      <label style={{ marginRight: "10px" }}>
         <input
           type="radio"
           value="upper"
           checked={selectedLevel === "upper"}
           onChange={handleLevelChange}
+          style={{ marginRight: "5px" }}
         />
         상
       </label>
-      <label>
+      <label style={{ marginRight: "10px" }}>
         <input
           type="radio"
           value="middle"
           checked={selectedLevel === "middle"}
           onChange={handleLevelChange}
+          style={{ marginRight: "5px" }}
         />
         중
       </label>
-      <label>
+      <label style={{ marginRight: "10px" }}>
         <input
           type="radio"
           value="lower"
           checked={selectedLevel === "lower"}
           onChange={handleLevelChange}
+          style={{ marginRight: "5px" }}
         />
         하
       </label>
-      <button onClick={handleDelete}>Delete</button>
+      <button onClick={handleDelete} style={{ marginRight: "10px" }}>
+        Delete
+      </button>
       <button onClick={handleUpdate}>Update</button>
     </div>
   );

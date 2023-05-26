@@ -63,9 +63,6 @@ const RoadMapBackground = (props) => {
       if (urlSearchParams.has("id")) {
         // console.log(id);
         respJSON.forEach((item, index) => {
-          // console.log(Object.keys(item[0])[0]);
-          // console.log(item[1]);
-
           if (id === Object.keys(item[0])[0]) {
             if (item[2]) {
               const tmpRecomend = item[2]
@@ -167,11 +164,13 @@ const RoadMapBackground = (props) => {
           <span className={`${styles["clicked-job"]} ${styles.text}`}>
             {name}
           </span>{" "}
-          님의 로드맵
-          <span>
-            <AiFillQuestionCircle />
-            <Modal isOpen={false}> </Modal>
-          </span>
+          <span> 님의 로드맵</span>
+          <button
+            className={`${styles.btn} `}
+            onClick={() => navigate("/roadmap/upload")}
+          >
+            파일 업로드
+          </button>
         </div>
       </div>
 

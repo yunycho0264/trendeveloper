@@ -46,9 +46,7 @@ const RoadMap = () => {
       const tmp = () => {
         let len = respJSON[0].length;
         if (len === 0) return <UploadFile />;
-        else if (len === 3) return <SelectionBoxList />;
-        else if (len === 5) return <RoadMapBackground data={respJSON} />;
-        else return null;
+        else return <RoadMapBackground data={respJSON} />;
       };
 
       setView(tmp());
