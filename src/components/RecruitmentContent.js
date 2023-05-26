@@ -1,6 +1,9 @@
 import { prop } from "dom7";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+import styles from "../css/RecruitmentList.module.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -38,7 +41,7 @@ const RecruitContent = (props) => {
     <tr key={props.index}>
       <td>{props.index}</td>
       <td>{companyInfo.companyName}</td>
-      <td>
+      <td className={styles.link}>
         <Link to={`/recruitement/detail?id=${companyInfo.wantedAuthNo}`}>
           {companyInfo.wantedTitle}
         </Link>

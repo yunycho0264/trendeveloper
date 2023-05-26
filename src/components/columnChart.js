@@ -1,4 +1,5 @@
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { lab } from "d3-color";
 import React, { Component } from "react";
 import ApexCharts from "react-apexcharts";
 
@@ -28,6 +29,7 @@ class ColumnChart extends Component {
             dataLabels: {
               position: "top", // top, center, bottom
             },
+            // colors: ["#FF0000"], // 막대 그래프 색상을 변경합니다
           },
         },
         dataLabels: {
@@ -84,11 +86,19 @@ class ColumnChart extends Component {
         tooltip: {
           enabled: true,
           custom: function ({ dataPointIndex }) {
-            const label = props[2][dataPointIndex];
+            let label = props[2][dataPointIndex];
 
-            const tooltipContent = label
-              .map((data) => "<div>" + data + "</div>")
-              .join("");
+            let tooltipContent = "";
+
+            if (Array.isArray(label)) {
+              tooltipContent = label
+                .map((data) => "<div>" + data + "</div>")
+                .join("");
+            } else if (typeof label === "string" || typeof label === "number") {
+              tooltipContent = "<div>" + label + "</div>";
+            } else {
+              tooltipContent = "<div>Invalid data format</div>";
+            }
 
             return tooltipContent;
             // return label;
@@ -110,7 +120,7 @@ class ColumnChart extends Component {
 
   render() {
     return (
-      <div id="chart">
+      <div id="chart" style={{ cursor: "help" }}>
         <ApexCharts
           options={this.state.options}
           series={this.state.series}

@@ -6,8 +6,9 @@ import Recruitment from "../pages/RecruitmentPage";
 import RecruitContent from "./RecruitmentContent";
 
 import ReactPaginate from "react-paginate";
+import "../css/CustomPagination.css";
 
-import "../css/RecruitmentList.module.css";
+import styles from "../css/RecruitmentList.module.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -53,7 +54,7 @@ const RecruitmentList = (props) => {
 
   return (
     <div>
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th className="index">번호</th>
@@ -64,26 +65,28 @@ const RecruitmentList = (props) => {
         </thead>
         <tbody>{currentItems}</tbody>
       </table>
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-        marginPagesDisplayed={2}
-        pageClassName="page-item"
-        pageLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
-        breakClassName="page-item"
-        breakLinkClassName="page-link"
-        containerClassName="pagination"
-        activeClassName="active"
-      />
+      <div>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          marginPagesDisplayed={2}
+          pageClassName={styles.paginationItem}
+          pageLinkClassName={styles.paginationLink}
+          previousClassName={styles.paginationItem}
+          previousLinkClassName={styles.paginationLink}
+          nextClassName={styles.paginationItem}
+          nextLinkClassName={styles.paginationLink}
+          breakClassName={styles.paginationItem}
+          breakLinkClassName={styles.paginationLink}
+          containerClassName={styles.paginationContainer}
+          activeClassName={styles.activePagination}
+        />
+      </div>
     </div>
   );
 };
