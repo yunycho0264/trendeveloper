@@ -4,8 +4,7 @@ text-align: center;
 }
 
 .headline {
-  display: flex;
-  flex-direction: column; /* or row for a horizontal layout */
-  align-items: center; /* centers items along the cross axis */
-  justify-content: center; /* centers items along the main axis */
+position: absolute;
+top: 700px;
+left: 350px;
 }
