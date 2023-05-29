@@ -4,15 +4,19 @@ text-align: center;
 }
 
 .headline {
-position: absolute;
-top: 750px;
+position: relative;
 left: 350px;
+bottom: 1060px;
 }
 
 .positive {
-  font-size: 24px;
+  background-color: #e0e0e0;
+  width: 200px;
+  border-radius: 20px;
+  font-size: 15px;
   font-weight: bold;
   line-height: 5vh;
+  text-align: center;
 }
 
 .positive a {
@@ -22,10 +26,16 @@ left: 350px;
 
 
 .negative {
-  font-size: 24px;
+  background-color: #e0e0e0;
+  width: 200px;
+  border-radius: 20px;
+  font-size: 15px;
   font-weight: bold;
   line-height: 5vh;
+  text-align: center;
+  margin-top: 50px;
 }
+
 
 .negative a {
   color: inherit;
@@ -33,12 +43,43 @@ left: 350px;
 }
 
 .neutral {
-  font-size: 24px;
+  background-color: #e0e0e0;
+  width: 200px;
+  border-radius: 20px;
+  font-size: 15px;
   font-weight: bold;
   line-height: 5vh;
+  text-align: center;
+  margin-top: 50px;
 }
+
 
 .neutral a {
   color: inherit;
   text-decoration: none;
+}
+
+.p_list {
+  background-color: #e0e0e0;
+  padding: 10px;
+  width: 700px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.neg_list {
+  background-color: #e0e0e0;
+  padding: 10px;
+  width: 200px;
+  width: 700px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.neu_list {
+  background-color: #e0e0e0;
+  padding: 10px;
+  width: 700px;
+  margin-top: 10px;
+  border-radius: 20px;
 }

@@ -1,10 +1,12 @@
 .requirement {
   position: absolute;
-  top: 206px;
-  left: 219px;
+  top: 200px;
+  left: 220px;
   width:80px;
   height: 50px;
-  border: 1px solid #89969F;
+  border-left: 1px solid #89969F;
+  border-bottom: 1px solid #89969F;
+  border-top: 1px solid #89969F;
   background: #fff;
 }
 
@@ -25,11 +27,12 @@
 
 .company-trend {
   position: absolute;
-  top: 251px;
-  left: 219px;
+  top: 250px;
+  left: 220px;
   width:80px;
   height: 50px;
-  border: 1px solid #89969F;
+  border-left: 1px solid #89969F;
+  border-bottom: 1px solid #89969F;
   background: #fff;
 }
 
