@@ -17,7 +17,7 @@ const TrendReport = (props) => {
 
   let [apexChart, setApexChart] = useState(null);
 
-  const month = 6;
+  const month = 20;
 
   useEffect(() => {
     // console.log(window.location.href);
@@ -76,10 +76,10 @@ const TrendReport = (props) => {
           <span className={`${styles["clicked-job"]} ${styles.text}`}>
             {jobName}
           </span>{" "}
-          의 과거 6개월 간 채용 동향이에요!
+          의 채용 동향이에요!
         </div>
-        <div className={`${styles.box} ${styles["inner-box"]}`}>
-          {apexChart}
+        <div className={`${styles.box} ${styles["inner-box"]} `}>
+          <div style={{ width: "100%" }}> {apexChart} </div>
         </div>
       </div>
 
@@ -92,7 +92,6 @@ const TrendReport = (props) => {
         </div>
 
         <div className={styles.notice}>{silder}</div>
-
       </div>
     </div>
   );

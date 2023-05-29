@@ -10,9 +10,7 @@ import TrendReport from "./TrendReport";
 import HowRank from "./Modal";
 import { ComContext } from "../context/Com.context";
 
-const API_URI = process.env.REACT_APP_API_URI;
-
-const TrendBackground = () => {
+const TrendBackground = (props) => {
   const { jobKor, transName } = useContext(ComContext);
 
   const [topList, setTopList] = useState([]);
@@ -20,7 +18,7 @@ const TrendBackground = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const ranks = ["front", "back", "full", "ios", "vr"];
+    const ranks = props.ranks;
 
     const urlSearchParams = new URLSearchParams(window.location.search);
     const id = urlSearchParams.get("id");

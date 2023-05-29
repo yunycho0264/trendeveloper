@@ -12,7 +12,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ResponsiveBar } from "@nivo/bar";
 import MyResponsiveBar from "./columnChart";
 import ColumnChart from "./columnChart";
-import CarouselSlider from "./CarouselSlider";
+import BootCamp from "./BootCamp";
 import { classMethod } from "@babel/types";
 import { ComContext } from "../context/Com.context";
 
@@ -52,7 +52,7 @@ const RoadMapBackground = (props) => {
     const fetchRoadmapRank = async () => {
       const respJSON = props.data;
       setRoadmapRank(respJSON);
-      console.log(respJSON);
+      // console.log(respJSON);
       // console.log(Object.values(respJSON[0][0])[0]);
 
       const tmpList = respJSON.map((item, index) => {
@@ -83,19 +83,8 @@ const RoadMapBackground = (props) => {
         navigate(`?id=${tmpList[0]}`);
       }
 
-      const tmpSlider = () => {
-        return <SimpleSlider id={id} />;
-      };
-
-      setCompanySlider(tmpSlider);
-
-      const tmpBoot = () => {
-        return <CarouselSlider id={id} />;
-      };
-
-      console.log(tmpBoot);
-
-      setBootSlider(tmpBoot);
+      setCompanySlider(<SimpleSlider id={id} />);
+      setBootSlider(<BootCamp id={id} />);
 
       setJobsList(
         tmpList.map((item) => {
@@ -120,26 +109,26 @@ const RoadMapBackground = (props) => {
           sub = items[1].map((item, index) => {
             const subject = Object.keys(item)[0];
             const grade = Object.values(item)[0][0];
-            return `Subject: ${subject} | Grade: ${grade}`;
+            return `과목: ${subject} | 평점: ${grade}`;
           });
 
-          console.log(sub);
+          // console.log(sub);
         } else {
-          sub = ["empty"];
+          sub = ["수강한 과목 없음"];
         }
         if (items[4] > 0) {
-          sub.push(`added value: ${items[4]}`);
+          sub.push(`추가 선택: ${items[4]}`);
         } else {
-          sub.push("No value added.");
+          sub.push("추가 선택 안함");
         }
         return sub;
       });
 
       setSubject(tmpSubject);
 
-      console.log(tmpSubject);
+      // console.log(tmpSubject);
       const tmpName = tmpList.map((item, index) => {
-        console.log(transName(item, jobKor));
+        // console.log(transName(item, jobKor));
         return transName(item, jobKor);
       });
       const tmpData = respJSON.map((item, index) => {
@@ -203,12 +192,12 @@ const RoadMapBackground = (props) => {
         </div>
 
         <div className={styles.label3}>
+          <span>{stateName}</span> 와 관련 있는 부트캠프에요!
+        </div>
+        <div className={styles["inner-box3"]}>{bootSilder} </div>
+        <div className={styles.label3}>
           <span>{stateName}</span> 와 관련 있는 공고에요!
         </div>
-        {bootSilder ? (
-          <div className={styles["inner-box3"]}>{bootSilder} </div>
-        ) : null}
-
         <div className={styles["inner-box3"]}>{companySilder}</div>
       </div>
     </div>

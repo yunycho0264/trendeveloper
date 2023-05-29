@@ -8,9 +8,9 @@ const DetailBackground = () => {
   let [worknetLink, setWorknetLink] = useState("");
   let respJSON = useState({});
   //let logoLink = useState("");
-  useEffect(() => {
-    const urlSearchParams = new URLSearchParams(window.location.search);
+  const urlSearchParams = new URLSearchParams(window.location.search);
 
+  useEffect(() => {
     const fetchData = async () => {
       if (urlSearchParams.has("id")) {
         console.log(urlSearchParams.get("id"));

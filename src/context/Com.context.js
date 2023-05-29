@@ -100,7 +100,6 @@ export const ComContextProvider = ({ children }) => {
 
     return name;
   };
-
   return (
     <ComContext.Provider
       value={{
