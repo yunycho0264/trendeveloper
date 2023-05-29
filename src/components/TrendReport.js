@@ -17,7 +17,7 @@ const TrendReport = (props) => {
 
   let [apexChart, setApexChart] = useState(null);
 
-  const month = 6;
+  const month = 20;
 
   useEffect(() => {
     // console.log(window.location.href);
@@ -40,7 +40,7 @@ const TrendReport = (props) => {
 
         const tmpKeys = Object.keys(data).sort();
 
-        // const tmpK = tmpKeys.slice(tmpKeys.length - month, tmpKeys.length);
+        const tmpK = tmpKeys.slice(tmpKeys.length - month, tmpKeys.length);
 
         const tmpValues = await Promise.all(
           tmpKeys.map(async (key) => {
@@ -48,13 +48,13 @@ const TrendReport = (props) => {
           })
         );
 
-        // const tmpV = tmpValues.slice(
-        //   tmpValues.length - month,
-        //   tmpValues.length
-        // );
+        const tmpV = tmpValues.slice(
+          tmpValues.length - month,
+          tmpValues.length
+        );
 
         setMonthValues(tmpValues);
-        let ac = new ApexChart([tmpKeys, tmpValues]);
+        let ac = new ApexChart([tmpK, tmpV]);
         setApexChart(ac.render());
 
         const tmpSlider = () => {
@@ -78,8 +78,8 @@ const TrendReport = (props) => {
           </span>{" "}
           의 채용 동향이에요!
         </div>
-        <div className={`${styles.box} ${styles["inner-box"]}`}>
-          {apexChart}
+        <div className={`${styles.box} ${styles["inner-box"]} `}>
+          <div style={{ width: "100%" }}> {apexChart} </div>
         </div>
       </div>
 

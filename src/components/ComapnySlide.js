@@ -66,7 +66,10 @@ const CompanySlide = (props) => {
           onError={handleError}
         />
         <div className={styles.overlay}>
-          <div className={styles.text}>{companyName}<span>{jobsNm}</span></div>
+          <div className={styles.text}>
+            {companyName}
+            <span>{jobsNm}</span>
+          </div>
         </div>
       </div>
     )

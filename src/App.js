@@ -1,12 +1,12 @@
 import "./css/App.css";
 import { Link } from "react-router-dom";
 import styles from "../src/css/App.module.css";
-import "./css/index.css";
+
 import Background from "../src/components/Background";
 import Menu from "../src/components/Menu";
 import DetailPage from "../src/pages/DetailPage";
 import DetailTrend from "./pages/DetailTrend";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   AuthContext,
   AuthContextProvider,

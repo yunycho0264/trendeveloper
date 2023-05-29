@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export const ComContext = createContext();
 
-const API_URI = process.env.REACT_APP_API_URI;
-
 export const ComContextProvider = ({ children }) => {
   const jobKor = [
     "서버/백엔드 개발자",
@@ -102,30 +100,6 @@ export const ComContextProvider = ({ children }) => {
 
     return name;
   };
-
-  const [ranks, setRanks] = useState(null);
-
-  const fetchRanks = async () => {
-    let from = "202004";
-    let count = 40;
-
-    const response = await fetch(
-      API_URI + `/api/v1/stat/rank?from=${from}&count=${count}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(),
-      }
-    );
-
-    const respJSON = await response.json();
-    console.log(respJSON);
-  };
-
-  fetchRanks();
-
   return (
     <ComContext.Provider
       value={{

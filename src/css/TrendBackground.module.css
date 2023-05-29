@@ -19,8 +19,8 @@
 
 .inner-box {
   margin-left: 0.7vw;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   width: 68vw;
   height: 28vh;
 }
@@ -58,10 +58,13 @@
 
 .contents {
   display: block;
-  /* float: left; */
   justify-content: center;
   align-items: center;
   margin-bottom: 2vh;
+}
+
+.left-align {
+  float: left;
 }
 
 .clicked-job {

@@ -5,7 +5,7 @@ class ApexChart extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props[0]);
+    // console.log(props[0]);
     this.state = {
       series: [
         {
@@ -14,52 +14,76 @@ class ApexChart extends Component {
       ],
       options: {
         chart: {
-          height: 350,
+          height: 250,
           type: "line",
           zoom: {
             enabled: false,
           },
         },
+        colors: ["#ba0c2f"],
         dataLabels: {
-          enabled: true,
+          enabled: false,
+        },
+        forecastDataPoints: {
+          count: 3,
         },
         stroke: {
-          curve: "straight",
+          width: 5,
+          curve: "smooth",
         },
-        grid: {
-          row: {
-            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-            opacity: 0.5,
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "dark",
+            gradientToColors: ["#FDD835"],
+            shadeIntensity: 1,
+            type: "horizontal",
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100, 100, 100],
           },
         },
+        // grid: {
+        //   row: {
+        //     colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+        //     opacity: 0.5,
+        //   },
+        // },
         xaxis: {
-          title: { text: "날짜", rotate: 0, offsetX: 0, offsetY: -20 },
+          // title: { text: "날짜", rotate: -45, offsetX: 0, offsetY: -20 },
+
           categories: props[0],
           labels: {
             formatter: function (value, index) {
               // Extract year and month if the value is defined
               if (value) {
-                const month = value.substr(4);
-                const year = value.substr(0, 4);
-
-                // if (month === "04") {
-                //   year = ;
-                // }
+                const month = (value) => {
+                  if (value[4] === "0") {
+                    return value.substr(5);
+                  } else {
+                    return value.substr(4);
+                  }
+                };
+                const year = value.substr(2, 2);
 
                 const formattedLabel = (year, month) => {
-                  if (month === "01") return `${year}년 ${month}월`;
-                  else return `${month}월`;
+                  if (month === "1") {
+                    return `${year}년 ${month}월`;
+                  } else {
+                    return `${month}월`;
+                  }
                 };
 
-                return formattedLabel(year, month);
+                return formattedLabel(year, month(value));
               }
 
               return value; // Return the value as is if it is undefined
             },
+            rotate: 0,
           },
         },
         yaxis: {
-          title: { text: "공고수", rotate: 0, offsetX: -8, offsetY: -80 },
+          title: { text: "공고수" },
         },
       },
     };
@@ -73,7 +97,7 @@ class ApexChart extends Component {
           series={this.state.series}
           type="line"
           height={250}
-          width={1100}
+          width={1300}
         />
       </div>
     );

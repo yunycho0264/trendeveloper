@@ -59,7 +59,7 @@ const RecruitContent = (props) => {
     };
     fetchCompanyInfo();
     // console.log(companyInfo);
-  }, [props]);
+  }, []);
 
   return (
     <tr key={props.index}>

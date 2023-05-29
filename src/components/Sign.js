@@ -101,7 +101,7 @@ const Sign = () => {
     setToken(tmp);
 
     setSignState(menu);
-  }, []);
+  }, [changeSignedIn]);
 
   return <>{signState}</>;
 };
