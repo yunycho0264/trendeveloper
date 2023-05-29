@@ -5,7 +5,7 @@ class ApexChart extends Component {
   constructor(props) {
     super(props);
 
-    //console.log(props);
+    console.log(props[0]);
     this.state = {
       series: [
         {
@@ -33,8 +33,30 @@ class ApexChart extends Component {
           },
         },
         xaxis: {
-          title: {text : "날짜", rotate: 0, offsetX: 0, offsetY: -20 },
+          title: { text: "날짜", rotate: 0, offsetX: 0, offsetY: -20 },
           categories: props[0],
+          labels: {
+            formatter: function (value, index) {
+              // Extract year and month if the value is defined
+              if (value) {
+                const month = value.substr(4);
+                const year = value.substr(0, 4);
+
+                // if (month === "04") {
+                //   year = ;
+                // }
+
+                const formattedLabel = (year, month) => {
+                  if (month === "01") return `${year}년 ${month}월`;
+                  else return `${month}월`;
+                };
+
+                return formattedLabel(year, month);
+              }
+
+              return value; // Return the value as is if it is undefined
+            },
+          },
         },
         yaxis: {
           title: { text: "공고수", rotate: 0, offsetX: -8, offsetY: -80 },

@@ -40,7 +40,7 @@ const TrendReport = (props) => {
 
         const tmpKeys = Object.keys(data).sort();
 
-        const tmpK = tmpKeys.slice(tmpKeys.length - month, tmpKeys.length);
+        // const tmpK = tmpKeys.slice(tmpKeys.length - month, tmpKeys.length);
 
         const tmpValues = await Promise.all(
           tmpKeys.map(async (key) => {
@@ -48,13 +48,13 @@ const TrendReport = (props) => {
           })
         );
 
-        const tmpV = tmpValues.slice(
-          tmpValues.length - month,
-          tmpValues.length
-        );
+        // const tmpV = tmpValues.slice(
+        //   tmpValues.length - month,
+        //   tmpValues.length
+        // );
 
         setMonthValues(tmpValues);
-        let ac = new ApexChart([tmpK, tmpV]);
+        let ac = new ApexChart([tmpKeys, tmpValues]);
         setApexChart(ac.render());
 
         const tmpSlider = () => {
@@ -76,7 +76,7 @@ const TrendReport = (props) => {
           <span className={`${styles["clicked-job"]} ${styles.text}`}>
             {jobName}
           </span>{" "}
-          의 과거 6개월 간 채용 동향이에요!
+          의 채용 동향이에요!
         </div>
         <div className={`${styles.box} ${styles["inner-box"]}`}>
           {apexChart}
@@ -92,7 +92,6 @@ const TrendReport = (props) => {
         </div>
 
         <div className={styles.notice}>{silder}</div>
-
       </div>
     </div>
   );

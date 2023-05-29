@@ -2,7 +2,7 @@ import { prop } from "dom7";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import { BiCircle, BiX } from "react-icons/bi";
 import styles from "../css/RecruitmentList.module.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
@@ -34,11 +34,19 @@ const RecruitContent = (props) => {
           const closeDtArr = closeDtSrc.split("  ");
           if (closeDtArr.length === 1) {
             closeDtInfoTmp.date = closeDtArr[0];
-            closeDtInfoTmp.until = "🚫아니하다.🚫";
+            closeDtInfoTmp.until = (
+              <>
+                <BiX size="30px" color="#E00000" />
+              </>
+            );
             // console.log(closeDtInfo.date);
           } else {
             closeDtInfoTmp.date = closeDtArr[1];
-            closeDtInfoTmp.until = "🙆그러하다.🙆";
+            closeDtInfoTmp.until = (
+              <>
+                <BiCircle size="20px" color="#008000" />
+              </>
+            );
             // console.log(closeDtInfo.date);
           }
         }
@@ -62,8 +70,8 @@ const RecruitContent = (props) => {
         </Link>
       </td>
       {/* <td>{companyInfo.closeDt}</td> */}
-      <td>{closeDtInfo.date}</td>
-      <td>{closeDtInfo.until}</td>
+      <td style={{ textAlign: "center" }}>{closeDtInfo.date}</td>
+      <td style={{ textAlign: "center" }}>{closeDtInfo.until}</td>
     </tr>
   );
 };

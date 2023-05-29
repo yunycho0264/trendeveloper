@@ -11,7 +11,7 @@ const API_URI = process.env.REACT_APP_API_URI;
 async function signoutUser() {
   const savedToken = `Bearer ${localStorage.getItem("token")}`;
 
-  console.log(savedToken);
+  // console.log(savedToken);
 
   // return localStorage.removeItem("user");
 
@@ -36,7 +36,7 @@ const Sign = () => {
   useEffect(() => {
     // const tmp = localStorage.getItem("token");
     // console.log(token);
-    console.log(localStorage.getItem("token"));
+    // console.log(localStorage.getItem("token"));
     const tmp = localStorage.getItem("token");
     const setSignout = async () => {
       const response = await signoutUser();
@@ -44,14 +44,14 @@ const Sign = () => {
       localStorage.removeItem("name");
       localStorage.removeItem("email");
 
-      console.log(response.status);
+      // console.log(response.status);
       if (response.ok) {
         console.log("로그아웃에 성공했습니다.");
         changeSignedIn();
         //   navigate("/");
       } else {
-        console.log(response.message);
-        console.log(localStorage.getItem("token"));
+        // console.log(response.message);
+        // console.log(localStorage.getItem("token"));
         console.log("로그아웃에 실패했습니다.");
         changeSignedIn();
         navigate("/");
@@ -99,9 +99,9 @@ const Sign = () => {
 
     // console.log(tmp);
     setToken(tmp);
-    console.log(tmp);
+
     setSignState(menu);
-  }, [changeSignedIn]);
+  }, []);
 
   return <>{signState}</>;
 };
