@@ -41,17 +41,16 @@ const RoadMap = () => {
 
       const respJSON = await response.json();
       setRoadmap(respJSON);
-      console.log(respJSON);
 
       if (!respJSON.length) navigate("/roadmap/upload");
 
       const tmp = () => {
-        let len = Object.values(respJSON[0][0]);
-        console.log(respJSON[0]);
-        console.log(len);
-        if (len > 100) {
-          return <UploadFile />;
-        } else return <RoadMapBackground data={respJSON} />;
+        let value = Object.values(respJSON[0][0]);
+        console.log(value);
+        if (value > 100) {
+          navigate("/roadmap/upload");
+        }
+        return <RoadMapBackground data={respJSON} />;
       };
 
       setView(tmp());

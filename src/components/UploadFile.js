@@ -2,12 +2,16 @@ import * as XLSX from "xlsx/xlsx.mjs";
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/Auth.context.js";
 import { useNavigate } from "react-router-dom";
+import SelectionBoxList from "./SelectionBoxList.js";
 // import SelectionBoxList from "./SelectionBoxList.js";
 const API_URI = process.env.REACT_APP_API_URI;
 
 const UploadFile = () => {
   const { changeSubmitted } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectPage, setSelectPage] = useState(null);
 
   useEffect(() => {}, []);
 
@@ -34,6 +38,8 @@ const UploadFile = () => {
         }
       });
 
+      setSelectedFile(file);
+
       const token = localStorage.getItem("token");
       // console.log(token);
       fetch(API_URI + "/api/v1/lecture/set", {
@@ -48,31 +54,45 @@ const UploadFile = () => {
         .then((data) => {
           console.log(data);
           if (data.length > 0) {
-            navigate("/roadmap/select");
+            setSelectPage(<SelectionBoxList />);
           }
         })
         .catch((error) => console.error(error));
     };
 
     reader.readAsArrayBuffer(file);
-    changeSubmitted();
+  };
+
+  const styles = {
+    container: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    fileLabel: {
+      marginTop: "10vh",
+      marginBottom: "10px",
+    },
+    uploadButton: {
+      display: "inline-block",
+      padding: "10px 20px",
+      backgroundColor: selectPage ? "#d9d9d9" : "#ba0c2f",
+      color: "#fff",
+      borderRadius: "4px",
+      cursor: "pointer",
+      fontWeight: "bold",
+      pointerEvents: selectedFile ? "none" : "auto",
+      opacity: selectedFile ? 0.5 : 1,
+    },
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        backgroundColor: "#fff",
-        padding: "10px",
-        borderRadius: "4px",
-      }}
-    >
+    <div style={styles.container}>
+      <div style={styles.fileLabel}>
+        {selectedFile
+          ? `Selected file: ${selectedFile.name}`
+          : "No file selected"}
+      </div>
       <form>
         <input
           type="file"
@@ -84,21 +104,11 @@ const UploadFile = () => {
             left: "-9999px",
           }}
         />
-        <label
-          htmlFor="upload-input"
-          style={{
-            display: "inline-block",
-            padding: "10px 20px",
-            backgroundColor: "#fc5230",
-            color: "#fff",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontWeight: "bold",
-          }}
-        >
+        <label htmlFor="upload-input" style={styles.uploadButton}>
           파일 업로드
         </label>
       </form>
+      <div style={{ marginTop: "20px" }}> {selectPage}</div>
     </div>
   );
 };

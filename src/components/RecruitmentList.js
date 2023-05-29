@@ -22,11 +22,7 @@ const RecruitmentList = (props) => {
     jobPostings
       .slice(itemOffset, endOffset)
       .map((item, index) => (
-        <RecruitContent
-          key={item.wantedAuthNo}
-          index={index + 1}
-          id={item.wantedAuthNo}
-        />
+        <RecruitContent key={item.wantedAuthNo} id={item.wantedAuthNo} />
       ))
   ) : (
     <tr>
@@ -57,7 +53,6 @@ const RecruitmentList = (props) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th className="index">번호</th>
             <th className="index">회사</th>
             <th className="index">제목</th>
             <th className="index">마감일</th>
