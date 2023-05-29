@@ -1,18 +1,20 @@
 .background {
   border: 1px solid #89969f;
   width: 800px;
-  height: 1000px;
+  height: 1250px;
   margin-left: 300px;
   background: #fff;
   overflow: auto;
+  position: relative;
+  top: 47.5px;
 }
 
 .chart {
   width : auto;
   height: 400px;
-  bottom: 270px;
-  position: absolute;
+  position: relative;
   left: 450px;
+  bottom: 1170px;
 }
 
 .companyLabel{

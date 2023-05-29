@@ -9,12 +9,11 @@ import NewsList from "../components/NewsList";
 const DetailTrend = () => {
   return (
     <div>
-      <NewsList />
-
       <CompanyInfo />
       <Companylogo />
       <DetailMenu />
       <DetailTrendBack />
+      <NewsList />
     </div>
   );
 };

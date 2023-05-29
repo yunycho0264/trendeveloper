@@ -81,9 +81,9 @@ const NewsList = () => {
     //   <div href="">3.</div>
     // </div>
     <div className={styles.headline}>
-      <h3 className={styles.positive}>Positive News:</h3>
+      <h3 className={styles.positive}>긍정 감성 뉴스 목록</h3>
       {positiveNews.map((news, index) => (
-        <div key={index}>
+        <div key={index} className={styles["p_list"]}>
           {news ? (
             <a href={news.link} target="_blank" rel="noreferrer">
               {news.headline}
@@ -94,9 +94,9 @@ const NewsList = () => {
         </div>
       ))}
 
-      <h3 className={styles.negative}>Negative News:</h3>
+      <h3 className={styles.negative}>부정 감성 뉴스 목록</h3>
       {negativeNews.map((news, index) => (
-        <div key={index}>
+        <div key={index} className={styles["neg_list"]}>
           {news ? (
             <a href={news.link} target="_blank" rel="noreferrer">
               {news.headline}
@@ -107,9 +107,9 @@ const NewsList = () => {
         </div>
       ))}
 
-      <h3 className={styles.neutral}>Neutral News:</h3>
+      <h3 className={styles.neutral}>중립 감성 뉴스 목록</h3>
       {neutralNews.map((news, index) => (
-        <div key={index}>
+        <div key={index} className={styles["neu_list"]}>
           {news ? (
             <a href={news.link} target="_blank" rel="noreferrer">
               {news.headline}
