@@ -43,8 +43,9 @@ const Signin = () => {
       email,
       password,
     });
-    if (response === 403) {
-      window.alert("403 Forbidden");
+    console.log(response);
+    if (response.status === 403) {
+      window.alert("아이디 및 비밀번호를 다시 확인해 주세요!");
     } else if (response.status === 200) {
       const responseJSON = await response.json();
       if ("token" in responseJSON) {

@@ -55,7 +55,6 @@ const RecruitContent = (props) => {
 
   return (
     <tr key={props.index}>
-      <td>{props.index}</td>
       <td>{companyInfo.companyName}</td>
       <td className={styles.link}>
         <Link to={`/recruitement/detail?id=${companyInfo.wantedAuthNo}`}>
