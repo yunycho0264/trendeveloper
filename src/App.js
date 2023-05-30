@@ -27,6 +27,7 @@ import Sign from "./components/Sign";
 import UploadFile from "./components/UploadFile";
 import SelectionBoxList from "./components/SelectionBoxList";
 import { ComContextProvider } from "./context/Com.context";
+import Favorite from "./components/Favorite";
 
 function App() {
   return (
@@ -49,7 +50,7 @@ function App() {
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/roadmap/upload" element={<UploadFile />} />
-                <Route path="/roadmap/select" element={<SelectionBoxList />} />
+                <Route path="/roadmap/favorite" element={<Favorite />} />
                 <Route path="/roadmap/stat/:id?" element={<RoadMap />} />
                 <Route path="/trend/stat/:id?" element={<Trend />} />
               </Routes>

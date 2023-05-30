@@ -255,7 +255,7 @@ const SelectionBoxList = () => {
       .then((data) => {
         console.log(data);
         if (data.length > 0) {
-          navigate("/roadmap/stat");
+          navigate("/roadmap/favorite");
           console.log(selections);
         }
       })
