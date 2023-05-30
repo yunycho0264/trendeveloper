@@ -8,9 +8,22 @@ const DetailBackground = () => {
   let [worknetLink, setWorknetLink] = useState("");
   let respJSON = useState({});
   //let logoLink = useState("");
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  
+  const convertNewline = (text) => {
+    if (!text) return "Loading...";
+    return text
+      .replace(/&gt;/g, '>')
+      .split('\r\n')
+      .map((line, index) => (
+        <span key={index}>
+          {line}
+          <br />
+        </span>
+      ));
+  };
+  
   useEffect(() => {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-
     const fetchData = async () => {
       if (urlSearchParams.has("id")) {
         console.log(urlSearchParams.get("id"));
@@ -44,17 +57,16 @@ const DetailBackground = () => {
 
   return (
     <div className={styles["detail-background"]}>
-      <div className={styles.box1}>
-        <head>
-          <title className={styles.title}>
-            {detailData ? detailData.wantedTitle : "Loading..."}
-          </title>
-        </head>
+      <div>
+        <div className={styles.title}>
+          {detailData ? detailData.wantedTitle : "Loading..."}
+        </div>
+        <div className={styles.recruite}>모집 요강</div>
         <p className={styles.p1}>
-          {detailData ? detailData.jobCont : "Loading..."}
+        {convertNewline(detailData ? detailData.jobCont : null)}
         </p>
 
-        <a href={worknetLink} target="_blank" rel="noreferrer">
+        <a href={worknetLink} target="_blank" rel="noreferrer" className={styles.work1}>
           <div style={{ width: "171px", height: "25px" }}>
             <img
               src="https://openapi.work.go.kr/images/btn_goEmpinfo.gif"
@@ -65,8 +77,8 @@ const DetailBackground = () => {
           </div>
         </a>
       </div>
-      <a href={"www.work.go.kr"} target="_blank" rel="noreferrer">
-        <div style={{ width: "625px", height: "40px", bottom: "100px" }}>
+      <a href={"www.work.go.kr"} target="_blank" rel="noreferrer" className={styles.work2}>
+        <div style={{ width: "625px", height: "40px"}}>
           <img
             src="https://openapi.work.go.kr/images/info_source.gif"
             width="auto"
