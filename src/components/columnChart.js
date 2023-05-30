@@ -23,13 +23,13 @@ class ColumnChart extends Component {
           height: 250,
           type: "bar",
         },
+        colors: ["#0285FF"],
         plotOptions: {
           bar: {
             borderRadius: 10,
             dataLabels: {
               position: "top", // top, center, bottom
             },
-            // colors: ["#FF0000"], // 막대 그래프 색상을 변경합니다
           },
         },
         dataLabels: {
@@ -57,8 +57,8 @@ class ColumnChart extends Component {
             fill: {
               type: "gradient",
               gradient: {
-                colorFrom: "#D8E3F0",
-                colorTo: "#BED1E6",
+                colorFrom: "#f22c54",
+                colorTo: "#f22c54",
                 stops: [0, 100],
                 opacityFrom: 0.4,
                 opacityTo: 0.5,
