@@ -69,23 +69,28 @@ const DetailBackground = () => {
         <p className={styles.p1}>
           {convertNewline(detailData ? detailData.workdayWorkhrCont : null)}
         </p>
-
-        <a
-          href={worknetLink}
-          target="_blank"
-          rel="noreferrer"
-          className={styles.work1}
-        >
-          <div style={{ width: "171px", height: "25px" }}>
-            <img
-              src="https://openapi.work.go.kr/images/btn_goEmpinfo.gif"
-              width="auto"
-              height="auto"
-              alt="Go to Employment Information"
-            />
-          </div>
-        </a>
       </div>
+      <a
+        href={worknetLink}
+        target="_blank"
+        rel="noreferrer"
+        className={styles.work1}
+      >
+        <p
+          style={{
+            width: "171px",
+            height: "25px",
+            marginTop: "30px",
+          }}
+        >
+          <img
+            src="https://openapi.work.go.kr/images/btn_goEmpinfo.gif"
+            width="auto"
+            height="auto"
+            alt="Go to Employment Information"
+          />
+        </p>
+      </a>
       <a
         href={"https://www.work.go.kr"}
         target="_blank"

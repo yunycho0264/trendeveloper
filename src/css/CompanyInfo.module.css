@@ -1,10 +1,10 @@
 .info-box {
   position: absolute;
-  top : 430px;
+  top: 430px;
   left: 1160px;
-  width:300px;
+  width: 300px;
   height: 400px;
-  border: 1px solid #89969F;
+  border: 1px solid #89969f;
   background: #fff;
 }
 
@@ -21,15 +21,15 @@
   font-weight: bold;
   position: absolute;
   top: 70px;
-  left:-20px;
+  left: -20px;
   margin-right: 20px;
   list-style: none;
   line-height: 250%;
   font-size: 13px;
-  color: #55595B;
+  color: #55595b;
 }
 
-.info-list span{
+.info-list span {
   font-weight: bold;
   font-size: 12px;
   color: #000;

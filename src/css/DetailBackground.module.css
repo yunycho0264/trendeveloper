@@ -80,7 +80,7 @@
 }
 
 .recruite {
-  background-color: #B93234;
+  background-color: #b93234;
   font-weight: bold;
   color: white;
   border-radius: 20px;
@@ -89,4 +89,10 @@
   text-align: center;
   margin-top: 40px;
   margin-left: 20px;
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
