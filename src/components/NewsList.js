@@ -10,7 +10,7 @@ const NewsList = () => {
   let [neutralNews, setNeutralNews] = useState([]);
 
   const urlSearchParams = new URLSearchParams(window.location.search);
-  
+
   useEffect(() => {
     const fetchNewsData = async () => {
       // const token = localStorage.getItem('token');
@@ -67,58 +67,72 @@ const NewsList = () => {
     fetchNewsData();
   }, []);
 
-  //뉴스 담을 배열 설정
-
-  // <div className={styles.headline}>
-  //     <div className={styles.headline1} href="">1. {newsData ? newsData[0].headline : "Loading..."}</div>
-  //     <div className={styles.headline2} href="">2. {newsData ? newsData[1].headline : "Loading..."}</div>
-  //     <div className={styles.headline3} href="">3. {newsData ? newsData[2].headline : "Loading..."}</div>
-  //   </div>
   return (
-    // <div>
-    //   <div href="">1. </div>
-    //   <div href="">2. </div>
-    //   <div href="">3.</div>
-    // </div>
-    <div className={styles.headline}>
-      <h3 className={styles.positive}>긍정 감성 뉴스 목록</h3>
-      {positiveNews.map((news, index) => (
-        <div key={index} className={styles["p_list"]}>
-          {news ? (
-            <a href={news.link} target="_blank" rel="noreferrer">
-              {news.headline}
-            </a>
-          ) : (
-            "Loading..."
-          )}
-        </div>
-      ))}
-
-      <h3 className={styles.negative}>부정 감성 뉴스 목록</h3>
-      {negativeNews.map((news, index) => (
-        <div key={index} className={styles["neg_list"]}>
-          {news ? (
-            <a href={news.link} target="_blank" rel="noreferrer">
-              {news.headline}
-            </a>
-          ) : (
-            "Loading..."
-          )}
-        </div>
-      ))}
-
-      <h3 className={styles.neutral}>중립 감성 뉴스 목록</h3>
-      {neutralNews.map((news, index) => (
-        <div key={index} className={styles["neu_list"]}>
-          {news ? (
-            <a href={news.link} target="_blank" rel="noreferrer">
-              {news.headline}
-            </a>
-          ) : (
-            "Loading..."
-          )}
-        </div>
-      ))}
+    <div className={styles.newsList}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th className={`${styles.categoryTitle} ${styles.positive}`}>
+              긍정 감성 뉴스 목록
+            </th>
+            <th className={`${styles.categoryTitle} ${styles.neutral}`}>
+              중립 감성 뉴스 목록
+            </th>
+            <th className={`${styles.categoryTitle} ${styles.negative}`}>
+              부정 감성 뉴스 목록
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul className={styles.newsItems}>
+                {positiveNews.map((news, index) => (
+                  <li key={index} className={styles.newsItem}>
+                    {news ? (
+                      <a href={news.link} target="_blank" rel="noreferrer">
+                        {news.headline}
+                      </a>
+                    ) : (
+                      "Loading..."
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </td>
+            <td>
+              <ul className={styles.newsItems}>
+                {neutralNews.map((news, index) => (
+                  <li key={index} className={styles.newsItem}>
+                    {news ? (
+                      <a href={news.link} target="_blank" rel="noreferrer">
+                        {news.headline}
+                      </a>
+                    ) : (
+                      "Loading..."
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </td>
+            <td>
+              <ul className={styles.newsItems}>
+                {negativeNews.map((news, index) => (
+                  <li key={index} className={styles.newsItem}>
+                    {news ? (
+                      <a href={news.link} target="_blank" rel="noreferrer">
+                        {news.headline}
+                      </a>
+                    ) : (
+                      "Loading..."
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
