@@ -4,11 +4,11 @@ import styled from "styled-components";
 
 export const ModalContainer = styled.span`
   // Modal을 구현하는데 전체적으로 필요한 CSS를 구현
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
-  /* margin-top: 4vh;
-  margin-left: 2vw; */
+  align-items: center;
+  margin-top: 4vh;
+  margin-left: 2vw;
 `;
 
 export const ModalBackdrop = styled.div`
@@ -84,17 +84,21 @@ const HowRank = () => {
 
   return (
     <span>
+      &nbsp;
       <AiFillQuestionCircle
         onClick={openModalHandler}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       />
-      {isHovered && <p>Text to appear on hover</p>}
+      {/*{isHovered && <p>Text to appear on hover</p>}*/}
       {isOpen && (
         <ModalBackdrop onClick={openModalHandler}>
           <ModalView onClick={(e) => e.stopPropagation()}>
             <ExitBtn onClick={openModalHandler}>x</ExitBtn>
-            <div className="desc">HELLO FEJIGU!</div>
+            <div className="desc">
+              직군과 연관된 가중 평균(70% (수강한 강의 평점 * 가중치) ) + 수강한
+              강의들의 수 (15%) + 공모전 및 프로젝트 경험 (15%)
+            </div>
           </ModalView>
         </ModalBackdrop>
       )}

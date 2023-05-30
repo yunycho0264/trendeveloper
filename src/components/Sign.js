@@ -74,7 +74,7 @@ const Sign = () => {
               </li> */}
               <li className={styles.userTag}>
                 <Link to="/" className={styles.nav} onClick={setSignout}>
-                  Logout
+                  로그아웃
                 </Link>
               </li>
             </>

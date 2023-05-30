@@ -129,3 +129,16 @@
 .selectionBoxContainer button {
   margin-left: 8px;
 }
+
+.text {
+  display: flex;
+  align-content: center;
+  margin: 20px;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #ba0c2f;
+  font-weight: bold;
+  /* Add any other desired styles */
+}

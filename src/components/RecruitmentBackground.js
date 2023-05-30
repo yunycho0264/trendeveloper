@@ -35,7 +35,12 @@ const RecruitBackground = () => {
     { display: "블록체인", value: "blockchain" },
     { display: "기술지원", value: "support" },
   ];
-  const [checkboxValues, setCheckboxValues] = useState({});
+
+  let urlSearchParams = new URLSearchParams(window.location.search);
+  const id = urlSearchParams.get("id");
+  const tmp = id ? { [id]: true } : {};
+
+  const [checkboxValues, setCheckboxValues] = useState(tmp);
   const [selectedCheckboxString, setSelectedCheckboxString] = useState("");
 
   const handleCheckboxChange = (event) => {

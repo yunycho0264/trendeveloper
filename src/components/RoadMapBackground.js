@@ -15,6 +15,7 @@ import ColumnChart from "./columnChart";
 import BootCamp from "./BootCamp";
 import { classMethod } from "@babel/types";
 import { ComContext } from "../context/Com.context";
+import HowRank from "./Modal";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -117,9 +118,7 @@ const RoadMapBackground = (props) => {
           sub = ["수강한 과목 없음"];
         }
         if (items[4] > 0) {
-          sub.push(`추가 선택: ${items[4]}`);
-        } else {
-          sub.push("추가 선택 안함");
+          sub.push(`공모전 및 프로젝트 점수: ${items[4]}`);
         }
         return sub;
       });
@@ -177,6 +176,7 @@ const RoadMapBackground = (props) => {
         </div>
         <div className={styles.label2}>
           <span>{name}</span> 님의 상위 직군 역량
+          <HowRank />
         </div>
         <div className={styles["inner-box2"]}>{columChart}</div>
 

@@ -265,8 +265,12 @@ const SelectionBoxList = () => {
   return (
     <div className={styles.container}>
       <div>
+        <div className={styles.text}>
+          <span className={styles.highlight}>공모전</span>이나 &nbsp;
+          <span className={styles.highlight}>프로젝트 경험</span>&nbsp;등을
+          선택해주세요!
+        </div>
         <div>
-          {" "}
           <SelectionBox subjects={subjects} onAdd={handleAddSelection} />
         </div>
         <div>
