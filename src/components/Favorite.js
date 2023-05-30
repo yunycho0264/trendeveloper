@@ -66,10 +66,13 @@ const Favorite = () => {
     console.log(selectedCheckbox);
     const data = selectedCheckbox;
 
+    const token = localStorage.getItem("token");
+
     fetch(API_URI + "/api/v1/user/favorite", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
+        Authorization: "Bearer " + token,
         "Content-Type": "application/json",
       },
     })
@@ -126,7 +129,7 @@ const Favorite = () => {
         {subjects.map((subject) => {
           if (checkboxValues[subject.value]) {
             return (
-              <div key={subject.value}>
+              <div key={subject.value} className={styles["selected-checkbox"]}>
                 <input
                   type="checkbox"
                   id={subject.value}
