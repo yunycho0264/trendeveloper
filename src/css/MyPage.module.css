@@ -11,40 +11,37 @@
   margin-top: 4vh;
 }
 
-.inner-text {
-  margin-top: 2vh;
-  margin-left: 0vw;
-}
-
-.inner-box {
-  margin-left: 0.6vw;
-  justify-content: center;
-  align-items: center;
-  width: 50vw;
-  height: 20vh;
-}
-
-.box {
+.box1 {
   margin-top: 1vh;
   border: 1px solid #89969f;
   background: #fff;
-  width: 30vw;
-  height: 20vh;
+  width: 500px;
+  height: 250px;
+  position: absolute;
+  left: 250px;
+  top: 250px;
 }
 
-.leftbox {
-  margin-left: 18vw;
-}
-.rightbox {
-  margin-left: 2vw;
+.box2 {
+  margin-top: 1vh;
+  border: 1px solid #89969f;
+  background: #fff;
+  width: 500px;
+  height: 250px;
+  position: absolute;
+  left: 850px;
+  top: 250px;
 }
 
-.sub-text {
-  margin-left: 18vw;
-}
-
-.next {
-  margin-left: 2vw;
+.box3 {
+  margin-top: 1vh;
+  border: 1px solid #89969f;
+  background: #fff;
+  width: 1100px;
+  height: 250px;
+  position: absolute;
+  left: 250px;
+  top: 570px;
 }
 
 .contents {
@@ -53,6 +50,32 @@
   margin-bottom: 1vh;
 }
 
-.clicked-job {
+.label1 span {
   color: #b93234;
+}
+
+.label3 span {
+  color: #b93234;
+}
+
+.label1 {
+  font-weight: bold;
+  position: absolute;
+  top: 220px;
+  left: 250px;
+}
+
+.label2 {
+  font-weight: bold;
+  position: absolute;
+  top: 220px;
+  left: 850px;
+}
+
+.label3 {
+  font-weight: bold;
+  position: absolute;
+  margin-top: 20px;
+  left: 250px;
+  top: 520px;
 }

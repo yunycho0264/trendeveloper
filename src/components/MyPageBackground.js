@@ -1,65 +1,65 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "../css/MyPage.module.css";
-import "../css/Navbar.css";
-import SimpleSlider from "./Slider";
+// import "../css/Navbar.css";
+import { ComContext } from "../context/Com.context";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { BsFillGearFill } from "react-icons/bs";
-const MyPageBackground = () => {
-  return (
-    <div>
-      <div className={styles.contents}>
-        <div className={`${styles["sub-text"]} ${styles.text}`}>
-          <span className={`${styles["clicked-job"]}`}>파워레인저 </span>
-          님의 관심직무
-        </div>
-        <div className={`${styles.box} ${styles.leftbox} ${styles.text}`}></div>
-      </div>
 
-      <div className={styles.contents}>
-        <div className={`${styles.next} ${styles.text}`}>
-          추천하는
-          <span className={`${styles["clicked-job"]}`}>직무</span>
+const API_URI = process.env.REACT_APP_API_URI;
+
+const MyPageBackground = () => {
+  // const urlSearchParams = new URLSearchParams(window.location.search);
+
+  const name = localStorage.getItem("name");
+
+  let [jobInterest, setjobInterest] = useState(null);
+
+  useEffect(() => {
+    const MyPageData = async () => {
+      const token = localStorage.getItem("token");
+      
+      const response = await fetch(API_URI + "/api/v1/user/mypage", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(),
+      });
+
+      const respJSON = await response.json();
+      console.log(respJSON);
+    };
+    
+    MyPageData();
+  },[]);
+
+  return (
+    <div className={styles.whole}>
+      <div className={styles.contents1}>
+        <div className={styles.label1}>
+          <span>{name}</span>님의 관심직무
         </div>
-        <div
-          className={`${styles.box} ${styles.rightbox} ${styles.text}`}
-        ></div>
+        <div className={styles.box1}></div>
       </div>
-      <div className={styles.contents}>
-        <div className={`${styles["sub-text"]} ${styles.text}`}>
-          <span className={`${styles["clicked-job"]}`}>파워레인저 </span>
-          님의 관심 스택
-        </div>
-        <div className={`${styles.box} ${styles.leftbox} ${styles.text}`}>
-          <ol className="list">
-            <li>풀스택</li>
-          </ol>
-        </div>
-      </div>
-      <div className={styles.contents}>
-        <div className={`${styles.next} ${styles.text}`}>
-          <span className={`${styles["clicked-job"]}`}>파워레인저 </span>
-          님께서 관심 가질 만한 정보
-        </div>
-        <div className={`${styles.box} ${styles.rightbox} ${styles.text}`}>
-          <SimpleSlider />
+      <div className={styles.contents2}>
+        <div className={styles.label2}>추천하는 직무</div>
+        <div className={styles.box2}>
+          {/* {roadmapRank && roadmapRank.length >= 5 && (
+            <>
+              <div className={styles.rank1}>1. {jobsName[0]}</div>
+              <div className={styles.rank2}>2. {jobsName[1]}</div>
+              <div className={styles.rank3}>3. {jobsName[2]}</div>
+            </>
+          )} */}
         </div>
       </div>
-      <div className={styles.contents}>
-        <div className={`${styles["sub-text"]} ${styles.text}`}>정보 수정</div>
-        <div className={`${styles.box} ${styles.leftbox} ${styles.text}`}></div>
-      </div>
-      <div className={`${styles.contents}`}>
-        <div className={`${styles.next} ${styles.text}`}>
-          설정
-          <span>
-            <BsFillGearFill />
-          </span>
+      <div className={styles.contents3}>
+        <div className={styles.label3}>
+          <span>{name}</span>님께서 관심 가질 만한 정보
         </div>
-        <div className={`${styles.box} ${styles.rightbox}`}>
-          <ul className={`${styles["inner-text"]}`}>
-            <li>[공고]가 올라왔습니다!</li>
-          </ul>
-        </div>
+        <div className={styles.box3}></div>
       </div>
     </div>
   );

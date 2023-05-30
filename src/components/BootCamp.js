@@ -51,7 +51,7 @@ const BootCamp = (props) => {
       <thead>
         <tr>
           <th className="index">제목</th>
-          <th className="index">마감일</th>
+          <th className="index">접수 마감</th>
           <th className="index">시작일</th>
           <th className="index">종료일</th>
         </tr>
