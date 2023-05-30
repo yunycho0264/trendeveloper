@@ -9,12 +9,12 @@ const DetailBackground = () => {
   let respJSON = useState({});
   //let logoLink = useState("");
   const urlSearchParams = new URLSearchParams(window.location.search);
-  
+
   const convertNewline = (text) => {
     if (!text) return "Loading...";
     return text
-      .replace(/&gt;/g, '>')
-      .split('\r\n')
+      .replace(/&gt;/g, ">")
+      .split("\r\n")
       .map((line, index) => (
         <span key={index}>
           {line}
@@ -22,7 +22,7 @@ const DetailBackground = () => {
         </span>
       ));
   };
-  
+
   useEffect(() => {
     const fetchData = async () => {
       if (urlSearchParams.has("id")) {
@@ -63,10 +63,15 @@ const DetailBackground = () => {
         </div>
         <div className={styles.recruite}>모집 요강</div>
         <p className={styles.p1}>
-        {convertNewline(detailData ? detailData.jobCont : null)}
+          {convertNewline(detailData ? detailData.jobCont : null)}
         </p>
 
-        <a href={worknetLink} target="_blank" rel="noreferrer" className={styles.work1}>
+        <a
+          href={worknetLink}
+          target="_blank"
+          rel="noreferrer"
+          className={styles.work1}
+        >
           <div style={{ width: "171px", height: "25px" }}>
             <img
               src="https://openapi.work.go.kr/images/btn_goEmpinfo.gif"
@@ -77,8 +82,13 @@ const DetailBackground = () => {
           </div>
         </a>
       </div>
-      <a href={"www.work.go.kr"} target="_blank" rel="noreferrer" className={styles.work2}>
-        <div style={{ width: "625px", height: "40px"}}>
+      <a
+        href={"https://www.work.go.kr"}
+        target="_blank"
+        rel="noreferrer"
+        className={styles.work2}
+      >
+        <div style={{ width: "625px", height: "40px" }}>
           <img
             src="https://openapi.work.go.kr/images/info_source.gif"
             width="auto"
