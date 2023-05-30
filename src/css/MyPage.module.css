@@ -11,17 +11,7 @@
   margin-top: 4vh;
 }
 
-.box1 {
-  margin-top: 1vh;
-  border: 1px solid #89969f;
-  background: #fff;
-  width: 500px;
-  height: 250px;
-  position: absolute;
-  left: 250px;
-  top: 250px;
-}
-
+.box1,
 .box2 {
   margin-top: 1vh;
   border: 1px solid #89969f;
@@ -29,19 +19,82 @@
   width: 500px;
   height: 250px;
   position: absolute;
-  left: 850px;
+  font-weight: bold;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  text-align: center;
+  font-size: large;
+  left: 250px;
+  top: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box1 table,
+.box2 table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.box1 td,
+.box2 td {
+  width: 50%;
+  padding: 15px;
+  text-align: center;
+  height: 50px; /* Set a fixed height for the table cells */
+  vertical-align: middle; /* Center the content vertically */
+  box-sizing: border-box; /* Include padding and border in the total height */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide any overflow to maintain a consistent size */
+}
+
+.box1 {
+  left: 250px;
   top: 250px;
 }
 
+.box2 {
+  left: 850px;
+}
+
 .box3 {
-  margin-top: 1vh;
   border: 1px solid #89969f;
-  background: #fff;
   width: 1100px;
   height: 250px;
   position: absolute;
   left: 250px;
   top: 570px;
+  margin-top: 1vh;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+}
+
+.box3 table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.box3 tr {
+  width: 100%;
+  border: 1px solid #89969f;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.box3 tr:hover {
+  background-color: #f5f5f5;
+}
+
+.box3 td {
+  width: 50%;
+  padding: 15px;
+  text-align: center;
 }
 
 .contents {
@@ -78,4 +131,38 @@
   margin-top: 20px;
   left: 250px;
   top: 520px;
+}
+
+.emptyTable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-weight: bold;
+  color: #555;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tableContainer table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.tableContainer td {
+  border: 1px solid #89969f;
+  padding: 10px;
+  text-align: center;
+}
+
+
+.box1 td:hover,
+.box2 td:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
 }
