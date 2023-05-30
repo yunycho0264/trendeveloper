@@ -22,7 +22,7 @@ class ApexChart extends Component {
         },
         colors: ["#ba0c2f"],
         dataLabels: {
-          enabled: false,
+          enabled: true,
         },
         forecastDataPoints: {
           count: 3,
@@ -97,7 +97,7 @@ class ApexChart extends Component {
           series={this.state.series}
           type="line"
           height={250}
-          width={1300}
+          width={1100}
         />
       </div>
     );
