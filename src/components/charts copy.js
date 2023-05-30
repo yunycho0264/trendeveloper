@@ -2,7 +2,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import ApexCharts from "react-apexcharts";
 
-class ApexChart extends Component {
+class PastChart extends Component {
   constructor(props) {
     super(props);
 
@@ -16,14 +16,15 @@ class ApexChart extends Component {
       options: {
         chart: {
           height: 250,
-          type: "line",
+          type: `area`,
           zoom: {
             enabled: false,
           },
         },
         colors: ["#0285FF"],
         dataLabels: {
-          enabled: true,
+          enabled: false,
+          // background: { opacity: 0.7 },
         },
 
         stroke: {
@@ -66,7 +67,11 @@ class ApexChart extends Component {
                 const year = value.substr(2, 2);
 
                 const formattedLabel = (year, month) => {
-                  return `${year}년 ${month}월`;
+                  if (month === "11" || month === "5") {
+                    return `${year}년 ${month}월`;
+                  } else {
+                    return ``;
+                  }
                 };
 
                 return formattedLabel(year, month(value));
@@ -79,6 +84,7 @@ class ApexChart extends Component {
         },
         yaxis: {
           title: { text: "공고수" },
+          opposite: true,
         },
       },
     };
@@ -90,7 +96,7 @@ class ApexChart extends Component {
         <ApexCharts
           options={this.state.options}
           series={this.state.series}
-          type="line"
+          type="area"
           height={250}
           width={1100}
         />
@@ -99,7 +105,7 @@ class ApexChart extends Component {
   }
 }
 
-export default ApexChart;
+export default PastChart;
 
 // const domContainer = document.querySelector("#app");
 // ReactDOM.render(React.createElement(ApexChart), domContainer);

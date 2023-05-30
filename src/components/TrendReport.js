@@ -4,6 +4,7 @@ import "../css/Navbar.css";
 
 import SimpleSlider from "./Slider";
 import ApexChart from "./charts";
+import PastChart from "./charts copy";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -15,9 +16,10 @@ const TrendReport = (props) => {
 
   const [silder, setSlider] = useState(null);
 
-  let [apexChart, setApexChart] = useState(null);
+  let [pastChart, setPastChart] = useState(null);
+  let [futureChart, setFutureChart] = useState(null);
 
-  const month = 20;
+  const month = 3;
 
   useEffect(() => {
     // console.log(window.location.href);
@@ -42,20 +44,27 @@ const TrendReport = (props) => {
 
         const tmpK = tmpKeys.slice(tmpKeys.length - month, tmpKeys.length);
 
+        const tmpPK = tmpKeys.slice(0, tmpKeys.length - month);
+
+        console.log(tmpPK);
         const tmpValues = await Promise.all(
           tmpKeys.map(async (key) => {
             return data[key];
           })
         );
-
+        const tmpPV = tmpValues.slice(0, tmpValues.length - month);
         const tmpV = tmpValues.slice(
           tmpValues.length - month,
           tmpValues.length
         );
 
         setMonthValues(tmpValues);
+
+        let bc = new PastChart([tmpPK, tmpPV]);
+        setPastChart(bc.render());
+
         let ac = new ApexChart([tmpK, tmpV]);
-        setApexChart(ac.render());
+        setFutureChart(ac.render());
 
         const tmpSlider = () => {
           return <SimpleSlider id={id} />;
@@ -76,10 +85,19 @@ const TrendReport = (props) => {
           <span className={`${styles["clicked-job"]} ${styles.text}`}>
             {jobName}
           </span>{" "}
-          의 채용 동향이에요!
+          의 과거 채용 동향이에요!
         </div>
         <div className={`${styles.box} ${styles["inner-box"]} `}>
-          <div style={{ width: "100%" }}> {apexChart} </div>
+          <div style={{ width: "100%" }}> {pastChart} </div>
+        </div>
+      </div>
+      <div className={`${styles.text} ${styles["inner-text"]} `}>
+        <span className={`${styles["clicked-job"]} ${styles.text}`}>
+          {jobName}
+        </span>{" "}
+        의 향후 3개월 간 예상 채용 동향이에요!
+        <div className={`${styles.box} ${styles["inner-box"]} `}>
+          <div style={{ width: "100%" }}> {futureChart} </div>
         </div>
       </div>
 
