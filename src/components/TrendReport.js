@@ -87,7 +87,7 @@ const TrendReport = (props) => {
           <span className={`${styles["clicked-job"]} ${styles.text}`}>
             {jobName}
           </span>{" "}
-          의 미래 채용 동향이에요!
+          의 향후 3개월 간 예상 채용 동향이에요!
           <div className={`${styles.box} ${styles["inner-box"]} `}>
           <div style={{ width: "100%" }}> {apexChart} </div>
         </div>

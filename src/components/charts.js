@@ -28,6 +28,7 @@ class ApexChart extends Component {
           count: 3,
         },
         stroke: {
+          // curve:"straight",
           width: 5,
           curve: "smooth",
         },
