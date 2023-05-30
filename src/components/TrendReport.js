@@ -100,7 +100,6 @@ const TrendReport = (props) => {
           <div style={{ width: "100%" }}> {futureChart} </div>
         </div>
       </div>
-
       <div className={styles.contents}>
         <div className={`${styles.text} ${styles["inner-text"]} `}>
           <span className={`${styles["clicked-job"]} ${styles.text}`}>

@@ -5,8 +5,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 //배너 이미지 삽입
-import image1 from "../img/부트캠프.png";
-import image2 from "../img/임시배너-001.png";
+import image1 from "../img/앱서비스.png";
+import image2 from "../img/Cloud.png";
 import image3 from "../img/임시배너-002.png";
 
 //기업 로고 이미지 삽입
