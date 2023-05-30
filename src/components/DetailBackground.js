@@ -65,6 +65,10 @@ const DetailBackground = () => {
         <p className={styles.p1}>
           {convertNewline(detailData ? detailData.jobCont : null)}
         </p>
+        <div className={styles.recruite}>근무 시간</div>
+        <p className={styles.p1}>
+          {convertNewline(detailData ? detailData.workdayWorkhrCont : null)}
+        </p>
 
         <a
           href={worknetLink}

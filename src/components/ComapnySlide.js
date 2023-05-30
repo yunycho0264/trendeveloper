@@ -8,6 +8,8 @@ const API_URI = process.env.REACT_APP_API_URI;
 const CompanySlide = (props) => {
   let [logoLink, setlogoLink] = useState(null);
   const [companyName, setCompanyName] = useState("");
+  const [closeDt, setcloseDt] = useState("");
+  const [regDt, setregDt] = useState("");
   const [jobsNm, setjobsNm] = useState("");
   let respJSON = useState({});
   //let logoLink = useState("");
@@ -34,10 +36,12 @@ const CompanySlide = (props) => {
           }
         );
         respJSON = await resp.json();
-        //console.log(respJSON);
+        console.log(respJSON);
 
         setlogoLink(`https://work.go.kr/${respJSON.logoLink}`);
         setCompanyName(respJSON.companyName);
+        setcloseDt(respJSON.closeDt);
+        setregDt(respJSON.regDt);
         setjobsNm(respJSON.jobsNm);
         //logoLink = respJSON["logoLink"];
       }
@@ -59,16 +63,23 @@ const CompanySlide = (props) => {
   return (
     logoLink && (
       <div className={styles.container} onClick={handleClick}>
+        <div className={styles.companyNameInfo}>{companyName}</div>
         <img
           className={styles.image}
           alt="로고 이미지가 없습니다"
           src={logoLink}
           onError={handleError}
         />
+        <div className={styles.jobsNmInfo}>
+          <span>{jobsNm}</span>
+        </div>
         <div className={styles.overlay}>
           <div className={styles.text}>
-            {companyName}
-            <span>{jobsNm}</span>
+            모집 기간
+            {/* {companyName} */}
+            <span>
+              {regDt} ~ {closeDt}
+            </span>
           </div>
         </div>
       </div>

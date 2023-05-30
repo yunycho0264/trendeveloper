@@ -44,6 +44,10 @@
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This will push your items towards the edges of the container */
+  align-items: center; /* This will keep your items horizontally centered */
   position: relative;
   width: 300px;
   height: 200px;
@@ -52,13 +56,32 @@
 }
 
 .image {
-  display: block;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  width: 70%; /* reduce to 80% */
+  height: 70%; /* reduce to 80% */
   object-fit: contain;
   object-position: center;
-  position: relative; /* Add this line */
-  top: 0; /* Add this line */
+  z-index: 1; /* Less than companyNameInfo's z-index */
+}
+
+.companyNameInfo {
+  position: relative;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  top: 10px; /* adjust as necessary */
+  z-index: 2; /* higher than the image's z-index */
+}
+
+.jobsNmInfo {
+  position: relative;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  bottom: 15px; /* adjust as necessary */
+  z-index: 2;
 }
 
 .overlay {
@@ -75,6 +98,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 }
 
 .container:hover .overlay {
@@ -88,4 +112,7 @@
 
 .text {
   text-align: center;
+  font-weight: bold;
+  font-size: 14px;
 }
+
