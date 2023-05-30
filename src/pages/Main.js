@@ -10,15 +10,6 @@ import image2 from "../img/임시배너-001.png";
 import image3 from "../img/임시배너-002.png";
 
 //기업 로고 이미지 삽입
-import logo1 from "../img/캡처.PNG";
-import logo2 from "../img/캡처.PNG";
-import logo3 from "../img/캡처.PNG";
-import logo4 from "../img/캡처.PNG";
-import logo5 from "../img/캡처.PNG";
-import logo6 from "../img/캡처.PNG";
-import logo7 from "../img/캡처.PNG";
-import logo8 from "../img/캡처.PNG";
-import logo9 from "../img/캡처.PNG";
 import SimpleSlider from "../components/Slider";
 import Slider from "react-slick";
 import CarouselSlider from "../components/BootCamp";

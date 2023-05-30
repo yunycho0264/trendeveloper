@@ -9,9 +9,9 @@ const NewsList = () => {
   let [negativeNews, setNegativeNews] = useState([]);
   let [neutralNews, setNeutralNews] = useState([]);
 
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  
   useEffect(() => {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-
     const fetchNewsData = async () => {
       // const token = localStorage.getItem('token');
       let recruitmentID = urlSearchParams.get("id");

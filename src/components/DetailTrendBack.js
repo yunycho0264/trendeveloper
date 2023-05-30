@@ -11,9 +11,9 @@ const DetailTrendBack = () => {
   let [companyInfo, setCompanyInfo] = useState(null);
   const [chartData, setChartData] = useState([0, 0]);
 
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  
   useEffect(() => {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-
     const fetchCompanyInfo = async () => {
       // const token = localStorage.getItem('token');
       let recruitmentID = urlSearchParams.get("id");
