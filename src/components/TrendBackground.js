@@ -51,7 +51,7 @@ const TrendBackground = (props) => {
         <div className={`${styles["sub-text"]} ${styles.text}`}>
           <span className="title s-title ">
             TREN<span>D</span>EVELOPER
-          </span>가 선정한 요즘 뜨는 "TOP 5" 직군이에요!
+          </span>가 선정한 최근 공고가 많았던 직군들이에요!
           {/* <span className={`${styles.next} `}>
             <HowRank />
           </span> */}
