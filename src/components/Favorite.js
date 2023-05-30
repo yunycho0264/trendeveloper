@@ -39,15 +39,17 @@ const Favorite = () => {
 
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
-    const selectedCount = Object.values(checkboxValues).filter(Boolean).length;
-    if (selectedCount >= 5 && checked) {
-      alert("최대 5개까지만 선택해주세요");
-      return;
+    const updatedValues = { ...checkboxValues, [name]: checked };
+
+    if (checked) {
+      const selectedCount = Object.values(updatedValues).filter(Boolean).length;
+      if (selectedCount > 5) {
+        alert("최대 5개까지만 선택해주세요");
+        return;
+      }
     }
-    setCheckboxValues((prevValues) => ({
-      ...prevValues,
-      [name]: checked,
-    }));
+
+    setCheckboxValues(updatedValues);
   };
 
   const handleClickedResetBtn = () => {
@@ -64,22 +66,20 @@ const Favorite = () => {
     console.log(selectedCheckbox);
     const data = selectedCheckbox;
 
-    // fetch(API_URI + "/api/v1/user/favorite", {
-    //   method: "POST",
-    //   body: JSON.stringify(data),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.length > 0) {
-    //       navigate("/roadmap/stat");
-    //       console.log(selectedCheckbox);
-    //     }
-    //   })
-    //   .catch((error) => console.error(error));
+    fetch(API_URI + "/api/v1/user/favorite", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => console.log(response))
+      .then((data) => {
+        console.log(data);
+        navigate("/roadmap/stat");
+        console.log(selectedCheckbox);
+      })
+      .catch((error) => console.error(error));
   };
 
   useEffect(() => {
@@ -95,26 +95,54 @@ const Favorite = () => {
     <>
       <div className={styles.container}>
         <div className={styles.text}>
-          <span className={styles.highlight}>관심 직무</span>를 선택해 주세요
-          (최대 <span className={styles.highlight}>5</span>개 까지)
+          <span className={styles.highlight}>관심 직무</span>를 선택해주세요
+          (최대 <span className={styles.highlight}>5</span> 까지 가능합니다.)
         </div>
         <div className={styles["btn-container"]}>
-          {subjects.map((subject) => (
-            <div key={subject.value}>
-              <input
-                type="checkbox"
-                id={subject.value}
-                name={subject.value}
-                checked={checkboxValues[subject.value] || false}
-                onChange={handleCheckboxChange}
-                className={styles.checkbox}
-              />
-              <label htmlFor={subject.value} className={styles.btn}>
-                {subject.display}
-              </label>
-            </div>
-          ))}
+          {subjects.map((subject) => {
+            if (!checkboxValues[subject.value]) {
+              return (
+                <div key={subject.value}>
+                  <input
+                    type="checkbox"
+                    id={subject.value}
+                    name={subject.value}
+                    checked={checkboxValues[subject.value] || false}
+                    onChange={handleCheckboxChange}
+                    className={styles.checkbox}
+                  />
+                  <label htmlFor={subject.value} className={styles.btn}>
+                    {subject.display}
+                  </label>
+                </div>
+              );
+            }
+            return null;
+          })}
         </div>
+      </div>
+      <div className={styles["selected-text"]}>선택한 관심 직무</div>
+      <div className={styles["selected-checkboxes"]}>
+        {subjects.map((subject) => {
+          if (checkboxValues[subject.value]) {
+            return (
+              <div key={subject.value}>
+                <input
+                  type="checkbox"
+                  id={subject.value}
+                  name={subject.value}
+                  checked={checkboxValues[subject.value] || false}
+                  onChange={handleCheckboxChange}
+                  className={styles.checkbox}
+                />
+                <label htmlFor={subject.value} className={styles.btn}>
+                  {subject.display}
+                </label>
+              </div>
+            );
+          }
+          return null;
+        })}
       </div>
       <div className={styles["button-container"]}>
         <button
@@ -124,6 +152,7 @@ const Favorite = () => {
         >
           초기화
         </button>
+
         <button className={styles["submit-button"]} onClick={handleSubmit}>
           제출
         </button>
