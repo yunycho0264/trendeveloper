@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
-const API_URI = process.env.REACT_APP_API_URI;
-
 export const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [isSignedIn, setIsSignedIn] = useState(false);

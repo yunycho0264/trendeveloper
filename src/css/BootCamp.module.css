@@ -1,0 +1,38 @@
+/* table */
+.table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.table td {
+  padding: 8px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+/* .table tr:hover {
+    background-color: rgba(186, 12, 47, 0.15);
+  } */
+.table .link:hover {
+  background-color: rgba(186, 12, 47, 0.144);
+  color: white;
+}
+.table a {
+  text-decoration: none;
+  color: #333;
+}
