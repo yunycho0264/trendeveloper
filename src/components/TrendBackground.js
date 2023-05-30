@@ -17,35 +17,33 @@ const TrendBackground = (props) => {
 
   const navigate = useNavigate();
 
+  const handleButtonClick = (id) => {
+    navigate(`?id=${id}`);
+  };
+  const ranks = props.ranks;
+  let urlSearchParams = new URLSearchParams(window.location.search);
+  const id = urlSearchParams.get("id");
+
   useEffect(() => {
-    const ranks = props.ranks;
+    if (!id) {
+      navigate(`/trend/stat?id=${ranks[0]}`);
+    }
+    console.log(urlSearchParams.get("id"));
 
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const id = urlSearchParams.get("id");
-
-    const tmpList = ranks.map((key, index) => {
-      const tmp = transName(key, jobKor);
-      const rankClass = `rank${index + 1}`;
-
+    const tmpList = ranks.map((item, index) => {
+      const tmp = transName(item, jobKor);
       return (
-        <li key={key}>
-          <span>
-            {index + 1}
-            {". "}
-            <Link to={`?id=${key}`} className={`${styles.anker}`}>
-              <span>{tmp}</span>
-            </Link>
-          </span>
-        </li>
+        <button
+          key={item}
+          className={`${styles.btn} ${id === item ? styles.selected : ""}`}
+          onClick={() => handleButtonClick(item)}
+        >
+          {tmp}
+        </button>
       );
     });
     setTopList(tmpList);
-
-    if (urlSearchParams.has("id")) {
-      console.log(id);
-      // console.log(window.location.href);
-    } else navigate(`/trend/stat?id=${ranks[0]}`);
-  }, [jobKor, navigate]);
+  }, [id]);
 
   return (
     <div>
@@ -59,8 +57,8 @@ const TrendBackground = (props) => {
             <HowRank />
           </span>
         </div>
-        <div className={`${styles.box} ${styles.rank} ${styles.text}`}>
-          <ol className={styles.list}>{topList}</ol>
+        <div className={`${styles.rank} ${styles.text}`}>
+          <div className={styles.list}>{topList}</div>
         </div>
       </div>
 

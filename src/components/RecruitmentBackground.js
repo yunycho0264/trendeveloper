@@ -157,6 +157,12 @@ const RecruitBackground = () => {
     fetchJobPostings();
   }, [checkboxValues, search, searchCategory]);
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleClickedSearchBtn();
+    }
+  };
+
   return (
     <>
       {/* Render checkboxes for categories */}
@@ -189,6 +195,7 @@ const RecruitBackground = () => {
           placeholder="Search"
           value={searchInput}
           onChange={handleSearchInput}
+          onKeyDown={handleKeyPress} // Added onKeyPress event handler
           className={styles["search-input"]}
         />
         <button

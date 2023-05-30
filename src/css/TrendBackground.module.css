@@ -34,10 +34,11 @@
 .rank {
   width: 70vw;
   /* height: 20vh; */
+  margin-bottom: 2vw;
   margin-left: 18vw;
   display: flex;
-  justify-content: center; /* Horizontal center alignment */
-  align-items: center; /* Vertical center alignment */
+  justify-content: center;
+  flex-direction: row;
 }
 
 .how {
@@ -123,6 +124,7 @@
 
 .list {
   position: relative;
+  justify-content: center;
   top: 1vh;
   list-style-type: none;
   padding: 0;
@@ -140,4 +142,31 @@
 
 .list li a:hover {
   color: #ba0c2f;
+}
+
+.btn {
+  margin: 10px;
+  padding: 15px 30px;
+  font-size: large;
+  background-color: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.selected {
+  background-color: #ba0c2f;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #ba0c2f;
+  color: white;
+}
+
+.btn:last-child {
+  margin-right: 0;
 }
