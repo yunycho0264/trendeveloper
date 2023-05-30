@@ -12,7 +12,7 @@ const DetailTrendBack = () => {
   const [chartData, setChartData] = useState([0, 0]);
 
   const urlSearchParams = new URLSearchParams(window.location.search);
-  
+
   useEffect(() => {
     const fetchCompanyInfo = async () => {
       // const token = localStorage.getItem('token');
@@ -58,8 +58,8 @@ const DetailTrendBack = () => {
   }, []);
 
   return (
-    <div>
-      <div className={styles.background} />
+    <div className={styles.background}>
+      <div />
       <div className={styles.chart}>
         <ReactApexChart
           options={donutData.options}
@@ -68,10 +68,13 @@ const DetailTrendBack = () => {
           width="500"
         />
       </div>
-      <div className={styles["headline-label"]}>
-        관련 뉴스 헤드라인을 살펴볼까요?
-        <br />
-        <span>(클릭하면 관련 뉴스 기사 페이지로 이동해요!)</span>
+      <div>
+        <div className={styles["headline-label"]}>
+          관련 뉴스 헤드라인을 살펴볼까요?
+          <br />
+          <span>(클릭하면 관련 뉴스 기사 페이지로 이동해요!)</span>
+        </div>
+        <NewsList />
       </div>
     </div>
   );

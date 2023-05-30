@@ -13,7 +13,6 @@ const DetailTrend = () => {
       <Companylogo />
       <DetailMenu />
       <DetailTrendBack />
-      <NewsList />
     </div>
   );
 };
