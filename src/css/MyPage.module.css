@@ -21,7 +21,6 @@
   position: absolute;
   font-weight: bold;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 15px;
   text-align: center;
   font-size: large;
   left: 250px;
@@ -30,6 +29,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 15px; /* Rounded top corners */
+  overflow: hidden;
 }
 
 .box1 table,
@@ -49,6 +50,7 @@
   box-sizing: border-box; /* Include padding and border in the total height */
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide any overflow to maintain a consistent size */
+  border-radius: 15px; /* Rounded bottom corners */
 }
 
 .box1 {
