@@ -27,7 +27,7 @@ const Menu = () => {
         </li>
         <li className={styles.tag}>
           <Link to="/roadmap/stat" className={styles.nav} id="nav3">
-            로드맵
+            직군 추천
           </Link>
         </li>
       </ul>

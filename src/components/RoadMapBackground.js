@@ -152,7 +152,7 @@ const RoadMapBackground = (props) => {
           <span className={`${styles["clicked-job"]} ${styles.text}`}>
             {name}
           </span>{" "}
-          <span> 님의 로드맵</span>
+          <span> 님을 위한 추천</span>
           <button
             className={`${styles.btn} `}
             onClick={() => navigate("/roadmap/upload")}
