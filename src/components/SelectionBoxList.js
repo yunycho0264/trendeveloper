@@ -63,7 +63,7 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
                   value={selection.subject}
                   onChange={(event) => handleEditSubject(index, event)}
                 >
-                  <option value="">과목 선택</option>
+                  <option value="">직군 경험 선택</option>
                   {subjects.map((subject) => (
                     <option key={subject.value} value={subject.value}>
                       {subject.display}
@@ -157,7 +157,7 @@ const SelectionBox = ({ subjects, onAdd }) => {
         value={selectedSubject}
         onChange={handleSubjectChange}
       >
-        <option value="">과목 선택</option>
+        <option value="">직군 경험 선택</option>
         {subjects.map((subject) => (
           <option key={subject.value} value={subject.value}>
             {subject.display}
