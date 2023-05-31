@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "../css/MyPage.module.css";
 import { ComContext } from "../context/Com.context";
+import { useNavigate } from "react-router-dom";
+
+import { BsFillGearFill } from "react-icons/bs";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
 const MyPageBackground = () => {
+  const navigate = useNavigate();
+
   const { jobKor, transName } = useContext(ComContext);
 
   const name = localStorage.getItem("name");
@@ -81,7 +86,13 @@ const MyPageBackground = () => {
     <div className={styles.whole}>
       <div className={styles.contents1}>
         <div className={styles.label1}>
-          <span>{name}</span> 님의 관심직무
+          <span className={styles.hilight}>{name}</span> 님의 관심직무
+          <span
+            className={styles.btn}
+            onClick={() => navigate("/roadmap/favorite")}
+          >
+            <BsFillGearFill size="18px" />
+          </span>
         </div>
         <div className={`${styles.box1} ${styles.tableContainer}`}>
           <table>

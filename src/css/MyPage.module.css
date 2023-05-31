@@ -105,7 +105,7 @@
   margin-bottom: 1vh;
 }
 
-.label1 span {
+.hilight {
   color: #b93234;
 }
 
@@ -162,9 +162,18 @@
   text-align: center;
 }
 
-
 .box1 td:hover,
 .box2 td:hover {
   background-color: #f5f5f5;
   cursor: pointer;
+}
+
+.btn {
+  margin-left: 5px;
+  color: #333;
+  font-size: 18px;
+}
+
+.btn:hover {
+  color: #b93234;
 }
