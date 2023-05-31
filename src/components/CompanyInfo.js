@@ -109,7 +109,9 @@ const CompanyInfo = () => {
                         href={`https://${companyInfo.homePg}`}
                         target="_blank"
                         rel="noreferrer"
-                      >{companyInfo.homePg}</a>
+                      >
+                        {companyInfo.homePg}
+                      </a>
                     ) : (
                       "Loading..."
                     )}
