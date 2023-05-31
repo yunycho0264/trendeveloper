@@ -48,25 +48,9 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
     <table className={styles.selectionTable}>
       <thead>
         <tr>
-          <th
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            직군
-          </th>
-          <th
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            횟수
-          </th>
-          <th>&nbsp;</th>
+          <th>직군</th>
+          <th>횟수</th>
+          <th>수정</th>
         </tr>
       </thead>
       <tbody>
