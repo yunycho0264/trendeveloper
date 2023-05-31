@@ -109,7 +109,6 @@
 .selectStyles {
   padding: 4px 6px; /* Adjust the padding to make it smaller */
   border-radius: 4px;
-  border: 1px solid #ccc;
   background-color: #fff;
   color: #333;
   font-size: 12px; /* Adjust the font-size to make it smaller */
@@ -132,6 +131,8 @@
 
 .text {
   display: flex;
+  text-align: center;
+  flex-direction: column;
   align-content: center;
   margin: 20px;
   font-weight: bold;
@@ -145,4 +146,8 @@
 
 .error {
   border: 1px solid red;
+}
+
+.notError {
+  border: 1px solid #ccc;
 }

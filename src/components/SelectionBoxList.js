@@ -62,17 +62,19 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
     const hasIncompleteSelection =
       !selections[index].level || !selections[index].subject;
     if (hasIncompleteSelection) {
-      alert(
-        "직군 경험 선택 및 횟수를 선택해 주세요! 저장 버튼까지 눌러주셔야 합니다!"
-      );
+      // alert(
+      //   "직군 경험 선택 및 횟수를 선택해 주세요! 저장 버튼까지 눌러주셔야 합니다!"
+      // );
       const updatedErrors = [...selectionErrors];
       updatedErrors[index].subjectError = !selections[index].subject;
       updatedErrors[index].levelError = !selections[index].level;
       setSelectionErrors(updatedErrors);
+
       return;
     }
     onEdit(index, { isEditing: false });
   };
+  console.log(selectionErrors);
 
   return (
     <table className={styles.selectionTable}>
@@ -90,7 +92,9 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
               {selection.isEditing ? (
                 <select
                   className={`${styles.selectStyles} ${
-                    selectionErrors[index].subjectError ? styles.error : ""
+                    selectionErrors[index].subjectError
+                      ? styles.error
+                      : styles.notError
                   }`}
                   value={selection.subject}
                   onChange={(event) => handleEditSubject(index, event)}
@@ -110,7 +114,9 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
               {selection.isEditing ? (
                 <select
                   className={`${styles.selectStyles} ${
-                    selectionErrors[index].levelError ? styles.error : ""
+                    selectionErrors[index].levelError
+                      ? styles.error
+                      : styles.notError
                   }`}
                   value={
                     selection.level === 15
@@ -189,9 +195,9 @@ const SelectionBox = ({ subjects, onAdd }) => {
       setSelectedSubject("");
       setSelectedLevel("");
     } else {
-      alert(
-        "직군 경험 선택 및 횟수를 선택해 주세요! 추가 버튼까지 눌러주셔야 합니다!"
-      );
+      // alert(
+      //   "직군 경험 선택 및 횟수를 선택해 주세요! 추가 버튼까지 눌러주셔야 합니다!"
+      // );
       setSubjectError(!selectedSubject);
       setLevelError(!selectedLevel);
       return;
@@ -201,7 +207,9 @@ const SelectionBox = ({ subjects, onAdd }) => {
   return (
     <div className={styles.selectionBoxContainer}>
       <select
-        className={`${styles.selectStyles} ${subjectError ? styles.error : ""}`}
+        className={`${styles.selectStyles} ${
+          subjectError ? styles.error : styles.notError
+        }`}
         value={selectedSubject}
         onChange={handleSubjectChange}
       >
@@ -213,7 +221,9 @@ const SelectionBox = ({ subjects, onAdd }) => {
         ))}
       </select>
       <select
-        className={`${styles.selectStyles} ${levelError ? styles.error : ""}`}
+        className={`${styles.selectStyles} ${
+          levelError ? styles.error : styles.notError
+        }`}
         value={selectedLevel}
         onChange={handleLevelChange}
       >
@@ -315,10 +325,17 @@ const SelectionBoxList = () => {
     <div className={styles.container}>
       <div>
         <div className={styles.text}>
-          <span className={styles.highlight}>공모전</span>이나 &nbsp;
-          <span className={styles.highlight}>프로젝트 경험</span>&nbsp;등을
-          선택해주세요!
+          <div>
+            <span className={styles.highlight}>공모전</span>이나 &nbsp;
+            <span className={styles.highlight}>프로젝트 경험</span>&nbsp;등을
+            선택해주세요!
+          </div>
+          <div>
+            (아무것도 선택하지 않을 시{" "}
+            <span className={styles.highlight}>0회</span>로 간주합니다!)
+          </div>
         </div>
+
         <div>
           <SelectionBox subjects={subjects} onAdd={handleAddSelection} />
         </div>
