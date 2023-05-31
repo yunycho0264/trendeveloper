@@ -1,26 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RoadMap from "../pages/RoadMap";
 import styles from "../css/SelectionBoxList.module.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
-const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
+const SelectionTable = ({
+  selections,
+  selectionErrors,
+  subjects,
+  onEdit,
+  onDelete,
+  setSelectionErrors,
+}) => {
   const getSubjectDisplay = (subjectValue, subjects) => {
     const subject = subjects.find((s) => s.value === subjectValue);
     return subject ? subject.display : "";
   };
-
-  const initialSelectionErrors = selections.map(() => ({
-    subjectError: false,
-    levelError: false,
-  }));
-
-  const [selectionErrors, setSelectionErrors] = useState(
-    initialSelectionErrors
-  );
+  console.log(selections);
 
   const getLevelDisplay = (levelValue) => {
+    if (levelValue === "") return "";
     if (levelValue === 15) {
       return "3회 이상";
     } else if (levelValue === 10) {
@@ -51,11 +51,15 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
         : value === "lower"
         ? 5
         : 0;
-    onEdit(index, { level: level });
-
     const updatedErrors = [...selectionErrors];
+    if (!updatedErrors[index]) {
+      updatedErrors[index] = {}; // Create the object if it doesn't exist
+    }
     updatedErrors[index].levelError = value === 0;
+    console.log(updatedErrors[index].levelError);
     setSelectionErrors(updatedErrors);
+
+    onEdit(index, { level: level });
   };
 
   const handleSave = (index) => {
@@ -242,6 +246,8 @@ const SelectionBox = ({ subjects, onAdd }) => {
 const SelectionBoxList = () => {
   const navigate = useNavigate();
   const [selections, setSelections] = useState([]);
+  const [selectionErrors, setSelectionErrors] = useState([]);
+
   const subjects = [
     { display: "서버/백엔드 개발자", value: "back" },
     { display: "프론트엔드 개발자", value: "front" },
@@ -269,6 +275,14 @@ const SelectionBoxList = () => {
   const handleAddSelection = (newSelection) => {
     setSelections([...selections, newSelection]);
   };
+  useEffect(() => {
+    setSelectionErrors(
+      selections.map(() => ({
+        subjectError: false,
+        levelError: false,
+      }))
+    );
+  }, [selections]);
 
   const handleEditSelection = (index, value) => {
     setSelections((prevSelections) => {
@@ -344,8 +358,10 @@ const SelectionBoxList = () => {
             <SelectionTable
               selections={selections}
               subjects={subjects}
+              selectionErrors={selectionErrors}
               onEdit={handleEditSelection}
               onDelete={handleDeleteSelection}
+              setSelectionErrors={setSelectionErrors}
             />
           )}
         </div>
