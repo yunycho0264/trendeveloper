@@ -13,8 +13,6 @@ const UploadFile = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectPage, setSelectPage] = useState(null);
 
-  useEffect(() => {}, []);
-
   const handleFileUpload = (event) => {
     var XLSX = require("xlsx");
     const file = event.target.files[0];

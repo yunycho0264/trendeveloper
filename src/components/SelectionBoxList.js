@@ -24,6 +24,7 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
 
   const handleEditSubject = (index, event) => {
     const { value } = event.target;
+
     onEdit(index, { subject: value });
   };
 
@@ -41,6 +42,16 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
   };
 
   const handleSave = (index) => {
+    const hasIncompleteSelection = selections.some(
+      (selection) => selection.level === 0 || selection.subject === ""
+    );
+
+    if (hasIncompleteSelection) {
+      alert(
+        "직군 경험 선택 및 횟수를 선택해 주세요! 저장 버튼까지 눌러주셔야 합니다!"
+      );
+      return;
+    }
     onEdit(index, { isEditing: false });
   };
 
@@ -147,6 +158,11 @@ const SelectionBox = ({ subjects, onAdd }) => {
       onAdd(newSelection);
       setSelectedSubject("");
       setSelectedLevel("");
+    } else {
+      alert(
+        "직군 경험 선택 및 횟수를 선택해 주세요! 추가 버튼까지 눌러주셔야 합니다!"
+      );
+      return;
     }
   };
 
@@ -226,11 +242,12 @@ const SelectionBoxList = () => {
   };
 
   const handleSubmit = () => {
-    if (
-      selections.some((selection) => selection.level === "") ||
-      selections.some((selection) => selection.subject === "")
-    ) {
-      alert("설정을 완료해 주세요! 업데이트까지 눌러주셔야 합니다!");
+    const hasIncompleteSelection = selections.some(
+      (selection) => !selection.level !== !selection.subject
+    );
+
+    if (hasIncompleteSelection) {
+      alert("직군 경험 선택 및 횟수를 선택해 주세요!");
       return;
     }
     console.log(selections);
