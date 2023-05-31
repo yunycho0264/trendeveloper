@@ -108,7 +108,9 @@ const UploadFile = () => {
           파일 업로드
         </label>
       </form>
-      <div style={{ marginTop: "20px" }}> {selectPage}</div>
+      <div style={{ marginTop: "20px", alignItems: "center" }}>
+        {selectPage}
+      </div>
     </div>
   );
 };
