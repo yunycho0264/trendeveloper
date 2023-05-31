@@ -11,6 +11,15 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
     return subject ? subject.display : "";
   };
 
+  const initialSelectionErrors = selections.map(() => ({
+    subjectError: false,
+    levelError: false,
+  }));
+
+  const [selectionErrors, setSelectionErrors] = useState(
+    initialSelectionErrors
+  );
+
   const getLevelDisplay = (levelValue) => {
     if (levelValue === 15) {
       return "3회 이상";
@@ -24,6 +33,10 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
 
   const handleEditSubject = (index, event) => {
     const { value } = event.target;
+
+    const updatedErrors = [...selectionErrors];
+    updatedErrors[index].subjectError = value === "";
+    setSelectionErrors(updatedErrors);
 
     onEdit(index, { subject: value });
   };
@@ -39,17 +52,23 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
         ? 5
         : 0;
     onEdit(index, { level: level });
+
+    const updatedErrors = [...selectionErrors];
+    updatedErrors[index].levelError = value === 0;
+    setSelectionErrors(updatedErrors);
   };
 
   const handleSave = (index) => {
-    const hasIncompleteSelection = selections.some(
-      (selection) => selection.level === 0 || selection.subject === ""
-    );
-
+    const hasIncompleteSelection =
+      !selections[index].level || !selections[index].subject;
     if (hasIncompleteSelection) {
       alert(
         "직군 경험 선택 및 횟수를 선택해 주세요! 저장 버튼까지 눌러주셔야 합니다!"
       );
+      const updatedErrors = [...selectionErrors];
+      updatedErrors[index].subjectError = !selections[index].subject;
+      updatedErrors[index].levelError = !selections[index].level;
+      setSelectionErrors(updatedErrors);
       return;
     }
     onEdit(index, { isEditing: false });
@@ -70,7 +89,9 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
             <td style={{ textAlign: "center" }}>
               {selection.isEditing ? (
                 <select
-                  className={styles.selectStyles}
+                  className={`${styles.selectStyles} ${
+                    selectionErrors[index].subjectError ? styles.error : ""
+                  }`}
                   value={selection.subject}
                   onChange={(event) => handleEditSubject(index, event)}
                 >
@@ -88,7 +109,9 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
             <td style={{ textAlign: "center" }}>
               {selection.isEditing ? (
                 <select
-                  className={styles.selectStyles}
+                  className={`${styles.selectStyles} ${
+                    selectionErrors[index].levelError ? styles.error : ""
+                  }`}
                   value={
                     selection.level === 15
                       ? "upper"
@@ -132,12 +155,19 @@ const SelectionBox = ({ subjects, onAdd }) => {
   const [selectedSubject, setSelectedSubject] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
 
+  const [subjectError, setSubjectError] = useState(false);
+  const [levelError, setLevelError] = useState(false);
+
   const handleSubjectChange = (event) => {
-    setSelectedSubject(event.target.value);
+    const { value } = event.target;
+    setSelectedSubject(value);
+    setSubjectError(value === "");
   };
 
   const handleLevelChange = (event) => {
-    setSelectedLevel(event.target.value);
+    const { value } = event.target;
+    setSelectedLevel(value);
+    setLevelError(value === 0);
   };
 
   const handleAdd = () => {
@@ -162,6 +192,8 @@ const SelectionBox = ({ subjects, onAdd }) => {
       alert(
         "직군 경험 선택 및 횟수를 선택해 주세요! 추가 버튼까지 눌러주셔야 합니다!"
       );
+      setSubjectError(!selectedSubject);
+      setLevelError(!selectedLevel);
       return;
     }
   };
@@ -169,7 +201,7 @@ const SelectionBox = ({ subjects, onAdd }) => {
   return (
     <div className={styles.selectionBoxContainer}>
       <select
-        className={styles.selectStyles}
+        className={`${styles.selectStyles} ${subjectError ? styles.error : ""}`}
         value={selectedSubject}
         onChange={handleSubjectChange}
       >
@@ -181,8 +213,8 @@ const SelectionBox = ({ subjects, onAdd }) => {
         ))}
       </select>
       <select
+        className={`${styles.selectStyles} ${levelError ? styles.error : ""}`}
         value={selectedLevel}
-        className={styles.selectStyles}
         onChange={handleLevelChange}
       >
         <option value="">횟수</option>
@@ -291,12 +323,14 @@ const SelectionBoxList = () => {
           <SelectionBox subjects={subjects} onAdd={handleAddSelection} />
         </div>
         <div>
-          <SelectionTable
-            selections={selections}
-            subjects={subjects}
-            onEdit={handleEditSelection}
-            onDelete={handleDeleteSelection}
-          />
+          {selections.length > 0 && (
+            <SelectionTable
+              selections={selections}
+              subjects={subjects}
+              onEdit={handleEditSelection}
+              onDelete={handleDeleteSelection}
+            />
+          )}
         </div>
       </div>
       <div>

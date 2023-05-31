@@ -143,6 +143,6 @@
   /* Add any other desired styles */
 }
 
-.missingField {
-  border: 1px solid #ba0c2f;
+.error {
+  border: 1px solid red;
 }
