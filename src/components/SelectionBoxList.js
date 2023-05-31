@@ -56,7 +56,7 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
       <tbody>
         {selections.map((selection, index) => (
           <tr key={index}>
-            <td>
+            <td style={{ textAlign: "center" }}>
               {selection.isEditing ? (
                 <select
                   className={styles.selectStyles}
@@ -74,7 +74,7 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
                 getSubjectDisplay(selection.subject, subjects)
               )}
             </td>
-            <td>
+            <td style={{ textAlign: "center" }}>
               {selection.isEditing ? (
                 <select
                   className={styles.selectStyles}
@@ -98,7 +98,7 @@ const SelectionTable = ({ selections, subjects, onEdit, onDelete }) => {
                 getLevelDisplay(selection.level)
               )}
             </td>
-            <td>
+            <td style={{ marginLeft: "10px", alignItem: "center" }}>
               {selection.isEditing ? (
                 <div className={styles.buttonGroup}>
                   <button onClick={() => handleSave(index)}>저장</button>
