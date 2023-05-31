@@ -99,7 +99,7 @@ const Favorite = () => {
       <div className={styles.container}>
         <div className={styles.text}>
           <span className={styles.highlight}>관심 직무</span>를 선택해주세요
-          (최대 <span className={styles.highlight}>5</span> 까지 가능합니다.)
+          (최대 <span className={styles.highlight}>5</span> 개까지 가능합니다.)
         </div>
         <div className={styles["btn-container"]}>
           {subjects.map((subject) => {
