@@ -11,10 +11,6 @@ const API_URI = process.env.REACT_APP_API_URI;
 async function signoutUser() {
   const savedToken = `Bearer ${localStorage.getItem("token")}`;
 
-  // console.log(savedToken);
-
-  // return localStorage.removeItem("user");
-
   return fetch(API_URI + "/api/v1/auth/signout", {
     method: "POST",
     headers: {
@@ -27,51 +23,46 @@ async function signoutUser() {
 
 const Sign = () => {
   const navigate = useNavigate();
-  const name = localStorage.getItem("name");
 
   const [signState, setSignState] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem("token"));
-  const { isSignedIn, changeSignedIn } = useContext(AuthContext);
+  const { changeSignedIn } = useContext(AuthContext);
 
   useEffect(() => {
-    // const tmp = localStorage.getItem("token");
-    // console.log(token);
-    // console.log(localStorage.getItem("token"));
+    // Get token from local storage
     const tmp = localStorage.getItem("token");
+    // Function to sign out user
     const setSignout = async () => {
+      // Call signoutUser function to send request to server
       const response = await signoutUser();
+      // Remove token, name, and email from local storage
       localStorage.removeItem("token");
       localStorage.removeItem("name");
       localStorage.removeItem("email");
 
-      // console.log(response.status);
       if (response.ok) {
+        // If signout is successful, change signed in status to false
         console.log("로그아웃에 성공했습니다.");
         changeSignedIn();
-        //   navigate("/");
       } else {
-        // console.log(response.message);
-        // console.log(localStorage.getItem("token"));
+        // If signout fails, change signed in status to false and navigate to home page
         console.log("로그아웃에 실패했습니다.");
         changeSignedIn();
         navigate("/");
       }
     };
 
+    // Function to render menu based on signed in status
     const menu = () => {
       return (
         <ul className={styles.group}>
           {tmp ? (
+            // If user is signed in, show My Page and Logout links
             <>
-              {/* <li className={styles.userTag}>{name} 님</li> */}
               <li className={styles.userTag}>
                 <Link to="/mypage" className={styles.nav}>
                   마이페이지
                 </Link>
               </li>
-              {/* <li className={styles.userTag}>
-                <span className={styles.separator}>|</span>
-              </li> */}
               <li className={styles.userTag}>
                 <Link to="/" className={styles.nav} onClick={setSignout}>
                   로그아웃
@@ -79,6 +70,7 @@ const Sign = () => {
               </li>
             </>
           ) : (
+            // If user is not signed in, show Sign Up and Login links
             <>
               <li className={styles.userTag}>
                 <Link to="/signup" className={styles.nav}>
@@ -95,11 +87,7 @@ const Sign = () => {
         </ul>
       );
     };
-    // setToken(tmp);
-
-    // console.log(tmp);
-    setToken(tmp);
-
+    // Set menu to signState
     setSignState(menu);
   }, [changeSignedIn]);
 

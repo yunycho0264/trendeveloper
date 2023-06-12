@@ -1,8 +1,5 @@
 import React from "react";
-import styles from "../css/DetailPage.module.css";
 
-import TrendBackground from "../components/TrendBackground";
-import CompanyInfo from "../components/CompanyInfo";
 import RecruitBackground from "../components/RecruitmentBackground";
 
 const Recruitment = () => {
@@ -19,7 +16,7 @@ const Recruitment = () => {
         margin: "0 auto 100px",
       }}
     >
-      {/* 배경 박스 */}
+      {/* Background box */}
       <RecruitBackground />
     </div>
   );

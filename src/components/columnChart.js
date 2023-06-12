@@ -1,16 +1,11 @@
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import { lab } from "d3-color";
 import React, { Component } from "react";
 import ApexCharts from "react-apexcharts";
-
-const API_URI = process.env.REACT_APP_API_URI;
 
 class ColumnChart extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props[2]);
-
+    // Set initial state with props
     this.state = {
       series: [
         {
@@ -44,8 +39,9 @@ class ColumnChart extends Component {
           },
         },
 
+        // Set x-axis options
         xaxis: {
-          categories: props[0],
+          categories: props[0], // Set categories from props
           position: "top",
           axisBorder: {
             show: false,
@@ -69,6 +65,8 @@ class ColumnChart extends Component {
             enabled: false,
           },
         },
+
+        // Set y-axis options
         yaxis: {
           axisBorder: {
             show: false,
@@ -83,6 +81,8 @@ class ColumnChart extends Component {
             },
           },
         },
+
+        // Set tooltip options
         tooltip: {
           enabled: true,
           custom: function ({ dataPointIndex }) {
@@ -101,10 +101,10 @@ class ColumnChart extends Component {
             }
 
             return tooltipContent;
-            // return label;
           },
         },
 
+        // Set chart title
         title: {
           text: "파워레인저 님의 상위 직군 역량",
           floating: true,

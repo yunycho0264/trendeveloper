@@ -1,9 +1,12 @@
-import React, { createContext, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+// Importing necessary modules
+import React, { createContext } from "react";
 
+// Creating a context object
 export const ComContext = createContext();
 
+// Creating a provider component
 export const ComContextProvider = ({ children }) => {
+  // Defining an array of job titles in Korean
   const jobKor = [
     "서버/백엔드 개발자",
     "프론트엔드 개발자",
@@ -27,6 +30,8 @@ export const ComContextProvider = ({ children }) => {
     "블록체인",
     "기술지원",
   ];
+
+  // Function to translate job title id to Korean
   const transName = (id, jobKor) => {
     let name = "";
     switch (id) {
@@ -100,6 +105,8 @@ export const ComContextProvider = ({ children }) => {
 
     return name;
   };
+
+  // Returning the provider component with the context value and children components
   return (
     <ComContext.Provider
       value={{

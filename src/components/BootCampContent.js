@@ -1,56 +1,33 @@
-import React, { useState, useEffect } from "react";
-import Loading from "./Loading";
-import fallbackImage from "../img/No_logo-001.png";
+import React from "react"; // Importing React library
 
-import styles from "../css/BootCamp.module.css";
-
-const API_URI = process.env.REACT_APP_API_URI;
+import styles from "../css/BootCamp.module.css"; // Importing CSS styles
 
 const BootCampContent = (props) => {
-  let [logoLink, setlogoLink] = useState(null);
-  const [bootTitle, setBootTitle] = useState("");
-  let respJSON = useState({});
-  //let logoLink = useState("");
-  //
-  const data = props.data;
-
-  useEffect(() => {
-    // //console.log(data);
-    const fetchData = async () => {
-      if ("link" in data) {
-        console.log(data);
-        //console.log(data.link);
-        setBootTitle(data.title);
-        // logoLink = respJSON["logoLink"];
-      }
-    };
-    fetchData();
-  }, [data]);
-
-  // //console.log(logoLink);
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    //console.log(data.link);
-    window.location.href = data.link;
-  };
-
-  const handleError = () => {
-    setlogoLink(fallbackImage);
-  };
+  // Creating a functional component named BootCampContent with props as parameter
+  const data = props.data; // Assigning props.data to a constant variable named data
 
   return (
+    // Returning JSX
     <tr key={props.index}>
+      {" "}
+      {/* Creating a table row with a key prop */}
       <td className={styles.link}>
+        {" "}
+        {/* Creating a table data cell with a class name */}
         <a href={data.link} target="_blank" rel="noreferrer">
-          {data.title}
+          {" "}
+          {/* Creating an anchor tag with a link, target and rel attribute */}
+          {data.title} {/* Displaying the title */}
         </a>
       </td>
-      <td style={{ textAlign: "center" }}>{data.due}</td>
-      <td style={{ textAlign: "center" }}>{data.st}</td>
-      <td style={{ textAlign: "center" }}>{data.fin}</td>
+      <td style={{ textAlign: "center" }}>{data.due}</td>{" "}
+      {/* Creating a table data cell with inline style */}
+      <td style={{ textAlign: "center" }}>{data.st}</td>{" "}
+      {/* Creating a table data cell with inline style */}
+      <td style={{ textAlign: "center" }}>{data.fin}</td>{" "}
+      {/* Creating a table data cell with inline style */}
     </tr>
   );
 };
 
-export default BootCampContent;
+export default BootCampContent; // Exporting the BootCampContent component as default.

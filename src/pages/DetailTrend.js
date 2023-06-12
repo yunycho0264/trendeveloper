@@ -1,20 +1,26 @@
-import React from "react";
-import CompanyInfo from "../components/CompanyInfo";
-import Companylogo from "../components/Companylogo";
-import DetailMenu from "../components/DetailMenu";
-import DetailTrendBack from "../components/DetailTrendBack";
-import RecruitmentList from "../components/RecruitmentList";
-import NewsList from "../components/NewsList";
+import React from "react"; // Importing React library
+
+import CompanyInfo from "../components/CompanyInfo"; // Importing CompanyInfo component
+import Companylogo from "../components/Companylogo"; // Importing Companylogo component
+import DetailMenu from "../components/DetailMenu"; // Importing DetailMenu component
+import DetailTrendBack from "../components/DetailTrendBack"; // Importing DetailTrendBack component
 
 const DetailTrend = () => {
+  // Creating a functional component named DetailTrend
   return (
+    // Returning JSX
     <div>
+      {/* A div element */}
       <CompanyInfo />
+      {/* Rendering CompanyInfo component */}
       <Companylogo />
+      {/* Rendering Companylogo component */}
       <DetailMenu />
+      {/* Rendering DetailMenu component */}
       <DetailTrendBack />
+      {/* Rendering DetailTrendBack component */}
     </div>
   );
 };
 
-export default DetailTrend;
+export default DetailTrend; // Exporting DetailTrend component as default

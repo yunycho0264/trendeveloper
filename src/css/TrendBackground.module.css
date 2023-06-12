@@ -1,39 +1,44 @@
+/* Set the width of the background and center it */
 .background {
   width: 70vw;
   margin-left: 18vw;
+  /* Set the margin for the top and bottom */
   margin-bottom: 0vh;
   margin-top: 1vh;
   margin-bottom: 100px;
+  /* Set the background color */
   background: #fff;
 }
 
+/* Set the font weight and size for the text */
 .text {
   font-weight: bold;
   font-size: large;
 }
 
+/* Set the margin for the inner text */
 .inner-text {
   margin-top: 3vh;
   margin-left: 2vh;
 }
 
+/* Set the margin and width and height for the inner box */
 .inner-box {
   margin-left: 0.7vw;
-  /* justify-content: center;
-  align-items: center; */
   width: 68vw;
   height: 28vh;
 }
 
+/* Set the margin, border, and background for the box */
 .box {
   margin-top: 1vh;
   border: 1px solid #89969f;
   background: #fff;
 }
 
+/* Set the width, margin, and display for the rank */
 .rank {
   width: 70vw;
-  /* height: 20vh; */
   margin-bottom: 2vw;
   margin-left: 18vw;
   display: flex;
@@ -41,17 +46,20 @@
   flex-direction: row;
 }
 
+/* Set the width, height, and margin for the how */
 .how {
   width: 30vw;
   height: 20vh;
   margin-left: 2vw;
 }
 
+/* Set the margin for the next */
 .next {
   margin-top: 4vh;
   margin-left: 1vw;
 }
 
+/* Set the margin, text align, and font size for the sub text */
 .sub-text {
   margin-top: 7vh;
   margin-bottom: 4vh;
@@ -60,6 +68,7 @@
   font-size: 24px;
 }
 
+/* Set the display, margin, and alignment for the contents */
 .contents {
   display: block;
   justify-content: center;
@@ -67,14 +76,17 @@
   margin-bottom: 2vh;
 }
 
+/* Set the alignment for the left */
 .left-align {
   float: left;
 }
 
+/* Set the color for the clicked job */
 .clicked-job {
   color: #b93234;
 }
 
+/* Set the font weight, size, margin, and color for the rank 1 */
 .rank1 {
   font-weight: bold;
   font-size: 24px;
@@ -83,6 +95,7 @@
   color: rgba(186, 12, 47, 1);
 }
 
+/* Set the font weight, size, margin, and color for the rank 2 */
 .rank2 {
   font-weight: bold;
   font-size: 24px;
@@ -91,6 +104,7 @@
   color: rgb(169, 11, 43);
 }
 
+/* Set the font weight, size, margin, and color for the rank 3 */
 .rank3 {
   font-weight: bold;
   font-size: 24px;
@@ -99,6 +113,7 @@
   color: rgb(147, 10, 37);
 }
 
+/* Set the font weight, size, margin, and color for the rank 4 */
 .rank4 {
   font-weight: bold;
   font-size: 24px;
@@ -107,6 +122,7 @@
   color: rgb(112, 7, 28);
 }
 
+/* Set the font weight, size, margin, and color for the rank 5 */
 .rank5 {
   font-weight: bold;
   font-size: 24px;
@@ -114,10 +130,13 @@
   margin-left: 2vw;
   color: rgb(61, 4, 15);
 }
+
+/* Set the margin for the notice */
 .notice {
   margin-top: 10px;
 }
 
+/* Set the text decoration, margin, font weight, and color for the anker */
 .anker {
   text-decoration: none;
   margin-right: 55vw;
@@ -125,6 +144,7 @@
   color: black;
 }
 
+/* Set the list style type, padding, and margin for the list */
 .list {
   position: relative;
   justify-content: center;
@@ -133,20 +153,23 @@
   padding: 0;
 }
 
+/* Set the margin for the list items */
 .list li {
   margin-bottom: 10px;
 }
 
+/* Set the text decoration and transition for the list item links */
 .list li a {
-  /* color: #333; */
   text-decoration: none;
   transition: color 0.3s;
 }
 
+/* Set the color for the list item links on hover */
 .list li a:hover {
   color: #ba0c2f;
 }
 
+/* Set the margin, padding, font size, background color, color, text decoration, border radius, border, and cursor for the button */
 .btn {
   margin: 10px;
   padding: 15px 30px;
@@ -160,17 +183,19 @@
   font-weight: bold;
 }
 
+/* Set the background color and color for the selected button */
 .selected {
   background-color: #ba0c2f;
   color: white;
 }
 
+/* Set the background color and color for the button on hover */
 .btn:hover {
   background-color: #ba0c2f;
   color: white;
 }
 
+/* Set the margin for the last button */
 .btn:last-child {
   margin-right: 0;
 }
-

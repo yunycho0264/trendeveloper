@@ -6,7 +6,7 @@ const MyPage = () => {
   return (
     <div>
       <div className={styles.require}>
-        {/* 배경 박스 */}
+        {/* Background box */} {/* Comment for the following code block */}
         <MyPageBackground />
       </div>
     </div>

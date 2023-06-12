@@ -2,13 +2,13 @@ import React from "react";
 import styles from "../css/DetailMenu.module.css";
 import { Link } from "react-router-dom";
 
-const DetailMenu = (props) => {
+const DetailMenu = () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
-  console.log(urlSearchParams.get("id"));
+
   let recruitmentID = urlSearchParams.get("id");
   return (
     <div className={styles["detail-menu"]}>
-      {/*상세 요건*/}
+      {/* Link to recruitment detail page */}
       <div className={styles.requirement}>
         <Link
           to={`/recruitement/detail?id=${recruitmentID}`}
@@ -18,7 +18,7 @@ const DetailMenu = (props) => {
           상세 요건
         </Link>
       </div>
-      {/*기업 트렌드*/}
+      {/* Link to company detail page */}
       <div className={styles["company-trend"]}>
         <Link
           to={`/company/detail?id=${recruitmentID}`}

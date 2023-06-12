@@ -4,50 +4,42 @@ import fallbackImage from "../img/No_logo-001.png";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
-//console.log(API_URI);
-
 const Companylogo = () => {
   let [logoLink, setlogoLink] = useState(null);
   let respJSON = useState({});
-  //let logoLink = useState("");
 
   useEffect(() => {
+    // Get the URL search parameters
     const urlSearchParams = new URLSearchParams(window.location.search);
 
     const fetchData = async () => {
+      // Check if the URL has an "id" parameter
       if (urlSearchParams.has("id")) {
-        console.log(urlSearchParams.get("id"));
+        // Get the value of the "id" parameter
         let recruitmentID = urlSearchParams.get("id");
-        //const token = localStorage.getItem("token");
 
+        // Fetch the recruitment detail using the API
         let resp = await fetch(
           API_URI + "/api/v1/recruitment/detail?id=" + recruitmentID,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              //"Authorization": "Bearer " + token
             },
             body: JSON.stringify(),
           }
         );
+        // Parse the response as JSON
         respJSON = await resp.json();
-        console.log(respJSON);
+        // Set the logo link to the response's logo link
         setlogoLink("https://work.go.kr/" + respJSON["logoLink"]);
-        //logoLink = respJSON["logoLink"];
       }
     };
 
     fetchData();
   }, []);
 
-  //const [detailData, setDetailData] = useState(null);
-
-  //const zionItsLogoLink = detailData?.find(company => company.name === '(주)자이온아이티에스')?.logoLink;
-  //const logoLink = zionItsLogoLink ? `https://work.go.kr${zionItsLogoLink}` : null;
-
-  // console.log(logoLink);
-
+  // Handle error when loading the logo image
   const handleError = () => {
     setlogoLink(fallbackImage);
   };
@@ -56,6 +48,7 @@ const Companylogo = () => {
     <div className={styles["company-logo"]}>
       <div className={styles["test-image"]}>
         {logoLink ? (
+          // Render the logo image if the logo link is not null
           <img
             className={styles.bp}
             alt="logo"
@@ -67,15 +60,5 @@ const Companylogo = () => {
     </div>
   );
 };
-
-// const Companylogo = () => {
-//   return (
-//     <div className={styles["company-logo"]}>
-//       <div className={styles["test-image"]}>
-//         {/* <img className={styles.bp} alt="bp-logo" src="img/bp.PNG"/> */}
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Companylogo;

@@ -9,7 +9,7 @@ import "../css/Sign.css";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
-// 로그인
+// Function to send a POST request to the server to sign in the user
 async function signinUser(credentials) {
   return fetch(API_URI + "/api/v1/auth/signin", {
     method: "POST",
@@ -21,33 +21,46 @@ async function signinUser(credentials) {
 }
 
 const Signin = () => {
-  const { changeSubmitted, changeSignedIn } = useContext(AuthContext);
+  // Get the changeSignedIn function from the AuthContext
+  const { changeSignedIn } = useContext(AuthContext);
 
+  // Set the initial state of email and password to empty strings
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Get the navigate function from react-router-dom
   const navigate = useNavigate();
+
+  // Function to navigate to the signup page
   const navigateToSignup = () => {
     navigate("/signup");
   };
+
+  // Function to handle changes in the email input field
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
 
+  // Function to handle changes in the password input field
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
 
+  // Function to sign in the user
   const setSignin = async (email, password) => {
+    // Send a POST request to the server to sign in the user
     const response = await signinUser({
       email,
       password,
     });
-    console.log(response);
+    // If the response status is 403, show an alert message
     if (response.status === 403) {
       window.alert("아이디 및 비밀번호를 다시 확인해 주세요!");
-    } else if (response.status === 200) {
+    }
+    // If the response status is 200, get the token and user information from the response
+    else if (response.status === 200) {
       const responseJSON = await response.json();
+      // If the token is in the response, save the token and user information to local storage and change the signed in state
       if ("token" in responseJSON) {
         const receivedToken = responseJSON["token"];
         localStorage.setItem("token", receivedToken);
@@ -55,18 +68,19 @@ const Signin = () => {
         localStorage.setItem("name", receivedName);
         const receivedEmail = responseJSON["email"];
         localStorage.setItem("email", receivedEmail);
-        console.log(responseJSON);
         changeSignedIn();
         navigate("/");
       }
     }
   };
 
-  // signin 버튼 클릭 이벤트
+  // Function to handle the click event of the sign in button
   const onClickSignin = async (e) => {
     e.preventDefault();
     setSignin(email, password);
   };
+
+  // Render the sign in form
   return (
     <div className="sign">
       <div className="signin-form">

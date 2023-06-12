@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "../css/DetailPage.module.css";
 
 import TrendBackground from "../components/TrendBackground";
-import CompanyInfo from "../components/CompanyInfo";
-import { rank } from "d3-array";
+
 const API_URI = process.env.REACT_APP_API_URI;
 
 const Trend = () => {
   const [ranks, setRanks] = useState(null);
   useEffect(() => {
+    // Fetch ranks data from API
     const fetchRanks = async () => {
       let from = "202004";
       let count = 40;
@@ -25,22 +25,23 @@ const Trend = () => {
       );
 
       const respJSON = await response.json();
-      console.log(respJSON);
+      // Extract the names of the top 5 ranks
       let tmp = respJSON.map((item) => {
         return item.name;
       });
       tmp = tmp.slice(0, 5);
 
+      // Set the TrendBackground component with the top 5 ranks as props
       setRanks(<TrendBackground ranks={tmp} />);
-      console.log(tmp);
     };
 
+    // Call the fetchRanks function when the component mounts
     fetchRanks();
   }, []);
 
   return (
     <div className={styles.require}>
-      {/* 배경 박스 */}
+      {/* Render the TrendBackground component with the top 5 ranks */}
       {ranks}
     </div>
   );

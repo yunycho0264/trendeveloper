@@ -1,4 +1,3 @@
-import { fas } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import ApexCharts from "react-apexcharts";
 
@@ -6,11 +5,11 @@ class ApexChart extends Component {
   constructor(props) {
     super(props);
 
-    // console.log(props[0]);
+    // Set the initial state of the component
     this.state = {
       series: [
         {
-          data: props[1],
+          data: props[1], // Set the data for the chart
         },
       ],
       options: {
@@ -21,38 +20,19 @@ class ApexChart extends Component {
             enabled: false,
           },
         },
-        colors: ["#0285FF"],
+        colors: ["#0285FF"], // Set the color of the chart
         dataLabels: {
           enabled: true,
         },
 
         stroke: {
-          // curve:"straight",
           width: 5,
           curve: "smooth",
         },
-        // fill: {
-        //   type: "gradient",
-        //   gradient: {
-        //     shade: "dark",
-        //     gradientToColors: ["#FDD835"],
-        //     shadeIntensity: 1,
-        //     type: "horizontal",
-        //     opacityFrom: 1,
-        //     opacityTo: 1,
-        //     stops: [0, 100, 100, 100],
-        //   },
-        // },
-        // grid: {
-        //   row: {
-        //     colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-        //     opacity: 0.5,
-        //   },
-        // },
-        xaxis: {
-          // title: { text: "날짜", rotate: -45, offsetX: 0, offsetY: -20 },
 
-          categories: props[0],
+        // Set the x-axis options
+        xaxis: {
+          categories: props[0], // Set the categories for the x-axis
           labels: {
             formatter: function (value, index) {
               // Extract year and month if the value is defined
@@ -67,7 +47,7 @@ class ApexChart extends Component {
                 const year = value.substr(2, 2);
 
                 const formattedLabel = (year, month) => {
-                  return `${year}년 ${month}월`;
+                  return `${year}년 ${month}월`; // Format the label as "YY년 MM월"
                 };
 
                 return formattedLabel(year, month(value));
@@ -79,7 +59,7 @@ class ApexChart extends Component {
           },
         },
         yaxis: {
-          title: { text: "공고수" },
+          title: { text: "공고수" }, // Set the title of the y-axis
         },
       },
     };
@@ -101,6 +81,3 @@ class ApexChart extends Component {
 }
 
 export default ApexChart;
-
-// const domContainer = document.querySelector("#app");
-// ReactDOM.render(React.createElement(ApexChart), domContainer);

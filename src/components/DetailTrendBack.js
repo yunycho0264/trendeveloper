@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/DetailTrendBack.module.css";
-// import { ResponsivePie } from "@nivo/pie";
 import ReactApexChart from "react-apexcharts";
 import NewsList from "./NewsList";
 
@@ -8,23 +7,22 @@ import NewsList from "./NewsList";
 const API_URI = process.env.REACT_APP_API_URI;
 
 const DetailTrendBack = () => {
-  let [companyInfo, setCompanyInfo] = useState(null);
   const [chartData, setChartData] = useState([0, 0]);
 
   const urlSearchParams = new URLSearchParams(window.location.search);
 
   useEffect(() => {
+    // Fetch company info from API
     const fetchCompanyInfo = async () => {
-      // const token = localStorage.getItem('token');
       let recruitmentID = urlSearchParams.get("id");
 
+      // Fetch recruitment detail
       const response = await fetch(
         API_URI + "/api/v1/recruitment/detail?id=" + recruitmentID,
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            // 'Authorization': 'Bearer ' + token,
           },
           body: JSON.stringify(),
         }
@@ -32,21 +30,21 @@ const DetailTrendBack = () => {
 
       const respJSON = await response.json();
 
+      // Fetch company detail
       const response2 = await fetch(
         API_URI + "/api/v1/company/detail?id=" + respJSON["companyName"],
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            // 'Authorization': 'Bearer ' + token,
           },
           body: JSON.stringify(),
         }
       );
 
       const respJSON2 = await response2.json();
-      console.log(respJSON2);
-      setCompanyInfo(respJSON2);
+
+      // Set chart data with fetched company info
       setChartData([
         respJSON2.negative * 100,
         respJSON2.positive * 100,
@@ -61,6 +59,7 @@ const DetailTrendBack = () => {
     <div className={styles.background}>
       <div />
       <div className={styles.chart}>
+        {/* Render chart with chart data */}
         <ReactApexChart
           options={donutData.options}
           series={chartData}
@@ -74,6 +73,7 @@ const DetailTrendBack = () => {
           <br />
           <span>(클릭하면 관련 뉴스 기사 페이지로 이동해요!)</span>
         </div>
+        {/* Render news list */}
         <NewsList />
       </div>
     </div>
