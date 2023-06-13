@@ -1,8 +1,9 @@
-import React, { useState } from "react"; // Importing necessary modules
+import React, { useState } from "react";
+import { AiFillQuestionCircle } from "react-icons/ai";
 import styled from "styled-components";
 
 export const ModalContainer = styled.span`
-  // Styling for the container of the modal
+  // Modal을 구현하는데 전체적으로 필요한 CSS를 구현
   position: relative;
   display: flex;
   color: black;
@@ -13,7 +14,7 @@ export const ModalContainer = styled.span`
 `;
 
 export const ModalBackdrop = styled.div`
-  // Styling for the backdrop of the modal
+  // Modal이 떴을 때의 배경을 깔아주는 CSS를 구현
   z-index: 1;
   position: fixed;
   display: flex;
@@ -28,7 +29,6 @@ export const ModalBackdrop = styled.div`
 `;
 
 export const ModalBtn = styled.button`
-  // Styling for the button of the modal
   background-color: var(--coz-purple-600);
   text-decoration: none;
   border: none;
@@ -39,7 +39,6 @@ export const ModalBtn = styled.button`
 `;
 
 export const ExitBtn = styled(ModalBtn)`
-  // Styling for the exit button of the modal
   background-color: #ba0c2f;
   border-radius: 10px;
   text-decoration: none;
@@ -56,7 +55,6 @@ export const ExitBtn = styled(ModalBtn)`
 `;
 
 export const ModalView = styled.div.attrs((props) => ({
-  // Styling for the view of the modal
   role: "dialog",
 }))`
   display: flex;
@@ -68,7 +66,6 @@ export const ModalView = styled.div.attrs((props) => ({
   background-color: #ffffff;
 
   > div.desc {
-    // Styling for the description of the modal
     margin: 30px 50px;
     font-size: 15px;
     color: black;
@@ -94,7 +91,6 @@ export const ModalView = styled.div.attrs((props) => ({
     }
 
     .hilight {
-      // Styling for the highlighted text in the modal
       color: #ba0c2f;
       display: inline-block;
       width: 1em;
@@ -102,74 +98,55 @@ export const ModalView = styled.div.attrs((props) => ({
     }
   }
 `;
-// Define a functional component named HowRank
+
 const HowRank = () => {
-  // Declare a state variable named isOpen and a function to update it named setIsOpen using useState hook with initial value of false
   const [isOpen, setIsOpen] = useState(false);
 
-  // Define a function named openModalHandler to toggle the value of isOpen
   const openModalHandler = () => {
     setIsOpen(!isOpen);
   };
 
-  // Return JSX
   return (
     <span>
       &nbsp;
-      {/* Render a ModalBackdrop component and a ModalView component only if isOpen is true */}
+      <AiFillQuestionCircle onClick={openModalHandler} />
+      {/*{isHovered && <p>Text to appear on hover</p>}*/}
       {isOpen && (
         <ModalBackdrop onClick={openModalHandler}>
           <ModalView onClick={(e) => e.stopPropagation()}>
-            {/* Render an ExitBtn component with text 'x' and onClick event listener to toggle isOpen */}
             <ExitBtn onClick={openModalHandler}>x</ExitBtn>
-            {/* Render a div with className 'desc' */}
             <div className="desc">
-              {/* Render a heading with text '[점수 환산 방식]' */}
               <h3>[점수 환산 방식]</h3>
-              {/* Render a paragraph with height of 20px */}
               <p style={{ height: "20px" }} />
-              {/* Render a heading with text '평점 가중 평균' */}
+              100 = 70 (평점 가중 평균) + 15 (수강 강의 수) + 15 (기술 활용
+              경험)
+              <p style={{ height: "20px" }} />
               <h4>평점 가중 평균</h4>
-              {/* Render a paragraph */}
               <p />
-              {/* Render a paragraph with text '세 가지 항목을 기준으로 가중치 계산.' */}
               세 가지 항목을 기준으로 가중치 계산.
-              {/* Render a paragraph with height of 10px */}
               <p style={{ height: "10px" }} />
-              {/* Render an unordered list */}
               <ul>
-                {/* Render a list item with text '기본 점수 ( +10 ) : 직군과 과목이 기본적으로 연관이 되어있는가' */}
                 <li>
                   기본 점수 ( +10 ) : 직군과 과목이 기본적으로 연관이 되어있는가
                 </li>{" "}
-                {/* Render a list item with text '핵심 지식 ( +5 ) : 과목이 직군에 직접 적용할 수 있는 기본 개념과 원칙을 제공하는지' */}
                 <li>
                   핵심 지식 ( +5 ) : 과목이 직군에 직접 적용할 수 있는 기본
                   개념과 원칙을 제공하는지
                 </li>
-                {/* Render a list item with text '실용 기술 ( +5 ) : 과목이 직군에 필요한 실용 기술을 학생들에게 제공하는가' */}
                 <li>
                   {" "}
                   실용 기술 ( +5 ) : 과목이 직군에 필요한 실용 기술을 학생들에게
                   제공하는가
                 </li>
               </ul>
-              {/* Render a paragraph with height of 20px */}
               <p style={{ height: "20px" }} />
-              {/* Render a heading with text '수강 강의 수' */}
               <h4>수강 강의 수</h4>
-              {/* Render a paragraph */}
               <p />
-              {/* Render a paragraph with text '과목 수에 따라 15점 만점으로 환산 (수강 과목 6개 이상 15점 만점 처리)' */}
               과목 수에 따라 15점 만점으로 환산 (수강 과목 6개 이상 15점 만점
               처리)
-              {/* Render a paragraph with height of 20px */}
               <p style={{ height: "20px" }} />
-              {/* Render a heading with text '기술 활용 경험' */}
               <h4>기술 활용 경험</h4>
-              {/* Render a paragraph */}
               <p />
-              {/* Render a paragraph with text '경험 1회 당 5점, 15점 만점으로 환산 (경험 3회 이상 15점 만점 처리)' */}
               경험 1회 당 5점, 15점 만점으로 환산 (경험 3회 이상 15점 만점 처리)
             </div>
           </ModalView>
@@ -179,5 +156,4 @@ const HowRank = () => {
   );
 };
 
-// Export the HowRank component as default
 export default HowRank;
