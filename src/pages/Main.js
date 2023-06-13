@@ -1,50 +1,47 @@
-// Import necessary modules and styles
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../css/Main.module.css";
+
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
+//배너 이미지 삽입
 import image1 from "../img/앱서비스.png";
 import image2 from "../img/Cloud.png";
 import image3 from "../img/공공데이터.png";
+
+//기업 로고 이미지 삽입
 import SimpleSlider from "../components/Slider";
 import { ComContext } from "../context/Com.context";
 
 const Main = () => {
-  // Get jobKor and transName from ComContext
+  // App 컴포넌트에서 전달받은 props 값은 아래와 같이 받아온다.
   const { jobKor, transName } = useContext(ComContext);
 
-  // Define ranks array
   const ranks = ["front", "back", "full", "ios", "vr"];
 
-  // Define jobName and companySlider states
   const [jobName, setJobName] = useState("");
+
   const [companySilder, setCompanySlider] = useState(null);
 
-  // Set tmp to ranks[1] and update jobName and companySlider states
-  let tmp = ranks[1];
+  let tmp = ranks[0];
   useEffect(() => {
-    // Translate job name to Korean
-    setJobName(transName(tmp, jobKor));
-
-    // Set companySlider to SimpleSlider component with id=tmp
+    setJobName(transName(tmp, jobKor)); // Set job name based on the selected rank and language
+    // Define a function that returns the company slider component
     const tmpSlider = () => {
       return <SimpleSlider id={tmp} />;
     };
-    setCompanySlider(tmpSlider);
+    setCompanySlider(tmpSlider); // Set the company slider component
   }, [tmp, jobKor]);
 
   return (
     <div>
-      {/* Banner */}
       <div className={styles.banner}>
         현재 확인할 수 있는 정보에 대해서 알아볼까요?{" "}
-        {/* Display banner text */}
+        {/* Display a banner message */}
       </div>
-      {/* Banner images */}
+      {/* Display a carousel of images */}
       <div className={styles["banner-image"]}>
         <Carousel autoPlay interval={5000} infiniteLoop>
-          {" "}
-          {/* Display banner images */}
           <div>
             <a href="http://obigo.com/promotion/?vid=2" target="_blank">
               <img src={image1} alt="Slide 1" />
@@ -65,14 +62,12 @@ const Main = () => {
           </div>
         </Carousel>
       </div>
-      {/* Job label */}
       <div className={styles.label_1}>
         지금 뜨고 있는 <span>{jobName}</span> 의 공고를 확인해보세요!{" "}
-        {/* Display job label */}
+        {/* Display a label with the selected job name */}
       </div>
-      {/* Company logos */}
       <div className={styles.logo}>{companySilder}</div>{" "}
-      {/* Display company logos */}
+      {/* Display the company slider component */}
     </div>
   );
 };
