@@ -1,3 +1,28 @@
+# Trendeveloper
+
+
+### 주제
+IT 계열 구직을 희망하는 세종대학생을 위한 채용 공고 및 직군 플랫폼
+
+
+### 기능
+1. 기업별 뉴스 헤드라인 감정분석
+2. 과거 동향 기반 직군별 채용 동향 예측
+3. 성적 기반 직군 추천
+4. 채용정보 검색
+5. 채용정보 상세 요건 조회
+   
+
+### 사용 방법
+1. VScode 터미널에서 npm start 입력
+
+![image](https://github.com/Hippoya/trendeveloper/assets/68114427/1bca22f0-d34a-499c-bdc5-ea87b2b73def)
+
+![image](https://github.com/Hippoya/trendeveloper/assets/68114427/8c285093-9103-44ef-80d6-eb209b08688a)
+![image](https://github.com/Hippoya/trendeveloper/assets/68114427/c1a6ca99-edc9-42d0-8af2-037edaf714b8)
+
+![image](https://github.com/Hippoya/trendeveloper/assets/68114427/0f537580-42f0-417d-ad4d-3379612e52da)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
