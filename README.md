@@ -15,6 +15,7 @@ IT 계열 구직을 희망하는 세종대학생을 위한 채용 공고 및 직
 
 ### 사용 방법
 1. VScode 터미널에서 npm start 입력
+2. 자세한 방법은 메뉴얼 참고
 
 ![image](https://github.com/Hippoya/trendeveloper/assets/68114427/1bca22f0-d34a-499c-bdc5-ea87b2b73def)
 
